@@ -12,7 +12,7 @@ The Project ShareIt born to find a way to make the donation process easier.
  - Bruno Thomaz
  - Vinícius Teixeira
 
-# Tecnologias Empregadas/Tecnologies
+## Tecnologias Empregadas/Tecnologies
  - HTML/CSS
  - JAVASCRIPT/JQUERY
  - PHP MVC
