@@ -7,6 +7,7 @@ Este projeto foi utilizado como Trabalho de Conclusão de Curso do ETIM da ETEC 
 The Project ShareIt born to find a way to make the donation process easier.
 
 ## Equipe/Staff
+ - Esdras Nani
  - Luana Reis
  - Bruno Marini
  - Bruno Thomaz
