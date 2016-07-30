@@ -1,3 +1,3 @@
 <?php get_header(); ?>
-<h1>Index Aqui!</h1>
+<h1>Desculpe, página não encontrada!</h1>
 <?php get_footer(); ?>
