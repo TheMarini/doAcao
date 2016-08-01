@@ -7,8 +7,8 @@ require_once './controllers/common.php';
 
 /* -- Trocador de página -- */
 
-$url = isset($_GET['pag'])?htmlspecialchars($_GET['pag']):null;
-$id = isset($_GET['id'])?htmlspecialchars($_GET['id']):null;
+$url = isset($_GET['pag'])?htmlspecialchars($_GET['pag']):null;//Tipo de Página
+$id = isset($_GET['id'])?htmlspecialchars($_GET['id']):null;//Permalink da página
 
 if(!(is_null($url) || empty($url))){
     if(file_exists("./views/$url.php") && !($url == 'footer') && !($url == 'header')){
