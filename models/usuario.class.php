@@ -7,5 +7,6 @@
         private $nm_usuario;
         private $cd_senha_usuario;
         
+        
     }
 ?>
