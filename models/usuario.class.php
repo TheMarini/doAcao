@@ -70,15 +70,17 @@
         /* FUNÇÕES NECESSÁRIAS */
         
 		static function login($_email, $_senha){
-            $comm = "SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');";
+            $com = "SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');";
             
-            $result = mysqli_query($com);
+            $result = mysqli_query(get_conexao(), $com);
             
             if(mysqli_num_rows($result) > 0){
                 return $_email;
             }else{
                 return false;
             }
+            
+            mysqli_close($conexao);
 			
 		}
         

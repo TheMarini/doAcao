@@ -3,6 +3,7 @@
 
 /* -- includes -- */
 require_once './controllers/common.php';
+require_once './controllers/usuario.class.php';
 
 /* -- Trocador de página -- */
 
