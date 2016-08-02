@@ -69,7 +69,7 @@
         
         /* FUNÇÕES NECESSÁRIAS */
         
-		static function login($_email, $_senha){
+		static function checklogin($_email, $_senha){
             $com = "SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');";
             
             $result = mysqli_query(get_conexao(), $com);
