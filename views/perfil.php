@@ -1,4 +1,8 @@
-<?php get_header(); ?>
+<?php get_header();   
+    if(!(user_atual::is_logged())){
+        echo "<h1>Você não está logado!</h1>";
+    }else{
+?>
 <h1>Perfil</h1>
 <strong>Nome:</strong>
 <strong>Email:</strong>
@@ -14,4 +18,8 @@
 <strong>Permalink:</strong>
 <strong>Bio:</strong>
 <strong>Participar do Ranking:</strong>
-<?php get_footer(); ?>
+
+<form action="<?php user_atual::logout();?>">
+    <input type="submit" value="sair">
+</form>
+<?php } get_footer(); ?>

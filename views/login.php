@@ -2,7 +2,8 @@
 <?php
     $loginstatus = "";
     $loginresult = user_atual::makelogin();
-        if(empty($loginresult)){
+    
+    if(!is_null($loginresult)){
         if($loginresult){
             header('Location:index.php?pag=perfil');
         }else{
