@@ -2,8 +2,8 @@
 //Arquivo responsável por montar a página de exibição ao cliente utilizando os modelos presentes na pasta views 
 
 /* -- includes -- */
-require_once './models/usuario.class.php';
 require_once './controllers/common.php';
+require_once './controllers/usuario.class.php';
 
 /* -- Trocador de página -- */
 
