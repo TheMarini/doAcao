@@ -3,23 +3,54 @@
     
     class user{
         
-        private $cd_email_usuario;
-        private $nm_usuario;
-        private $cd_senha_usuario;
-		private $cd_tipo_usuario;
-		private $cd_cpf_usuario;	
-		private $cd_cnpj_usuario;
-		private $cd_cep;
-		private $cd_nr_endereco_usuario;
-		private $cd_telefone_usuario;
-		private $cd_url_facebook;
-		private $cd_url_twitter;
-		private $cd_url_instagram;
-		private $cd_permalink_usuario;
-		private $ds_bio_usuario;
-		private $ic_participar_ranking;
+        private $email;
+        private $nome;
+        private $senha;
+		private $tipo;
+		private $cpf;	
+		private $cnpj;
+		private $cep;
+		private $numero_endereco;
+		private $telefone;
+		private $facebook;
+		private $twitter;
+		private $instagram;
+		private $permalink;
+		private $biografia;
+		private $participaranking;
+        
+        /* ENCAPSULAMENTO (vai ser útil dps!) */
+        
+        function __set($atrib, $value){
+            $this->$atrib = $value;
+        }
+        
+        function __get($atrib){
+            return $this->$atrib;            
+        }
 		
-     	
+        /* CONSTRUTOR */
+     	function __construct($email, $tipo, $nome, $senha, etc )
+        
+        /* PRINCIPAIS FUNÇÕES */
+        function static consultar($termo, $tipo){
+            /* - consultar usuario - */
+        }
+        
+        function salvar(){
+            /* - salvar novo usuário -*/ 
+        }
+        
+        function update(){
+            /* - atualizar dados do usuário - */
+        }
+        
+        function static deletar($email){
+            /* - apagar usuário - */
+        }
+        
+        /* FUNÇÕES NECESSÁRIAS */
+        
 		function _user_login ($cd_email_usuario, $cd_senha_usuario){
 			$comm = "SELECT * FROM usuario WHERE cd_email_usuario = '$cd_email_usuario' AND cd_senha_usuario = 									 md5('$cd_senha_usuario'))";
 			
