@@ -3,26 +3,25 @@
     require_once './models/usuario.class.php';
 /* classe */
 
+
+
 class user_atual{
        // $user
         
     }
 
 /* funções */
-    function login($email, $senha){
+    function login($_email, $_senha){
         
-        session_start();
-        
-			
-			if (mysqli_num_rows($query) > 0){				
-				$_SESSION['email'] = $cd_email_usuario;
-				$_SESSION['senha'] = $cd_senha_usuario;
-				return "Logou";
-			}
-			else{
-				unset ($_SESSION['email']);
-				unset ($_SESSION['senha']);
-				return "não logou";
-			}            
+           session_start();
+        		
+		if ($useratual = user::login($_email, $_senha)){				
+				$_SESSION['email'] = $useratual;
+				return true;
+        }
+		else{
+           session_destroy();
+            return false;
+        }            
     }
 ?>
