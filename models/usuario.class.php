@@ -30,7 +30,9 @@
         }
 		
         /* CONSTRUTOR */
-     	function __construct($email, $tipo, $nome, $senha, etc )
+     	function __construct($email, $tipo, $nome, $senha, etc ){
+            %this->email = $email;            
+        }
         
         /* PRINCIPAIS FUNÇÕES */
         function static consultar($termo, $tipo){
