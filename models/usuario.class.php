@@ -31,7 +31,7 @@
         }
 		
         /* CONSTRUTOR */
-     	function __construct($_email, $_nome, $_senha, $_tipo, $_cpf, $_cnpj, $_cep, $_numero_endereco, $_telefone, 										$_facebook, $_twitter, $_instagram, $_permalink, $_biografia, $_participaranking ){
+     	function __construct($_email, $_nome, $_senha, $_tipo, $_cpf, $_cnpj, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_permalink, $_biografia, $_participaranking ){
 			
 			$this -> $email = $_email;
 			$this -> $nome = $_nome;
@@ -51,7 +51,7 @@
 		}
         
         /* PRINCIPAIS FUNÇÕES */
-        function static consultar($termo, $tipo){
+        static function consultar($termo, $tipo){
             
         }
         
@@ -63,30 +63,23 @@
             /* - atualizar dados do usuário - */
         }
         
-        function static deletar($email){
+        static function deletar($email){
             /* - apagar usuário - */
         }
         
         /* FUNÇÕES NECESSÁRIAS */
         
-		function user_login ($cd_email_usuario, $cd_senha_usuario){
+		static function login($_email, $_senha){
+            $comm = "SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');";
+            
+            $result = mysqli_query($com);
+            
+            if(mysqli_num_rows($result) > 0){
+                return $_email;
+            }else{
+                return false;
+            }
 			
-			session_start();
-			
-			$comm = "SELECT * FROM usuario WHERE cd_email_usuario = '$cd_email_usuario' AND cd_senha_usuario = 									 md5('$cd_senha_usuario'))";
-			
-			$query = mysqli_query($comm);
-			
-			if ($result = mysqli_fetch_array($query)){				
-				$_SESSION['email'] = $cd_email_usuario;
-				$_SESSION['senha'] = $cd_senha_usuario;
-				return "Logou";
-			}
-			else{
-				unset ($_SESSION['email']);
-				unset ($_SESSION['senha']);
-				return "não logou";
-			}
 		}
         
     }
