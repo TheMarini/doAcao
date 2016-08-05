@@ -16,8 +16,8 @@
 <strong>Twitter:</strong></br>
 <strong>Instagram:</strong></br>
 <strong>Permalink:</strong></br>
-<strong>Bio:</strong>
-<strong>Participar do Ranking:</strong>
+<strong>Bio:</strong></br>
+<strong>Participar do Ranking:</strong></br>
 
-<a href="<?php user_atual::logout(); ?>">Sair</a>
+<a href="<?php logout()?>">Sair</a>
 <?php } get_footer(); ?>
