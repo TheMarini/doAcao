@@ -3,17 +3,18 @@
     require_once './models/usuario.class.php';
 
 /* classe */
+    
+    //
+    //$user_atual = new user('atual');
+    //$user_atual->nome
 
-class user_atual{
-    
-    
-    //verificar se está logado!
-    static function is_logged(){
+    //verifica se algum usuário está logado.
+    function is_logged(){
         return isset($_SESSION['email']);
     } 
     
     //realizar login
-    static function makelogin(){
+    function login(){
         //se o usuário já estiver logado ele retorna que o login foi efetuado com sucesso
         if(isset($_SESSION['email'])){
             return true;
@@ -36,8 +37,7 @@ class user_atual{
     }
     
     //sair
-    static function logout(){
+    function logout(){
         session_destroy();
     }
-}
 ?>

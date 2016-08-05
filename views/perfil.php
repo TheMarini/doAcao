@@ -4,22 +4,20 @@
     }else{
 ?>
 <h1>Perfil</h1>
-<strong>Nome:</strong>
-<strong>Email:</strong>
-<strong>Tipo:</strong>
-<strong>CPF:</strong>
-<strong>CNPJ:</strong>
-<strong>CEP:</strong>
-<strong>NR:</strong>
-<strong>Telefone:</strong>
-<strong>Facebook:</strong>
-<strong>Twitter:</strong>
-<strong>Instagram:</strong>
-<strong>Permalink:</strong>
+<strong>Nome:</strong></br>
+<strong>Email:</strong></br>
+<strong>Tipo:</strong></br>
+<strong>CPF:</strong></br>
+<strong>CNPJ:</strong></br>
+<strong>CEP:</strong></br>
+<strong>NR:</strong></br>
+<strong>Telefone:</strong></br>
+<strong>Facebook:</strong></br>
+<strong>Twitter:</strong></br>
+<strong>Instagram:</strong></br>
+<strong>Permalink:</strong></br>
 <strong>Bio:</strong>
 <strong>Participar do Ranking:</strong>
 
-<form action="<?php user_atual::logout();?>">
-    <input type="submit" value="sair">
-</form>
+<a href="<?php user_atual::logout(); ?>">Sair</a>
 <?php } get_footer(); ?>
