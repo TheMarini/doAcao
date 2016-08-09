@@ -1,5 +1,5 @@
 <?php get_header();   
-    if(!(user_atual::is_logged())){
+    if(!(is_logged())){
         echo "<h1>Você não está logado!</h1>";
     }else{
 ?>

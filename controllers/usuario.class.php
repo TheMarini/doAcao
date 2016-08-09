@@ -3,10 +3,9 @@
     require_once './models/usuario.class.php';
 
 /* classe */
+    session_start();    
     
-    //
-    //$user_atual = new user('atual');
-    //$user_atual->nome
+    $user_atual = new user('atual');
 
     //verifica se algum usuário está logado.
     function is_logged(){

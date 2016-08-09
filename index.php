@@ -2,8 +2,6 @@
 //Arquivo responsável por montar a página de exibição ao cliente utilizando os modelos presentes na pasta views 
 
 /* -- includes -- */
-session_start();
-
 require_once './controllers/common.php';
 require_once './controllers/usuario.class.php';
 
