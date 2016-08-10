@@ -18,7 +18,4 @@ if(!(is_null($url) || empty($url))){
 }else{
     include "./views/index.php";
 }
-
-
-    
 ?>
