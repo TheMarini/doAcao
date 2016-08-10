@@ -1,11 +1,11 @@
 <?php
-/* include do model usuario */
+    /* include do model usuario */
     require_once './models/usuario.class.php';
 
-/* classe */
     session_start();    
     
-    $user_atual = new user('atual');
+    /* variaveis */
+        $atual_user_query = null;
 
     //verifica se algum usuário está logado.
     function is_logged(){
@@ -25,7 +25,7 @@
         
         if(!(is_null($email) || is_null($senha))){
             
-            if (($useratual = user::checklogin($email, $senha)) != false){
+            if (($useratual = user::Login($email, $senha)) != false){
                 $_SESSION['email'] = $useratual;
 				return true;
             }else{
@@ -39,10 +39,17 @@
         session_destroy();
     }
 
-	function user_loop($termo){
-		$query = user::consultar($termo);
-		while($users = mysqli_fetch_array($query)){
-			echo "<option>".$users[0]."</option>";
-		}
-	}
+    //Consulta
+	function user_consultar($termo = ""){
+        $atual_user_query = user::Consultar($termo);
+        return is_null($atual_user_query);
+    }
+
+    function have_user(){
+        
+    }
+
+    function user_nome(){
+        
+    }
 ?>

@@ -20,7 +20,7 @@
 		private $biografia;
 		private $participaranking;
         
-        /* ENCAPSULAMENTO (vai ser útil dps!) */
+        /* ENCAPSULAMENTO */
         
         function __set($atrib, $value){
             $this->$atrib = $value;
@@ -31,7 +31,7 @@
         }
 		
         /* CONSTRUTOR */
-     	function __construct($_email, $_nome = 'Gerson', $_senha = 'ger1234', $_tipo = 0, $_cpf = '05472491552', $_cnpj = '67235103519252', $_cep = '88025000', $_numero_endereco = '528', $_telefone = '66792253', $_facebook = 'fb.com/larmcegas', $_twitter = '@mocascegas', $_instagram = '@mocascegas', $_permalink = 'po87', $_biografia = 'Uma ONG', $_participaranking = false ){
+     	function __construct($_email, $_nome = "", $_senha = "", $_tipo = 0, $_cpf = "", $_cnpj = "", $_cep = "", $_numero_endereco = "", $_telefone = "", $_facebook = "", $_twitter = "", $_instagram = "", $_permalink = "", $_biografia = "", $_participaranking = false ){
 			
 			$this -> email = $_email;
 			$this -> nome = $_nome;
@@ -52,25 +52,28 @@
         
         /* PRINCIPAIS FUNÇÕES */
         
-		function consultar($termo){
-			$com = "SELECT nm_usuario, cd_email_usuario FROM usuario ";
+		static function Consultar($termo = ""){
+			$com = "SELECT * FROM usuario ";
 			
-			if (strstr($termo, "@")){
+			if (strstr($termo, "@")){//Por email
 				$com .= "WHERE cd_email_usuario LIKE '%$termo%' ORDER BY cd_email_usuario"; 
-				
-				return mysqli_query(get_conexao(), $com);
 			}
-			
-			else{	
-				$com .= "WHERE nm_usuario LIKE '%$termo%' ORDER BY cd_tipo_usuario"; 
-				
-				return mysqli_query(get_conexao(), $com);				
+			else{//Por nome de usuário	
+				$com .= "WHERE nm_usuario LIKE '%$termo%' ORDER BY cd_tipo_usuario"; 			
 			}
-			
-			
+
+			$result = mysqli_query(get_conexao(), $com);
+
+			$listUsers = array();
+
+			while($row = mysqli_fetch_array($result)){
+				$listUsers[] = new user($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6], $row[7], $row[8], $row[9], $row[10], $row[11], $row[12], $row[13], $row[14]);
+			}
+
+			return $listUsers;
         }
         
-        function salvar($_email, $_nome, $_senha, $_tipo, $_cpf, $_cnpj, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_permalink, $_biografia, $_participaranking){
+        function Salvar(){
 			
 			$com = "SELECT * FROM usuario WHERE cd_email_usuario = '$termo'";
 			
@@ -93,11 +96,11 @@
             
         }
         
-        function update(){
+        function Atualizar(){
             /* - atualizar dados do usuário - */
         }
         
-        static function deletar($email){
+        static function Excluir($email){
             
 				$com = "DELETE FROM usuario WHERE cd_email_usuario='$email'";
 
@@ -109,7 +112,7 @@
         
         /* FUNÇÕES NECESSÁRIAS */
         
-		static function checklogin($_email, $_senha){
+		static function Login($_email, $_senha){
             $com = "SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');";
             
             $query = mysqli_query(get_conexao(), $com);
