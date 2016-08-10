@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <?php
     $loginstatus = "";
-    $loginresult = makelogin();
+    $loginresult = login();
     
     if(!is_null($loginresult)){
         if($loginresult){

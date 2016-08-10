@@ -19,5 +19,8 @@
 <strong>Bio:</strong></br>
 <strong>Participar do Ranking:</strong></br>
 
-<a href="<?php logout()?>">Sair</a>
+<select>
+	<?php user_loop('e')?>
+</select>
+<a href="">Sair</a>
 <?php } get_footer(); ?>

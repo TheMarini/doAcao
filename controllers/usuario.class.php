@@ -38,4 +38,11 @@
     function logout(){
         session_destroy();
     }
+
+	function user_loop($termo){
+		$query = user::consultar($termo);
+		while($users = mysqli_fetch_array($query)){
+			echo "<option>".$users[0]."</option>";
+		}
+	}
 ?>
