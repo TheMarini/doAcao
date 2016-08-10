@@ -41,7 +41,10 @@
 
     //Consulta
 	function user_consultar($termo = ""){
-        $atual_user_query = user::Consultar($termo);
+        if(is_null($atual_user_query)){
+            $atual_user_query = user::Consultar($termo);
+        }
+        
         return is_null($atual_user_query);
     }
 
