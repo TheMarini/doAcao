@@ -6,6 +6,8 @@
     
     /* variaveis */
         $atual_user_query = null;
+        $row = 0;
+        $user = null;
 
     //verifica se algum usuário está logado.
     function is_logged(){
@@ -41,18 +43,22 @@
 
     //Consulta
 	function user_consultar($termo = ""){
+        global $atual_user_query;
+        global $row;
+        global $user;
+
         if(is_null($atual_user_query)){
             $atual_user_query = user::Consultar($termo);
         }
         
+        if(count($atual_user_query) > $row){
+            $user = $atual_user_query[$row];
+            $row++;
+        }else{
+            $atual_user_query = null;
+            $row = 0;
+        }
+        
         return is_null($atual_user_query);
-    }
-
-    function have_user(){
-        
-    }
-
-    function user_nome(){
-        
     }
 ?>

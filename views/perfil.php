@@ -4,10 +4,11 @@
     }else{
 ?>
 <h1>Perfil</h1>
-<strong>Nome:</strong></br>
-<strong>Email:</strong></br>
-<strong>Tipo:</strong></br>
-<strong>CPF:</strong></br>
+<?php if(user_consultar()){ while(user_consultar()){ ?> 
+<strong>Nome:<?php echo $user->nome; ?></strong></br>
+<strong>Email:<?php echo $user->email; ?></strong></br>
+<strong>Tipo:<?php echo $user->tipo; ?></strong></br>
+<strong>CPF:<?php echo $user->cpf; ?></strong></br>
 <strong>CNPJ:</strong></br>
 <strong>CEP:</strong></br>
 <strong>NR:</strong></br>
@@ -18,9 +19,6 @@
 <strong>Permalink:</strong></br>
 <strong>Bio:</strong></br>
 <strong>Participar do Ranking:</strong></br>
-
-<select>
-	<?php user_loop('e')?>
-</select>
+<?php }}else{echo "Xana";}?>
 <a href="">Sair</a>
 <?php } get_footer(); ?>
