@@ -73,7 +73,7 @@
 			return $listUsers;
         }
         
-        function Salvar(){
+        function Salvar($_email, $_nome, $_senha, $_tipo, $_cpf, $_cnpj, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_permalink, $_biografia, $_participaranking){
 			
 			$com = "SELECT * FROM usuario WHERE cd_email_usuario = '$termo'";
 			
@@ -86,7 +86,7 @@
 			
 			else	
 			{
-				$com = "INSERT INTO usuario VALUES('$_email', '$nome', md5('$_senha'), $_tipo, '$_cpf', '$_cnpj', $_cep, '$_numero_endereco', $_telefone, '$_facebook', '$_twitter', '$_instagram', '$_permalink', '$_biografia', $_participaranking)";
+				$com = "INSERT INTO usuario VALUES('$_email', '$_nome', md5('$_senha'), $_tipo, '$_cpf', '$_cnpj', $_cep, '$_numero_endereco', $_telefone, '$_facebook', '$_twitter', '$_instagram', '$_permalink', '$_biografia', $_participaranking)";
 				
 				$query = mysqli_query(get_conexao(), $com);
 				
@@ -96,15 +96,20 @@
             
         }
         
-        function Atualizar(){
-            /* - atualizar dados do usuário - */
+        function Atualizar($_email, $_nome, $_senha, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_biografia){ 
+					$com = "UPDATE SET usuario nm_usuario = '$_nome', cd_senha_usuario = md5('$_senha'), cd_cep = $_cep, cd_nr_endereco_usuario = '$_numero_endereco', cd_telefone_usaurio = $_telefone, cd_url_facebook = '$_facebook', cd_url_twitter = '$_twitter', cd_url_instagram = '$_instagram', ds_bio_usuario = '$_biografia' WHERE cd_email_usuario = '$_email'";
+					
+					$query = mysqli_query(get_conexao(), $com);
+					
+					return "Usuário Atualizado com Sucesso";
+					
         }
         
         static function Excluir($email){
             
 				$com = "DELETE FROM usuario WHERE cd_email_usuario='$email'";
 
-				$query = mysql_query($com);
+				$query = mysqli_query(get_conexao(), $com);
 				
 				return "Usuário Excluído com Sucesso";			
 			
