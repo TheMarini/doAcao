@@ -4,7 +4,8 @@
     }else{
 ?>
 <h1>Perfil</h1>
-<?php if(user_consultar("esdras")){ while(user_consultar("esdras")){ ?> 
+<?php 
+if(user_consultar("esdras")){ while(user_consultar("esdras")){ ?> 
 <strong>Nome:<?php echo $user->nome; ?></strong></br>
 <strong>Email:<?php echo $user->email; ?></strong></br>
 <strong>Tipo:<?php echo $user->tipo; ?></strong></br>
@@ -19,6 +20,7 @@
 <strong>Permalink:</strong></br>
 <strong>Bio:</strong></br>
 <strong>Participar do Ranking:</strong></br>
+<span>---------------------------------</span>
 <?php }}else{echo "Não retornou users <br>";}?>
 <a href="">Sair</a>
 <?php } get_footer(); ?>

@@ -49,6 +49,10 @@
 
         if(is_null($atual_user_query)){
             $atual_user_query = user::Consultar($termo);
+            if(!is_null($atual_user_query)){
+                $user = $atual_user_query[$row];
+                return true;
+            }
         }
         
         if(count($atual_user_query) > $row){
@@ -58,7 +62,6 @@
             $atual_user_query = null;
             $row = 0;
         }
-        
-        return is_null($atual_user_query);
+        return !is_null($atual_user_query);
     }
 ?>

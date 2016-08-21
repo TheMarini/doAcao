@@ -61,7 +61,7 @@
 			else{//Por nome de usuário	
 				$com .= "WHERE nm_usuario LIKE '%$termo%' ORDER BY cd_tipo_usuario"; 			
 			}
-
+				
 			$result = mysqli_query(get_conexao(), $com);
 
 			$listUsers = array();
