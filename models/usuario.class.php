@@ -97,7 +97,7 @@
         }
         
         function Atualizar($_email, $_nome, $_senha, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_biografia){ 
-					$com = "UPDATE SET usuario nm_usuario = '$_nome', cd_senha_usuario = md5('$_senha'), cd_cep = $_cep, cd_nr_endereco_usuario = '$_numero_endereco', cd_telefone_usaurio = $_telefone, cd_url_facebook = '$_facebook', cd_url_twitter = '$_twitter', cd_url_instagram = '$_instagram', ds_bio_usuario = '$_biografia' WHERE cd_email_usuario = '$_email'";
+					$com = "UPDATE usuario SET nm_usuario = '$_nome', cd_senha_usuario = md5('$_senha'), cd_cep = $_cep, cd_nr_endereco_usuario = '$_numero_endereco', cd_telefone_usaurio = $_telefone, cd_url_facebook = '$_facebook', cd_url_twitter = '$_twitter', cd_url_instagram = '$_instagram', ds_bio_usuario = '$_biografia' WHERE cd_email_usuario = '$_email'";
 					
 					$query = mysqli_query(get_conexao(), $com);
 					
