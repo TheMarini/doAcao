@@ -47,13 +47,13 @@
 				
 		$query = mysqli_query(get_conexao(), $com);
 
-		$listUsers = array();
+		$listMercadoria = array();
 
 	    while ($row = mysqli_fetch_array($query)){
-			$listUsers[] = new user($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
+			$listMercadoria[] = new user($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
 		}
 
-		return $listUsers;
+		return $listMercadoria;
         }
         
         function Atualizar($_cd_merc, $_nm_merc, $_ds_merc, $_email_user){ 
@@ -63,6 +63,15 @@
             $query = mysqli_query(get_conexao(), $com);
             
             return "Mercadoria Atualizada";
+        }
+        
+        function Excluir($_cd_merc)
+        {
+            $com = "DELETE FROM mercadoria WHERE cd_mercadoria = '$_cd_merc'";
+            
+            $query = mysqli_query(get_conexao(), $com);
+            
+            return "Mercadoria Excluída com Sucesso";
         }
         
     }
