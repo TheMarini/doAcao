@@ -20,3 +20,23 @@ body{
     width: 100%;
     height: 70px;
 }
+
+/* login popup */
+
+#loginPopUp {
+    background: #fff;
+    position: absolute;
+    border: 1px solid;
+    padding: 3px;
+}
+
+#loginPopUp input[type="submit"]{
+    margin-top: 5px;
+}
+
+/* Cadastro */
+#frmUserCad{
+    text-align: left;
+    width: 150px;
+    margin: auto;    
+}

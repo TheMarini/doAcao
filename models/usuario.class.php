@@ -3,7 +3,6 @@
     
     class user{
         
-		
         private $email;
         private $nome;
         private $senha;

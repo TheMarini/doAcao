@@ -3,7 +3,7 @@
 
 /* -- includes -- */
 require_once './controllers/common.php';
-require_once './controllers/usuario.class.php';
+require_once './controllers/usuario.php';
 /* -- Trocador de página -- */
 
 $url = isset($_GET['pag'])?htmlspecialchars($_GET['pag']):null;//Tipo de Página

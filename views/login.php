@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 <?php
-    $loginstatus = "";
+    $loginMessage = "";
     $loginresult = login();
     
     if(!is_null($loginresult)){
         if($loginresult){
-            header('Location:index.php?pag=perfil');
+            header('Location:'. $_SERVER['REQUEST_URI']);
         }else{
-            $loginstatus = "Usuário ou senha inválidos!";
+            $loginMessage = "Usuário ou senha inválidos!";
         }
     }
 
@@ -22,6 +22,6 @@
             </label></br>
             <input type="submit">
         </form>
-        <h5 style="color:red;"><?php echo $loginstatus; ?></h5>
+        <h5 style="color:red;"><?php echo $loginMessage; ?></h5>
         
 <?php get_footer(); ?>
