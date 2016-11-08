@@ -11,7 +11,7 @@
         <p>Header aqui</p>
         <?php 
             if(is_logged()){
-                echo $_SESSION['email'];
+                echo useratual()->nome;
                 ?>
                 <a href="index.php?pag=login&logoff=true">Sair</a>
                 <?php                

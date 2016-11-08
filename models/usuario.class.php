@@ -3,9 +3,9 @@
     
     class user{
         
-        private $email;
+		private $codigo;
         private $nome;
-        private $senha;
+		private $email;
 		private $tipo;
 		private $cpf;	
 		private $cnpj;
@@ -15,7 +15,6 @@
 		private $facebook;
 		private $twitter;
 		private $instagram;
-		private $permalink;
 		private $biografia;
 		private $participaranking;
         
@@ -30,23 +29,22 @@
         }
 		
         /* CONSTRUTOR */
-     	function __construct($_email, $_nome = "", $_senha = "", $_tipo = 0, $_cpf = "", $_cnpj = "", $_cep = "", $_numero_endereco = "", $_telefone = "", $_facebook = "", $_twitter = "", $_instagram = "", $_permalink = "", $_biografia = "", $_participaranking = false ){
+     	function __construct($_codigo = null, $_email = "", $_nome = "", $_tipo = 1, $_cpf = "", $_cnpj = "", $_cep = "", $_numero_endereco = "", $_telefone = "", $_facebook = "", $_twitter = "", $_instagram = "", $_biografia = "", $_participaranking = false ){
 			
-			$this -> email = $_email;
-			$this -> nome = $_nome;
-			$this -> senha = $_senha;
-			$this -> tipo = $_tipo;
-			$this -> cpf = $_cpf;
-			$this -> cnpj = $_cnpj;
-			$this -> cep = $_cep;
-			$this -> numero_endereco = $_numero_endereco;
-			$this -> telefone = $_telefone;
-			$this -> facebook = $_facebook;
-			$this -> twitter = $_twitter;
-			$this -> instagram = $_instagram;
-			$this -> permalink = $_permalink;
-			$this -> biografia = $_biografia;
-			$this -> participaranking = $_participaranking;
+			$this->codigo = $_codigo;
+			$this->nome = $_nome;
+			$this->email = $_email;
+			$this->tipo = $_tipo;
+			$this->cpf = $_cpf;
+			$this->cnpj = $_cnpj;
+			$this->cep = $_cep;
+			$this->numero_endereco = $_numero_endereco;
+			$this->telefone = $_telefone;
+			$this->facebook = $_facebook;
+			$this->twitter = $_twitter;
+			$this->instagram = $_instagram;
+			$this->biografia = $_biografia;
+			$this->participaranking = $_participaranking;
 		}
         
         /* PRINCIPAIS FUNÇÕES */
@@ -72,27 +70,25 @@
 			return $listUsers;
         }
         
-        function Salvar($_email, $_nome, $_senha, $_tipo, $_cpf, $_cnpj, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_permalink, $_biografia, $_participaranking){
+        public function Salvar($_senha){
 			
-			$com = "SELECT * FROM usuario WHERE cd_email_usuario = '$termo'";
+			$com = "SELECT * FROM usuario WHERE cd_email_usuario = '$this->email'";
 			
 			$query = mysqli_query(get_conexao(), $com);
 			
 			if (mysqli_num_rows($query) > 0)
 			{
-				return "Usuário já existe";
+				return false;
 			}
 			
 			else	
 			{
-				$com = "INSERT INTO usuario VALUES('$_email', '$_nome', md5('$_senha'), $_tipo, '$_cpf', '$_cnpj', $_cep, '$_numero_endereco', $_telefone, '$_facebook', '$_twitter', '$_instagram', '$_permalink', '$_biografia', $_participaranking)";
+				$com = "INSERT INTO usuario VALUES('$this->email', '$this->nome', md5('$_senha'), $this->tipo, '$this->cpf', '$this->cnpj', $this->cep, '$this->numero_endereco', $this->telefone, '$this->facebook', '$this->twitter', '$this->instagram', '$_permalink', '$_biografia', $_participaranking)";
 				
 				$query = mysqli_query(get_conexao(), $com);
 				
-				return "Usuário salvo com Sucesso";
-				
+				return true;
 			}
-            
         }
         
         function Atualizar($_email, $_nome, $_senha, $_cep, $_numero_endereco, $_telefone, $_facebook, $_twitter, $_instagram, $_biografia){ 
@@ -121,8 +117,17 @@
             
             $query = mysqli_query(get_conexao(), $com);
             
+			$usuario_atual = new user();
+
+			while($row = mysqli_fetch_array($query)){
+				$usuario_atual->codigo = $row[0];
+				$usuario_atual->nome = $row[1];
+				$usuario_atual->email = $row[2];
+				$usuario_atual->email = $row[3];
+			}
+
             if(mysqli_num_rows($query) > 0){
-                return $_email;
+                return $usuario_atual;
             }else{
                 return false;
             }

@@ -9,15 +9,23 @@
         $row = 0;
         $user = null;
 
+        $useratual = isset($_SESSION['useratual'])? $_SESSION['useratual'] : null;
+        
     //verifica se algum usuário está logado.
     function is_logged(){
-        return isset($_SESSION['email']);
+        global $useratual;
+        return !is_null($useratual);
     }
     
+    function useratual(){
+        global $useratual;
+        return $useratual;
+    }
+
     //realizar login
     function login(){
         //se o usuário já estiver logado ele retorna que o login foi efetuado com sucesso
-        if(isset($_SESSION['email'])){
+        if(is_logged()){
             return true;
         }
         
@@ -27,8 +35,8 @@
         
         if(!(is_null($email) || is_null($senha))){
             
-            if (($useratual = user::Login($email, $senha)) != false){
-                $_SESSION['email'] = $useratual;
+            if ($loginuser = user::Login($email, $senha)){
+                $_SESSION['useratual'] = $loginuser;                
 				return true;
             }else{
                return false;
@@ -42,15 +50,29 @@
     }
 
     //Novo
-    function user_registrar(){
-        if(isset($_POST['username'])? $_POST['username']) : null;
-        $email = isset($_POST['useremail'])? $_POST['useremail'] : null;
-        $senha = isset($_POST['usersenha'])? $_POST['usersenha'] : null;
-        $tipo = isset($_POST['usertipo'])? $_POST['usertipo'] : null;
+    function registrar(){
+        if(isset($_POST['btnSend'])){
+            
+            $nome = $_POST['username'];
+            $email = $_POST['useremail'];
+            $senha = $_POST['userpass'];
+            $tipo = $_POST['usertipo'];
 
-        if($nome)    
+            $errormsg = "";
+            
+            if(empty($nome) || empty($email) || empty($senha) ){
+                return "Preencha todos os campos";
+            }
 
-                
+            $novouser = new user($email, $nome, $tipo);
+            if($novouser->Salvar($senha)){
+                $_SESSION['useratual'] = user::Login($email, $senha);
+                return true;
+            }else{
+                return "Email já cadastrado!";
+            }
+            
+        }       
     }
 
     //Consulta
