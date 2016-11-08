@@ -5,7 +5,8 @@
 }
 
 body{
-    text-align: center;    
+    text-align: center;
+    font-family: sans-serif;    
 }
 
 #header{
@@ -19,6 +20,20 @@ body{
     background: #b1b1b1;
     width: 100%;
     height: 70px;
+}
+
+.hide{
+    display: none;    
+}
+
+.clearfix:before, .clearfix:after{
+    content: "";
+    display: table;
+}
+
+.clearfix:after{
+    clear: both;
+
 }
 
 /* login popup */
@@ -39,4 +54,29 @@ body{
     text-align: left;
     width: 150px;
     margin: auto;    
+}
+
+/* HOME */
+#feed{
+    background: #e4e4e4;
+    width: 69vw;
+    margin: 0.5vw;
+    float: left;
+}
+
+#feedSidebar{
+    background: #e4e4e4;
+    width: 29vw;
+    margin: 0.5vw;
+    float: right;
+}
+
+.feedSideWidget{
+    background: #f4f4f4;
+    margin: 1%;
+    text-align: left;
+}
+.feedSideWidget h2{
+    padding: 5px;
+    font-weight: 400;
 }

@@ -1,11 +1,14 @@
 <?php get_header(); ?>
 <?php
+if(isset($_REQUEST['logoff'])){
+    logout();    
+}
     $loginMessage = "";
     $loginresult = login();
     
     if(!is_null($loginresult)){
         if($loginresult){
-            header('Location:'. $_SERVER['REQUEST_URI']);
+            header('Location: index.php');
         }else{
             $loginMessage = "Usuário ou senha inválidos!";
         }
@@ -20,7 +23,7 @@
             <label>Senha
             <input type="password" name="userpass">
             </label></br>
-            <input type="submit">
+            <input type="submit" value="Entrar">
         </form>
         <h5 style="color:red;"><?php echo $loginMessage; ?></h5>
         

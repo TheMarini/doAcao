@@ -41,6 +41,18 @@
         session_destroy();
     }
 
+    //Novo
+    function user_registrar(){
+        if(isset($_POST['username'])? $_POST['username']) : null;
+        $email = isset($_POST['useremail'])? $_POST['useremail'] : null;
+        $senha = isset($_POST['usersenha'])? $_POST['usersenha'] : null;
+        $tipo = isset($_POST['usertipo'])? $_POST['usertipo'] : null;
+
+        if($nome)    
+
+                
+    }
+
     //Consulta
 	function user_consultar($termo = ""){
         global $atual_user_query;
