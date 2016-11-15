@@ -43,17 +43,17 @@
         
         function Consultar($_email_user){
             
-        $com = "SELECT * FROM mercadoria WHERE cd_email_usuario = '$_email_user' ORDER BY";	
-				
-		$query = mysqli_query(get_conexao(), $com);
+            $com = "SELECT * FROM mercadoria WHERE cd_email_usuario = '$_email_user' ORDER BY";	
+                    
+            $query = mysqli_query(get_conexao(), $com);
 
-		$listMercadoria = array();
+            $listMercadoria = array();
 
-	    while ($row = mysqli_fetch_array($query)){
-			$listMercadoria[] = new user($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
-		}
+            while ($row = mysqli_fetch_array($query)){
+                $listMercadoria[] = new user($row[0], $row[1], $row[2], $row[3], $row[4], $row[5], $row[6]);
+            }
 
-		return $listMercadoria;
+            return $listMercadoria;
         }
         
         function Atualizar($_cd_merc, $_nm_merc, $_ds_merc, $_email_user){ 
@@ -65,8 +65,7 @@
             return "Mercadoria Atualizada";
         }
         
-        function Excluir($_cd_merc)
-        {
+        function Excluir($_cd_merc){
             $com = "DELETE FROM mercadoria WHERE cd_mercadoria = '$_cd_merc'";
             
             $query = mysqli_query(get_conexao(), $com);
