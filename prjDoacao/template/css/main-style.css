@@ -1,0 +1,148 @@
+/*----------FONTS------------*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/*----------NORMATIZAÇÃO------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: 'MAXWELL';
+    list-style: none;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+a {
+    text-decoration: none;
+    color: #00bcd4
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 100%;
+    color: whitesmoke;
+    position: relative;
+}
+
+::selection {
+    color: whitesmoke;
+    background-color: #00b7ad
+}
+
+
+/*----------CLASSES------------*/
+
+.txt{color: dimgray}
+.btn {color: white; cursor: pointer}
+
+/*----------NAV------------*/
+
+nav {
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.12), 0px 0px 20px 0 rgba(0, 0, 0, 0.24);
+    background-color: #00bcd4;
+    z-index: 1;
+    transition: 0.5s;
+    width: 100%;
+    position: fixed;
+    /*animation: menu ease 5s*/
+}
+
+#home {
+    width: 3vw;
+    margin: 15px 0px 15px 10px;
+    float: left;
+    transition: 0.5s;
+    opacity: 0.9;
+}
+
+#home:hover {
+    opacity: 1;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+nav ul {
+    display: flex;
+    /* modo de distribuição dos filhos (adaptativo) */
+    flex-direction: row;
+    /* direção da distribuição (em linha) */
+    flex-wrap: wrap;
+    /* adaptar os filhos ao tamanho do pai */
+    justify-content: center;
+    /* alinhamento horizontal dos filhos */
+    align-content: center;
+    align-items: center;
+    /* alinhamento vertical dos filhos */
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+nav li {
+    color: whitesmoke;
+    padding: 3vh 2vw;
+    opacity: 0.8;
+    transition: 0.5s;
+    flex-grow: 0;
+    /* ocupa o resto da largura da div */
+    flex-shrink: 1;
+    /* encurta a div */
+    flex-basis: auto;
+    /* define uma largura de cada elemento caso não tenha */
+}
+
+nav li:hover {
+    opacity: 1;
+    padding: 3vh 3.5vw 3vh;
+}
+
+#search {
+    opacity: 1;
+    width: 25vw;
+}
+#search img{
+    width: 20%;
+    display: flex;
+}
+
+#search:hover {
+    margin-top: inherit
+}
+
+nav input {
+    width: 100%;
+    font-size: 3vh;
+    padding: 5px;
+    background-color: whitesmoke;
+    transition: 1s;
+    text-align: center;
+}
+
+nav input:focus {
+    background-color: white;
+}
+
+#logado {
+    top: 0;
+    right: 0;
+    position: absolute;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    text-align: right;
+    display: inline-flex;
+    float: right;
+}
+
+#logado p {}
+
+#logado img {
+    height: 4vh;
+    padding: 7px;
+    border-radius: 100px;
+    background-color: whitesmoke
+}

@@ -11,9 +11,8 @@ class index extends View
 {
    public function render()
    {
-       (new partials\header)->render();
+       (new partials\head)->render();
        parent::render();
-       (new partials\footer)->render();
    }
    
 }

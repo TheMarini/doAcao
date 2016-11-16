@@ -12,8 +12,11 @@ class indexController extends Controller
 {
     public function indexAction(){
         if(Session::isLogged()){
-            $indexview = new index\index();
+            $indexview = new index\indexLogged();
             $indexview->data["%variavel%"] = "Aqui vai um texto na index!";
+            $indexview->render();
+        }else{
+            $indexview = new index\index();
             $indexview->render();
         }   
     }

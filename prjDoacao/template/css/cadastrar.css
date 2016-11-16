@@ -1,0 +1,141 @@
+body {
+    /*
+    background-image: url('../img/bg/cubos-opacity.png');
+    background-repeat: round;
+    background-position: center;*/
+    background-size: contain;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+header {
+    float: left;
+    left: 0;
+    top: 0
+}
+
+header input {
+    margin: 5px 20px;
+    background-color: transparent;
+    color: whitesmoke;
+    font-size: 7vh;
+    cursor: pointer;
+    font-weight: 200;
+}*/
+
+header{
+    top: 0;
+    position: absolute;
+    margin: 3.5vh;
+    z-index: 2
+}
+
+header img{
+    margin: 0 auto;
+    height: 15%
+}
+
+article {
+    width: 50%;
+    background-color: lightgray;
+    border-radius: 2px;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+#tipo-user {
+    color: white;
+    font-weight: 100;
+    font-size: 5vh;
+    display: flex;
+    text-align: center
+}
+
+#tipo-user img {
+    height: 19%
+}
+
+#doador, #instituicao{
+    width: 50%;
+    opacity: 0.9;
+    margin: 0 auto;
+    transition: 2s ease-out;
+    cursor: pointer;
+}
+
+#doador {
+    background-color: lightblue;
+        opacity: 0.6;
+}
+#instituicao {
+    background-color: lightcoral;
+    opacity: 0.6;
+}
+
+#doador:hover {
+    opacity: 1;
+    box-shadow: 20px 1px 20px 0 rgba(0, 0, 0, 0.12), 5px 1px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+#instituicao:hover {
+    opacity: 1;
+    box-shadow: -5px 1px 20px 0 rgba(0, 0, 0, 0.12), -5px 1px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+.txt {
+    text-align: center;
+    width: 100%;
+    padding: 8px 0px;
+    font-size: 2.1em;
+    color: gray;
+    text-align: center;
+    background-color: whitesmoke;
+    margin: 1px 0px
+}
+
+#txtEmail{margin-top: 0}
+
+#btnCadastrar {
+    padding: 20px 15px;
+    width: 100%;
+    font-size: 5vh;
+    color: white;
+    font-weight: 100;
+    cursor: pointer;
+    transition: 0.7s;
+    background-color: #00b7ad;
+}
+
+#btnCadastrar:hover{
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.12), 0px 0px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+#btnCadastrar:active {
+    transition: 0.5s;
+    background-color: #3fb094;
+}
+
+article p{
+    float: left;
+    position: absolute
+}
+
+@keyframes botar {
+    0% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+    }
+}
+
+@-webkit-keyframes botao {
+    0% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+    }
+}

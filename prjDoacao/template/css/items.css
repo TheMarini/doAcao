@@ -1,0 +1,109 @@
+body {
+    background-color: whitesmoke
+}
+
+#content {
+    padding-top: 14vh;
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+}
+
+#left,
+#right {
+    background-color: white;
+    box-shadow:  0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    height: 82vh
+}    
+
+#left {
+    width: 40%;
+    padding: 0px 5px
+}
+
+#left h1 {
+    font-size: 6vh;
+    color: cadetblue;
+}
+
+#btnAdicionar{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 5vh;
+    background-color: cadetblue;
+    padding: 5px
+}
+
+#left h2 {
+    font-size: 3.2vh;
+    color: grey;
+}
+
+#left p {
+    font-size: 3vh;
+    color: dimgray;
+}
+
+
+#estado {
+    text-align: right
+}
+
+#right {
+    margin-left: 0.6vw;
+    width: 55%;
+}
+
+#right header {
+    background-image: url('../img/bg/cubos-opacity.png');
+    background-repeat: round;
+    background-position: center;
+    background-size: contain;
+    height: 20vh;
+}
+
+#right h1{
+    position: absolute;
+    bottom: 0;
+    color: dimgray;
+    font-size: 5vh
+}
+
+#dados p
+{
+    font-size: 4vh;
+    color: black
+}
+
+#tipo {color: #00bcd4}
+#quantidade{position: absolute; right: 0; top: 0}
+#quantidade span, #descricao span{color: gray}
+#descricao{margin-top: 5px;text-align: justify}
+
+#instituicoes{
+    margin-top: 20px;
+    color: cadetblue;
+    text-align: center
+}
+
+#opcoes{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+#btnEditar, #btnRemover{font-size: 5vh;padding: 5px;}
+
+#btnEditar{
+    background-color: dimgrey;
+    width: 71%
+}
+
+#btnRemover{
+    background-color: indianred;
+    position: absolute;
+    right: 0;
+    width: 30%
+}

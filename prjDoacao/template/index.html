@@ -1,1 +1,79 @@
-<h1>%variavel%</h1>
+    <link rel="stylesheet" href="%TEMPLATE_PATH%css/intro.css" media="all">
+</head>
+<body id="body">
+    <form id="form-login">
+        <input type="email" id="txtEmail" class="txt" placeholder="email" onfocus="txtFocus(1, 'txtEmail')" onblur="txtFocus(0, 'txtEmail')"></input>
+        <input type="password" id="txtSenha" class="txt" placeholder="senha" onfocus="txtFocus(1, 'txtSenha')" onblur="txtFocus(0, 'txtSenha')"></input>
+        <input type="submit" id="btnEntrar" class="btn" value="entrar">
+        <a data-scroll href="#btnCadastrar">
+            <p id="nao-cadastrado">não sou cadastrado</p>
+        </a>
+        </div>
+    </form>
+
+    <div id="login" onclick="popup()">
+        <img src="%TEMPLATE_PATH%img/icons/user.png" alt="">
+        <p>entrar/cadastrar</p>
+    </div>
+    <header id="Intro">
+        <video src="%TEMPLATE_PATH%img/videos/intro.mp4" autoplay loop muted></video>
+        <img id="logo" src="%TEMPLATE_PATH%img/logos/azul/marca-fechada.png" alt="intro">
+        <h2>Um novo jeito de doarsd asdas dasda sdnasjdb ashbdjah  sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb</h2>
+    </header>
+
+    <nav id="Menu">
+        <a href="#Menu"><img id="home" src="%TEMPLATE_PATH%img/logos/branco/logo-fechado.png" alt="intro"></a>
+        <ul>
+            <a href="#Menu">
+                <li>Como doar?</li>
+            </a>
+            <a href="#doador">
+                <li>Doador</li>
+            </a>
+            <a href="#instituicao">
+                <li>Instituição</li>
+            </a>
+            <a href="#ranking">
+                <li>Ranking</li>
+            </a>
+            <a href="#sobre">
+                <li>Sobre</li>
+            </a>
+        </ul>
+    </nav>
+
+    <article id="Corpo">
+        <section id="doador">
+            <img src="%TEMPLATE_PATH%img/bg/tutorial_doador.png" alt="">
+        </section>
+        <section id="instituicao">
+            <img src="%TEMPLATE_PATH%img/bg/tutorial_receptor.png" alt="">
+        </section>
+        <section id="ranking">
+            <img src="%TEMPLATE_PATH%img/bg/ranking.png" alt="">
+        </section>
+        <section id="sobre">
+            <img src="%TEMPLATE_PATH%img/bg/quem-somos.png" alt="">
+        </section>
+    </article>
+    <footer>
+        <form id="form-cadastrar" action="cadastrar.html">
+            <input id="txtEmail" type="email" class="txt" placeholder="email" onfocus="txtFocus(1,'txtEmail')" onblur="txtFocus(0,'txtEmail')"></input>
+            <br />
+            <a href="cadastrar.html">
+                <button id="btnCadastrar" class="btn">Cadastrar!</button>
+            </a>
+            </div>
+            <br />
+        </form>
+    </footer>
+</body>
+
+<script src="%TEMPLATE_PATH%js/smooth.js"></script>
+<script src="%TEMPLATE_PATH%js/jquery.js"></script>
+<script src="%TEMPLATE_PATH%js/script.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+
+</html>
