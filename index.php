@@ -1,21 +1,22 @@
 <?php 
-//Arquivo responsável por montar a página de exibição ao cliente utilizando os modelos presentes na pasta views 
+/**
+* PROJETO DOAÇÃO TCC GRUPO 3 - 3N1 - ETEC ARISTÓTELES FERREIRA - 2016
+* Authors: Bruno Marini, Bruno Thomaz, Esdras Nani, Luana Reis, Vinícius Teixeira
+* GitHub: http://github.com/vinikis/doacao.git
+* Description: A project to make more easier the donation process
+*/
+namespace prjDoacao;
 
-/* -- includes -- */
-require_once './controllers/common.php';
-require_once './controllers/usuario.php';
-/* -- Trocador de página -- */
+define('APP_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'prjDoacao' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
+define('TEMPLATE_PATH', 'prjDoacao' . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR);
+define('ROOT',  __DIR__ . DIRECTORY_SEPARATOR);
 
-$url = isset($_GET['pag'])?htmlspecialchars($_GET['pag']):null;//Tipo de Página
-$id = isset($_GET['id'])?htmlspecialchars($_GET['id']):null;//Permalink da página
+//autoloader
+require_once 'autoloader.php';
+spl_autoload_register('autoloader');
 
-if(!(is_null($url) || empty($url))){
-    if(file_exists("./views/$url.php") && !($url == 'footer') && !($url == 'header')){
-        include "./views/$url.php";
-    }else{
-        include "./views/erro404.php";
-    }
-}else{
-    include "./views/index.php";
-}
-?>
+//start session
+\prjDoacao\sys\session\Session::Start();
+
+//make routes
+(new \prjDoacao\sys\Router())->route();
