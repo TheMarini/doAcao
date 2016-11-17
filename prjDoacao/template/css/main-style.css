@@ -10,7 +10,6 @@
     border: none;
     font-family: 'MAXWELL';
     list-style: none;
-    transform: translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
@@ -38,8 +37,8 @@ body {
 
 /*----------CLASSES------------*/
 
-.txt{color: dimgray}
-.btn {color: white; cursor: pointer}
+.txt{color: dimgray; outline: none;}
+.btn {color: white; cursor: pointer; outline: none;}
 
 /*----------NAV------------*/
 
@@ -137,8 +136,6 @@ nav input:focus {
     display: inline-flex;
     float: right;
 }
-
-#logado p {}
 
 #logado img {
     height: 4vh;

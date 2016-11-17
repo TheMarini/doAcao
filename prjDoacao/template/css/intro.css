@@ -1,10 +1,11 @@
 /*----------NAV------------*/
 
 nav {
-    background-color: transparent;
-    position: relative;
-    z-index: 0;
+    background-color: rgba(255, 255, 255, 0.11);
+    position: fixed;
+    z-index: 1;
     box-shadow: 0px 5px 20px 0 rgba(0,0,0,0.12), 0px 5px 20px 0 rgba(0,0,0,0.24);
+    bottom: 0;
 }
 
 nav ul{
@@ -15,9 +16,6 @@ nav ul{
 
 nav li:hover{
         padding: 3vh 3.5vw 3vh;
-}
-nav #home{
-    border-radius: 100px
 }
 
 /*----------LOGAR------------*/
@@ -100,7 +98,8 @@ nav #home{
     z-index: 1;
     text-align: right;
     position: fixed;
-    left: 0
+    left: 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 }
 
 #login p {
@@ -118,21 +117,21 @@ nav #home{
 /*----------HEADER------------*/
 
 #Intro {
-    height: 91%;
+    height: 100%;
     width: auto;
-    background-color: whitesmoke;
-    z-index: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 video {
     position: absolute;
-    min-width: 100%;
-    min-height: 100%;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    background-cover: cover;
-    opacity: 0.8;
+    background-color: #000;
+    opacity: 0.7;
     /*animation: fade ease-in 2s*/
+    z-index: 0;
 }
 
 #logo {
@@ -140,27 +139,28 @@ video {
     animation: fade ease-in 0.5s;
     opacity: 0.9;
     transition: 0.5s;
-    position: relative;
     margin: auto;
-    display: flex;
-    padding-top: 20vh
+    display: block;
+    padding-top: 20vh;
+    z-index: 1;
+    position: relative;
 }
 
 #logo:hover {
-    opacity: 1
+    opacity: 1;
 }
 
-#Intro h2 {
+#Intro h1 {
     font-size: 5vh;
     font-weight: 100;
-    opacity: 0.8;
-    margin-top: 40vh;
-    display: inline-block;
+    color: #fff;
     padding: 10px;
-    text-align: justify;
+    text-align: center;
     width: 50%;
-    display: flex;
-    margin: 0 auto
+    margin: 0 auto;
+    text-shadow: 1px 1px 20px #000;
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -168,6 +168,7 @@ video {
 
 article {
     background-color: whitesmoke;
+    z-index: 1;
 }
 
 article img {

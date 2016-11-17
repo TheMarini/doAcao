@@ -1,6 +1,11 @@
     <link rel="stylesheet" href="%TEMPLATE_PATH%css/intro.css" media="all">
+    <script src="%TEMPLATE_PATH%js/script.js"></script>
 </head>
 <body id="body">
+    <div id="login" onclick="popup()">
+        <img src="%TEMPLATE_PATH%img/icons/user.png" alt="">
+        <p>entrar/cadastrar</p>
+    </div>
     <form id="form-login">
         <input type="email" id="txtEmail" class="txt" placeholder="email" onfocus="txtFocus(1, 'txtEmail')" onblur="txtFocus(0, 'txtEmail')"></input>
         <input type="password" id="txtSenha" class="txt" placeholder="senha" onfocus="txtFocus(1, 'txtSenha')" onblur="txtFocus(0, 'txtSenha')"></input>
@@ -8,19 +13,7 @@
         <a data-scroll href="#btnCadastrar">
             <p id="nao-cadastrado">não sou cadastrado</p>
         </a>
-        </div>
     </form>
-
-    <div id="login" onclick="popup()">
-        <img src="%TEMPLATE_PATH%img/icons/user.png" alt="">
-        <p>entrar/cadastrar</p>
-    </div>
-    <header id="Intro">
-        <video src="%TEMPLATE_PATH%img/videos/intro.mp4" autoplay loop muted></video>
-        <img id="logo" src="%TEMPLATE_PATH%img/logos/azul/marca-fechada.png" alt="intro">
-        <h2>Um novo jeito de doarsd asdas dasda sdnasjdb ashbdjah  sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb</h2>
-    </header>
-
     <nav id="Menu">
         <a href="#Menu"><img id="home" src="%TEMPLATE_PATH%img/logos/branco/logo-fechado.png" alt="intro"></a>
         <ul>
@@ -41,7 +34,11 @@
             </a>
         </ul>
     </nav>
-
+    <header id="Intro">
+        <img id="logo" src="%TEMPLATE_PATH%img/logos/azul/marca-fechada.png" alt="intro">
+        <h1>Um novo jeito de doarsd asdas dasda sdnasjdb ashbdjah  sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb sbdajhb</h2>
+        <video src="%TEMPLATE_PATH%img/videos/intro.mp4" autoplay loop muted></video>
+    </header>
     <article id="Corpo">
         <section id="doador">
             <img src="%TEMPLATE_PATH%img/bg/tutorial_doador.png" alt="">
@@ -69,11 +66,8 @@
     </footer>
 </body>
 
-<script src="%TEMPLATE_PATH%js/smooth.js"></script>
-<script src="%TEMPLATE_PATH%js/jquery.js"></script>
-<script src="%TEMPLATE_PATH%js/script.js"></script>
-
+<!--
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script> -->
 
 </html>
