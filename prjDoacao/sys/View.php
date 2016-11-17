@@ -16,11 +16,11 @@ class View
         $this->setTemplate(substr(get_class($this), strrpos(get_class($this), '\\') +  1));
     }
 
-    public function setTemplate(string $archive){
+    public function setTemplate($archive){
         $this->templateArchive = file_get_contents(ROOT . TEMPLATE_PATH . $archive . '.html');
     }
 
-    public function concatenateTemplate(string $archive){
+    public function concatenateTemplate($archive){
         $this->templateArchive .= file_get_contents(ROOT . TEMPLATE_PATH . $archive . '.html');
     }
 
