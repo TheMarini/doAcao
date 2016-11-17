@@ -48,13 +48,13 @@ nav li:hover{
 
 #form-login {
     position: absolute;
-    margin: 0 auto;
     top: 0;
     left: 30%;
     width: 40%;
     border-radius: 10px;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
     z-index: 2;
+    display: none;
 }
 
 #txtEmail {
@@ -93,7 +93,7 @@ nav li:hover{
     margin: 10px 5px;
     font-size: 3vh;
     cursor: pointer;
-    animation: cai ease 3s;
+    animation: cai ease 1s;
     display: flex;
     z-index: 1;
     text-align: right;
@@ -153,7 +153,6 @@ video {
 #Intro h1 {
     font-size: 5vh;
     font-weight: 100;
-    color: #fff;
     padding: 10px;
     text-align: center;
     width: 50%;
