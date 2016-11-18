@@ -12,7 +12,7 @@ class View
     public function __construct ($data = [])
     {
         $this->data = $data;
-        $this->data["%TEMPLATE_PATH%"] = TEMPLATE_PATH;
+        $this->data["%TEMPLATE_PATH%"] = BASE_URL . TEMPLATE_PATH_INV;
         $this->setTemplate(substr(get_class($this), strrpos(get_class($this), '\\') +  1));
     }
 

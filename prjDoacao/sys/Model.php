@@ -1,22 +1,16 @@
 <?php
 namespace prjDoacao\sys;
 
+use \mysqli as mysqli; 
+
 /**
  * Model base 
  */
 class Model
 {
-    private $db;
+    protected $db;
 
-    public function __set($atrib, $value){
-        $this->$atrib = $value;
-    }
-        
-    public function __get($atrib){
-        return $this->$atrib;            
-    }
-
-    public function __construct() {
+    function __construct() {
         $this->db = new mysqli('localhost','root', 'root', 'doacao');
     }
     

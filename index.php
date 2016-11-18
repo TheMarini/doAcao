@@ -9,7 +9,10 @@ namespace prjDoacao;
 
 define('APP_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'prjDoacao' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
 define('TEMPLATE_PATH', 'prjDoacao' . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR);
+define('TEMPLATE_PATH_INV', 'prjDoacao/Template/');
 define('ROOT',  __DIR__ . DIRECTORY_SEPARATOR);
+define('BASE_URL','http://localhost/' );
+
 
 //autoloader
 require_once 'autoloader.php';
