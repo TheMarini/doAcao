@@ -55,5 +55,13 @@ class Request
             return $post;
         }
     }
+
+    /**
+    *Return if is an ajax request
+    */
+    public function isAjax()
+    {
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])? (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'xmlhttprequest') == 0) : false; 
+    }
    
 }

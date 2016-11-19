@@ -11,7 +11,10 @@ class index extends View
 {
    public function render()
    {
-       (new partials\head)->render();
+       $head = new partials\head();
+       $head->setIncludeCss('css/intro.css');
+       $head->setIncludeScript('js/script.js');
+       $head->render();
        parent::render();
    }
    
