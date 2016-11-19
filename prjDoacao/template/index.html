@@ -1,14 +1,11 @@
-    <link rel="stylesheet" href="%TEMPLATE_PATH%css/intro.css" media="all">
-    <script src="%TEMPLATE_PATH%js/script.js"></script>
-</head>
 <body id="body">
     <div id="login">
         <img src="%TEMPLATE_PATH%img/icons/user.png" alt="">
         <p>entrar/cadastrar</p>
     </div>
     <form id="form-login" action="usuario/login" method="POST">
-        <input type="email" id="txtEmail" class="txt" placeholder="email" onfocus="txtFocus(1, 'txtEmail')" onblur="txtFocus(0, 'txtEmail')"></input>
-        <input type="password" id="txtSenha" class="txt" placeholder="senha" onfocus="txtFocus(1, 'txtSenha')" onblur="txtFocus(0, 'txtSenha')"></input>
+        <input type="email" id="txtEmail" name="txtEmail" class="txt" placeholder="email" onfocus="txtFocus(1, 'txtEmail')" onblur="txtFocus(0, 'txtEmail')"></input>
+        <input type="password" id="txtSenha" name="txtSenha" class="txt" placeholder="senha" onfocus="txtFocus(1, 'txtSenha')" onblur="txtFocus(0, 'txtSenha')"></input>
         <input type="submit" id="btnEntrar" class="btn" value="entrar">
         <a data-scroll href="#btnCadastrar">
             <p id="nao-cadastrado">não sou cadastrado</p>

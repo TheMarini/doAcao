@@ -11,7 +11,7 @@ class indexLogged extends View
 {
    public function render()
    {
-       (new partials\headerLogged)->render();
+       $head = new partials\head();
        parent::render();
        (new partials\footer)->render();
    }

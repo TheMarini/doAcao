@@ -2,7 +2,7 @@
 namespace prjDoacao\sys\Session;
 
 /**
- * 
+ * Session and Cookie treatment
  */
 class Session
 {
