@@ -51,4 +51,17 @@ class Usuario extends Model
         Session::Close();
     }
 
+	public function Register($senha)
+	{
+		$emailCorresponds = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = '$this->email'");
+
+		if($emailCorresponds->num_rows > 0){
+			return 'invalid-email';
+		}
+
+		$result	= $this->db->query("INSERT INTO usuario VALUES(NULL,'$this->email', '$this->nome', md5('$_senha'), $this->tipo, '$this->cpf', '$this->cnpj', $this->cep, '$this->numero_endereco', $this->telefone, '$this->facebook', '$this->twitter', '$this->instagram', '$_permalink', '$_biografia', $_participaranking)");
+
+		return (bool)$result;
+	}
+
 }

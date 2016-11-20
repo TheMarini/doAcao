@@ -66,4 +66,18 @@ class usuarioController extends Controller
         }
     }
 
+    public function registrarAction(){
+        if(Session::isLogged()){
+            header('Location: ' . BASE_URL);
+            return;
+        }
+        
+        if(!is_null($this->request->post())){
+            
+        }else{
+            $registerview = new view\registrar();
+            $registerview->render();
+        }
+    }
+
 }
