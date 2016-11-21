@@ -56,10 +56,12 @@ class Usuario extends Model
 		$emailCorresponds = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = '$this->email'");
 
 		if($emailCorresponds->num_rows > 0){
-			return 'invalid-email';
+			return 'Email já cadastrado!';
 		}
 
-		$result	= $this->db->query("INSERT INTO usuario VALUES(NULL,'$this->email', '$this->nome', md5('$_senha'), $this->tipo, '$this->cpf', '$this->cnpj', $this->cep, '$this->numero_endereco', $this->telefone, '$this->facebook', '$this->twitter', '$this->instagram', '$_permalink', '$_biografia', $_participaranking)");
+		$cnpj = is_null($this->cnpj)?"NULL": "'" . $this->cnpj . "'"; 
+
+		$result	= $this->db->query("INSERT INTO usuario(nm_usuario, cd_email_usuario, cd_senha_usuario, cd_tipo_usuario, cd_cnpj_usuario) VALUES('$this->nome', '$this->email', md5('$senha'), $this->tipo, $cnpj);");
 
 		return (bool)$result;
 	}

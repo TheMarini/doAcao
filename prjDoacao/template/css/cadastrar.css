@@ -36,6 +36,14 @@ header input {
     padding: 5px;
 }
 
+#cadastrar h1.error{
+    background: red;
+}
+
+#cadastrar h1.alert{
+    background: darkorange;
+}
+
 #tipo-user {
     color: white;
     font-weight: 100;

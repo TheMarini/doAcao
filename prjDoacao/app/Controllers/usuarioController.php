@@ -71,11 +71,78 @@ class usuarioController extends Controller
             header('Location: ' . BASE_URL);
             return;
         }
+
+        $data["%h1Class%"] = "";
+        $data["%mensagem%"] = "Agora precisamos de alguns dados...";
+        $data["%txtNome%"] = "";
+        $data["%txtEmail%"] = "";
+        $data["%txtCNPJ%"] = "";
+        $data["%txtSenha%"] = "";
+        $data["%txtRepitaSenha%"] = "";
+        $data["%tipo%"] = "0";
         
         if(!is_null($this->request->post())){
-            
+            $nome = $this->request->post('txtNome');
+            $email = $this->request->post('txtEmail');
+            $cnpj = $this->request->post('txtCNPJ');
+            $senha = $this->request->post('txtSenha');
+            $senhaVerif = $this->request->post('txtRepitaSenha');
+            $tipo = $this->request->post('tipo');
+
+            $data["%txtNome%"] = $nome;
+            $data["%txtEmail%"] = $email;
+            $data["%txtCNPJ%"] = $cnpj;
+            $data["%txtSenha%"] = $senha;
+            $data["%txtRepitaSenha%"] = $senhaVerif;
+            $data["%tipo%"] = $tipo;
+
+            if(empty($nome) || empty($email) || empty($senha) || empty($senhaVerif) || empty($tipo)){
+                $data["%h1Class%"] = "error"; 
+                $data["%mensagem%"] = "Preencha os campos corretamente!";
+
+                $registerview = new view\registrar($data);
+                $registerview->render();
+                return;
+            }
+
+            if($tipo == 2 && empty($cnpj)){
+                $data["%h1Class%"] = "alert"; 
+                $data["%mensagem%"] = "É necessário preencher um cnpj válido!";
+
+                $registerview = new view\registrar($data);
+                $registerview->render();
+                return;
+            }
+
+            if($senha != $senhaVerif){
+                $data["%h1Class%"] = "alert"; 
+                $data["%mensagem%"] = "As senhas não são identicas!";
+
+                $registerview = new view\registrar($data);
+                $registerview->render();
+                return;
+            }
+
+            //realiza inserção no sistema
+            $novousuario = new Usuario();
+            $novousuario->nome = $nome; 
+            $novousuario->email = $email;
+            $novousuario->tipo = $tipo;
+            $novousuario->cnpj = $tipo == 2?$cnpj:null;
+
+            $result = $novousuario->Register($senha);
+
+            if($result === true){
+                header('Location: '.BASE_URL.'perfil');
+            }else{
+                $data["%h1Class%"] = "alert"; 
+                $data["%mensagem%"] = "$result";
+                
+                $registerview = new view\registrar($data);
+                $registerview->render();
+            }
         }else{
-            $registerview = new view\registrar();
+            $registerview = new view\registrar($data);
             $registerview->render();
         }
     }
