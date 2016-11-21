@@ -1,22 +1,24 @@
+
 <article id="cadastrar">
-        <h1>Agora precisamos de alguns dados...</h1>
-        <section id="tipo-user">
-            <section id="doador">
-                <img src="img/icons/user.png" alt="">
-                <p>sou um doador</p>
-            </section>
-            <section id="instituicao">
-                <img src="img/icons/house.png" alt="">
-                <p>sou uma instutuição</p>
-            </section>
-        </section>
-        <section id="formulario">
-            <form action="perfil.html">
-                <input type="email" class="txt" id="txtEmail" placeholder="email" onfocus="txtFocus(1, 'txtEmail')" onblur="txtFocus(0, 'txtEmail')">
-                <input type="password" class="txt" id="txtSenha" placeholder="senha" onfocus="txtFocus(1, 'txtSenha')" onblur="txtFocus(0, 'txtSenha')">
-                <input type="password" class="txt" id="txtRepitaSenha" placeholder="repita sua senha" onfocus="txtFocus(1, 'txtRepitaSenha')" onblur="txtFocus(0, 'txtRepitaSenha')">
-                <button id="btnCadastrar">Cadastrar</button>
+         <h1>Agora precisamos de alguns dados...</h1>
+         <section id="tipo-user">
+             <div id="doador">
+                 <p>sou um doador</p>
+             </div>
+             <div id="instituicao">
+                 <p>sou uma instituição</p>
+             </div>
+         </section>
+         <section id="formulario">
+            <form method="POST">
+                 <input type="email" class="txt" name="txtEmail" placeholder="email" >
+                 <input type="text" class="txt" id="txtCNPJ" name="txtCNPJ" placeholder="CNPJ" hidden>
+                 <input type="password" class="txt" name="txtSenha" placeholder="senha" >
+                 <input type="password" class="txt" name="txtRepitaSenha" placeholder="repita sua senha" >
+                 <input type="hidden" id="tipo" name="tipo" value="0" >
+                 <button type="submit" id="btnCadastrar" disabled>Cadastrar</button>
             </form>
         </section>
-        <p>*Li e aceito os Termos de Uso</p>
 </article>
+<p id="termos">*Li e aceito os Termos de Uso</p>
+

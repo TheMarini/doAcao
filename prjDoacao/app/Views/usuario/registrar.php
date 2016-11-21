@@ -13,6 +13,8 @@ class registrar extends View
     {
         $head = new partials\head();
         $head->setTitle("Registrar");
+        $head->setIncludeCss("css/cadastrar.css");
+        $head->setIncludeScript("js/cadastro.js");
         $head->render();
         parent::render();
         (new partials\footer())->render();
