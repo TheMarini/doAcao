@@ -2,6 +2,7 @@
 namespace prjDoacao\app\Controllers;
 
 use prjDoacao\sys\Controller;
+use prjDoacao\sys\Router;
 use prjDoacao\app\Views\usuario as view;
 use prjDoacao\app\Models\usuario as Usuario;
 use prjDoacao\sys\session\Session as Session;
@@ -57,13 +58,28 @@ class usuarioController extends Controller
         header('Location: '. BASE_URL);
     }
 
-    public function perfilAction(){
+    public function perfilAction($params){
         if(Session::isLogged()){
+            if(!empty($params)){
+                if($usuariomodel = (new Usuario())->getById($params[0])){
+                    if($usuariomodel->tipo != 1){
+                        $perfilview = new view\perfil([], $usuariomodel);
+                        $perfilview->render();
+                        return;
+                    }
+                }
+                (new Router())->routeToController('erro404Controller');
+                return;
+            }
 
-        }else{
-            $notLoggedview = new view\notLogged();
-            $notLoggedview->render();
+            $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
+            $perfilview = new view\perfil([], $usuariomodel);
+            $perfilview->render();
+            return;
         }
+
+        $notLoggedview = new view\notLogged();
+        $notLoggedview->render();
     }
 
     public function registrarAction(){
@@ -133,7 +149,8 @@ class usuarioController extends Controller
             $result = $novousuario->Register($senha);
 
             if($result === true){
-                header('Location: '.BASE_URL.'perfil');
+                $novousuario->login($email, $senha);
+                header('Location: '.BASE_URL.'usuario/perfil');
             }else{
                 $data["%h1Class%"] = "alert"; 
                 $data["%mensagem%"] = "$result";
@@ -145,6 +162,11 @@ class usuarioController extends Controller
             $registerview = new view\registrar($data);
             $registerview->render();
         }
+    }
+
+    public function FunctionName($value='')
+    {
+        # code...
     }
 
 }

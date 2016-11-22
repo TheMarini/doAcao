@@ -9,7 +9,7 @@ class View
     public $data;
     protected $templateArchive;
 
-    public function __construct ($data = [])
+    public function __construct ($data = [], $model = null)
     {
         $this->data = $data;
         $this->data["%TEMPLATE_PATH%"] = BASE_URL . TEMPLATE_PATH_INV;
