@@ -79,7 +79,12 @@ nav {
     transition: 0.5s;
     width: 100%;
     position: fixed;
-    /*animation: menu ease 5s*/
+}
+
+#menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #home {
@@ -88,6 +93,8 @@ nav {
     float: left;
     transition: 0.5s;
     opacity: 0.9;
+    position: relative;
+    z-index: 2;
 }
 
 #home:hover {
@@ -112,7 +119,7 @@ nav ul {
 
 nav li {
     color: whitesmoke;
-    padding: 3vh 2vw;
+    padding: 2vh 2vw;
     opacity: 0.8;
     transition: 0.5s;
     flex-grow: 0;
@@ -121,11 +128,22 @@ nav li {
     /* encurta a div */
     flex-basis: auto;
     /* define uma largura de cada elemento caso não tenha */
+    position: relative;
 }
 
 nav li:hover {
     opacity: 1;
-    padding: 3vh 3.5vw 3vh;
+    padding: 2vh 3.5vw 2vh;
+}
+
+nav img{
+    height: 5vh;
+    opacity: 0.9;
+    transition: all 0.5s ease;
+}
+nav img:hover{
+    opacity: 1;
+    
 }
 
 #search {

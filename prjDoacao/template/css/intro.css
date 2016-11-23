@@ -163,6 +163,10 @@ video {
     z-index: 1;
 }
 
+nav li{
+    padding: 3vh 3vw;
+}
+
 
 /*----------ARTICLE------------*/
 

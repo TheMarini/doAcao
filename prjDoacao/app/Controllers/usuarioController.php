@@ -58,29 +58,6 @@ class usuarioController extends Controller
         header('Location: '. BASE_URL);
     }
 
-    public function perfilAction($params){
-        if(!empty($params)){
-            if($usuariomodel = (new Usuario())->getById($params[0])){
-                if($usuariomodel->tipo != 1){
-                    $perfilview = new view\perfil([], $usuariomodel);
-                    $perfilview->render();
-                    return;
-                }
-            }
-            (new Router())->routeToController('erro404Controller');
-            return;
-        }
-
-        if(Session::isLogged()){
-            $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
-            $perfilview = new view\perfil([], $usuariomodel);
-            $perfilview->render();
-        }else{
-            $notLoggedview = new view\notLogged();
-            $notLoggedview->render();
-        }
-    }
-
     public function registrarAction(){
         if(Session::isLogged()){
             header('Location: ' . BASE_URL);
@@ -162,10 +139,28 @@ class usuarioController extends Controller
             $registerview->render();
         }
     }
+    
+    public function perfilAction($params){
+        if(!empty($params)){
+            if($usuariomodel = (new Usuario())->getById($params[0])){
+                if($usuariomodel->tipo != 1){
+                    $perfilview = new view\perfil([], $usuariomodel);
+                    $perfilview->render();
+                    return;
+                }
+            }
+            (new Router())->routeToController('erro404Controller');
+            return;
+        }
 
-    public function FunctionName($value='')
-    {
-        # code...
+        if(Session::isLogged()){
+            $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
+            $perfilview = new view\perfil([], $usuariomodel);
+            $perfilview->render();
+        }else{
+            $notLoggedview = new view\notLogged();
+            $notLoggedview->render();
+        }
     }
 
 }
