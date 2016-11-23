@@ -89,7 +89,7 @@ class Usuario extends Model
 	public function getById($id){
 		$result = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = $id OR cd_usuario = $id");
 
-		if($result->num_rows == 0){
+		if(!$result){
 			return false;
 		}
 

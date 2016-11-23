@@ -59,27 +59,26 @@ class usuarioController extends Controller
     }
 
     public function perfilAction($params){
-        if(Session::isLogged()){
-            if(!empty($params)){
-                if($usuariomodel = (new Usuario())->getById($params[0])){
-                    if($usuariomodel->tipo != 1){
-                        $perfilview = new view\perfil([], $usuariomodel);
-                        $perfilview->render();
-                        return;
-                    }
+        if(!empty($params)){
+            if($usuariomodel = (new Usuario())->getById($params[0])){
+                if($usuariomodel->tipo != 1){
+                    $perfilview = new view\perfil([], $usuariomodel);
+                    $perfilview->render();
+                    return;
                 }
-                (new Router())->routeToController('erro404Controller');
-                return;
             }
-
-            $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
-            $perfilview = new view\perfil([], $usuariomodel);
-            $perfilview->render();
+            (new Router())->routeToController('erro404Controller');
             return;
         }
 
-        $notLoggedview = new view\notLogged();
-        $notLoggedview->render();
+        if(Session::isLogged()){
+            $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
+            $perfilview = new view\perfil([], $usuariomodel);
+            $perfilview->render();
+        }else{
+            $notLoggedview = new view\notLogged();
+            $notLoggedview->render();
+        }
     }
 
     public function registrarAction(){
