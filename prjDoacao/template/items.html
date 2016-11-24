@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <title>DoAção</title>
+    <link rel="stylesheet" href="css/main-style.css" media="all">
+    <link rel="stylesheet" href="css/items.css" media="all">
+</head>
+
+<body>
+    <a href="#"><img id="home" src="img/logos/branco/logo-fechado.png" alt="intro"></a>
+    <nav id="menu">
+        <!--  <a href="#"><img id="home" src="img/logos/branco/logo-fechado.png" alt="intro"></a> -->
+        <ul>
+            <a href="#">
+                <li>Navegar</li>
+            </a>
+            <a href="#">
+                <li>Instituições</li>
+            </a>
+            <a href="ranking.html">
+                <li>Ranking</li>
+            </a>
+            <li id="search">
+                <input type="search" placeholder="pesquisar">
+            </li>
+            <a href="doacoes.html">
+                <li>Doações</li>
+            </a>
+            <a href="items.html">
+                <li>Meus Items</li>
+            </a>
+            <a href="perfil.html">
+                <li>Ver Perfil</li>
+            </a>
+        </ul>
+        <!-- <div id="logado">
+            <p>Bruno Marini</p>
+            <img src="img/icons/user.png" alt="">
+        </div> -->
+    </nav>
+
+    <div id="blackcover" style=""></div>
+    <div id="mensagem">
+        <h1>Deseja realmente excluir esse item?</h1>
+        <div id="opc">
+            <button id="nao" class="btn">Não</button>
+            <button id="sim" class="btn">Sim</button>
+        </div>
+    </div>
+
+    <div id="adicionar">
+        <header>
+            <button id="btnVoltar">voltar</button>
+            <div id="color">
+                <h1>adicionar um item</h1>
+                <button id="btnConcluir">Concluir</button>
+            </div>
+        </header>
+        <form action="">
+            <p>Nome do item</p>
+            <input id="add-nome" type="text" class="txt" placeholder="ex.: Casaco do Carlos">
+            </br>
+            <p>Tipo</p>
+            <input type="text" list="tipos" placeholder="ex.: roupa">
+            <datalist id="tipos">
+                <option value="caixa de leite (unid.)">
+                    <option value="leite em pó">
+                        <option value="roupa">
+                            <option value="Java">
+                                <option value="Ruby">
+                                    <option value="PHP">
+                                        <option value="Go">
+                                            <option value="Erlang">
+                                                <option value="Python">
+                                                    <option value="C">
+                                                        <option value="C#">
+                                                            <option value="C++">
+            </datalist>
+            </br>
+            <div id="qtd">
+                <p>Quantidade</p>
+                <input type="number" min="1" value="1">
+            </div>
+            <p>Descrição</p>
+            <textarea name="" id="" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+        </form>
+    </div>
+
+    <article id="content">
+        <article id="left">
+            <h1>MEUS ITEMS</h1>
+            <button id="btnAdicionar" class="btn">adicionar item</button>
+            <ul>
+                <li>
+                    <h2 class="nome">Cestas Básicas</h2>
+                    <p>interessados: <span class="interessados"><a href="">15</a></span></p>
+                </li>
+                <svg>
+                    <line x1="1" y1="1" x2="100%" y2="1" />
+                </svg>
+                <li>
+                    <h2 class="nome">TVs</h2>
+                    <p>interessados: <span class="interessados"><a href="">8</a></span></p>
+                </li>
+                <svg>
+                    <line x1="1" y1="1" x2="100%" y2="1" />
+                </svg>
+                <li>
+                    <h2 class="nome">Notebook</h2>
+                    <p>interessados: <span class="interessados"><a href="">5</a></span></p>
+                </li>
+                <svg>
+                    <line x1="1" y1="1" x2="100%" y2="1" />
+                </svg>
+                <li>
+                    <h2 class="nome">Casacos</h2>
+                    <p>interessados: <span class="interessados"><a href="">3</a></span></a>
+                    </p>
+                </li>
+            </ul>
+        </article>
+        <article id="right">
+            <header>
+                <form id="cover">
+                    <input id="file" type="file" accept="image/*" style="display: none" />
+                </form>
+
+                <img id="camera" src="img/icons/camera.png" alt="camera">
+                <input id="txtNome" type="text" value="Cestas Básicas" disabled>
+            </header>
+            <section id="dados">
+                <p id="tipo">Tipo:
+                    <a href="">
+                        <input id="txtTipo" type="text" value="Cestas Básicas" disabled>
+                    </a>
+                </p>
+                <div id="quantidade">
+                    <p>Quantidade:</p>
+                    <input id="txtQuantidade" type="number" value="12">
+                </div>
+                <br>
+                <br>
+                <br>
+                <p id="descricao">Descrição
+                    <textarea name="" id="txtDescricao">Cestas básicas TUPY contendo produtos não perecíveis. Lote 22/05</textarea>
+                </p>
+            </section>
+            <section id="instituicoes">
+                <h2>INSTITUIÇÕS INTERESSADAS</h2>
+                <ul>
+                    <li></li>
+                </ul>
+            </section>
+            <div id="opcoes">
+                <button id="btnEditar" class="btn">Editar</button>
+                <button id="btnRemover" class="btn">Remover</button>
+            </div>
+        </article>
+    </article>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/script.js"></script>
+<script src='js/autosize.js'></script>
+<script>
+    autosize(document.querySelectorAll('textarea'));
+</script>
+
+</html>
