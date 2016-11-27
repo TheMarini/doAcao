@@ -83,7 +83,7 @@ class Usuario extends Model
 
 	/**
 	* Get user by ID
-	* @param $senha
+	* @param $id
 	* @return object
 	*/
 	public function getById($id){
@@ -112,6 +112,22 @@ class Usuario extends Model
 		$usuario->participaranking = $row[14];
 
 		return $usuario;
+	}
+
+	/**
+	* Get user photo
+	* @param $id
+	* @return string path
+	*/
+	public function getPhoto(){
+		$photoPath = MEDIA_PATH . "user-photos\\" . $this->codigo . ".jpg";
+
+		if(!file_exists($photoPath)){
+			$photoPath = MEDIA_PATH . "user-photos\\default.jpg";
+			return $photoPath;
+		}
+
+		return $photoPath;
 	}
 
 }

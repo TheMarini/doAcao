@@ -19,6 +19,7 @@ class perfil extends View
         $nav->render();
         if($this->model->tipo == 1){
             $this->data['%nome_usuario%'] = $this->model->nome;
+            $this->data['%usuario_photo%'] = BASE_URL . $this->model->getPhoto();
             $this->setTemplate('perfilDoador');            
         }else{
             

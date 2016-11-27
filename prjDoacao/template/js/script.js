@@ -4,7 +4,6 @@ function popupLogin(){
      $('#form-login').css('max-height', '0');
      $('#blackcover').detach();
 }
-
 /* -- when main doc is ready --*/
 $('document').ready(function (){
 

@@ -20,15 +20,32 @@
             <a href="items.html">
                 <li>Meus Items</li>
             </a>
-            <a href="javascript:alert('msg');">
-               <li><img src="%TEMPLATE_PATH%img/icons/chat.png" alt="intro"></li>
-            </a>
-            <a href="javascript:alert('notify');">
-                <li><img src="%TEMPLATE_PATH%img/icons/notify.png" alt="intro"></li>
-            </a> 
         </ul>
-        <div id="logado">
-            <p>Bruno Marini</p>
-            <img src="img/icons/user.png" alt="">
+        <div class="contentContainer">
+            <img id="btnMsg"src="%TEMPLATE_PATH%img/icons/chat.png" alt="intro">
+            <div id="msg" class="setaParaCima content"></div>
         </div>
-</nav>
+        <div class="contentContainer">
+            <img id="btnNotify" src="%TEMPLATE_PATH%img/icons/notify.png" alt="intro">
+            <div id="notify" class="setaParaCima content"></div>
+        </div>
+        <div id="user" class="contentContainer">
+            <a id="btnUser">
+            <img src="%usuario_photo%" alt="intro">
+            <span>%usuario_logado%</span>
+            </a>
+            <div id="user-options" class="setaParaCima content">
+                <ul>
+                    <a href="%perfil%">
+                        <li>Ver Pefil</li>
+                    </a>
+                    <a href="%perfil%">
+                        <li>Dados Pessoais</li>
+                    </a>
+                    <a href="%logout%">
+                        <li>Sair</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
