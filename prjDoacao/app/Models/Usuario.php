@@ -26,6 +26,12 @@ class Usuario extends Model
 
     /* FUNÇÕES NECESSÁRIAS */
         
+	/**
+	* Login into system
+	* @param $_email - User Email
+	* @param $_senha - User Password
+	* @return boolean
+	*/
 	public function Login($_email, $_senha)
     {
         $result = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = '$_email' AND cd_senha_usuario = md5('$_senha');");
@@ -47,8 +53,81 @@ class Usuario extends Model
         return false;
 	}
 
+	/**
+	* Logout system
+	* @return void
+	*/
     public function Logout(){
         Session::Close();
     }
+
+	/**
+	* Register a new user into system
+	* @param $senha
+	* @return boolean
+	*/
+	public function Register($senha)
+	{
+		$emailCorresponds = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = '$this->email'");
+
+		if($emailCorresponds->num_rows > 0){
+			return 'Email já cadastrado!';
+		}
+
+		$cnpj = is_null($this->cnpj)?"NULL": "'" . $this->cnpj . "'"; 
+
+		$result	= $this->db->query("INSERT INTO usuario(nm_usuario, cd_email_usuario, cd_senha_usuario, cd_tipo_usuario, cd_cnpj_usuario) VALUES('$this->nome', '$this->email', md5('$senha'), $this->tipo, $cnpj);");
+
+		return (bool)$result;
+	}
+
+	/**
+	* Get user by ID
+	* @param $id
+	* @return object
+	*/
+	public function getById($id){
+		$result = $this->db->query("SELECT * FROM usuario WHERE cd_email_usuario = $id OR cd_usuario = $id");
+
+		if(!$result){
+			return false;
+		}
+
+		$row = $result->fetch_array();
+
+		$usuario = new Usuario();
+		$usuario->codigo = $row[0];
+		$usuario->nome = $row[1];
+		$usuario->email = $row[2];
+		$usuario->tipo = $row[4];
+		$usuario->cpf = $row[5];
+		$usuario->cnpj = $row[6];
+		$usuario->cep = $row[7];
+		$usuario->numero_endereco = $row[8];
+		$usuario->telefone = $row[9];
+		$usuario->facebook = $row[10];
+		$usuario->twitter = $row[11];
+		$usuario->instagram = $row[12];
+		$usuario->biografia = $row[13];
+		$usuario->participaranking = $row[14];
+
+		return $usuario;
+	}
+
+	/**
+	* Get user photo
+	* @param $id
+	* @return string path
+	*/
+	public function getPhoto(){
+		$photoPath = MEDIA_PATH . "user-photos\\" . $this->codigo . ".jpg";
+
+		if(!file_exists($photoPath)){
+			$photoPath = MEDIA_PATH . "user-photos\\default.jpg";
+			return $photoPath;
+		}
+
+		return $photoPath;
+	}
 
 }

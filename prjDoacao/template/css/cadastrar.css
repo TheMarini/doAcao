@@ -1,13 +1,9 @@
 body {
-    /*
-    background-image: url('../img/bg/cubos-opacity.png');
-    background-repeat: round;
-    background-position: center;*/
-    background-size: contain;
     background-color: cadetblue;
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-flow: column;
+    justify-content: center;    
 }
 
 /*
@@ -26,23 +22,26 @@ header input {
     font-weight: 200;
 }*/
 
-header{
-    top: 0;
-    position: absolute;
-    margin: 3.5vh;
-    z-index: 2
-}
-
-header img{
+#cadastrar {
     margin: 0 auto;
-    height: 15%
-}
-
-article {
     width: 50%;
     background-color: lightgray;
-    border-radius: 2px;
+    border-radius: 5px;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+}
+
+#cadastrar h1{
+    font-weight: 400;
+    padding: 5px;
+}
+
+#cadastrar h1.error{
+    background: red;
+}
+
+#cadastrar h1.alert{
+    background: darkorange;
 }
 
 #tipo-user {
@@ -50,36 +49,40 @@ article {
     font-weight: 100;
     font-size: 5vh;
     display: flex;
-    text-align: center
-}
-
-#tipo-user img {
-    height: 19%
+    text-align: center;
 }
 
 #doador, #instituicao{
     width: 50%;
-    opacity: 0.9;
-    margin: 0 auto;
-    transition: 2s ease-out;
+    transition: 0.5s ease-out;
     cursor: pointer;
+    height: 20vh;
+    background-repeat: no-repeat;
+    background-position: center 80%;
+    position: relative;
+    z-index: 1;
+    background-size: 25%;
+    opacity: 0.6;
 }
 
 #doador {
     background-color: lightblue;
-        opacity: 0.6;
+    background-image: url('../img/icons/user.png');
 }
+
+
 #instituicao {
     background-color: lightcoral;
-    opacity: 0.6;
+    background-image: url('../img/icons/house.png');
 }
 
-#doador:hover {
+#doador:hover, #doador.selected {
     opacity: 1;
     box-shadow: 20px 1px 20px 0 rgba(0, 0, 0, 0.12), 5px 1px 20px 0 rgba(0, 0, 0, 0.24);
+    
 }
 
-#instituicao:hover {
+#instituicao:hover, #instituicao.selected {
     opacity: 1;
     box-shadow: -5px 1px 20px 0 rgba(0, 0, 0, 0.12), -5px 1px 20px 0 rgba(0, 0, 0, 0.24);
 }
@@ -92,13 +95,15 @@ article {
     color: gray;
     text-align: center;
     background-color: whitesmoke;
-    margin: 1px 0px
+    margin: 1px 0px;
+    -webkit-transition: all 1s ease duration timing-function delay;
+    -moz-transition: all 1s ease duration timing-function delay;
+    transition: all 1s ease duration timing-function delay;
 }
 
 #txtEmail{margin-top: 0}
 
 #btnCadastrar {
-    padding: 20px 15px;
     width: 100%;
     font-size: 5vh;
     color: white;
@@ -106,6 +111,8 @@ article {
     cursor: pointer;
     transition: 0.7s;
     background-color: #00b7ad;
+    padding: 10px 0;
+    box-sizing: content-box;
 }
 
 #btnCadastrar:hover{
@@ -113,13 +120,16 @@ article {
 }
 
 #btnCadastrar:active {
-    transition: 0.5s;
+    transition: 0.1s;
     background-color: #3fb094;
 }
 
-article p{
-    float: left;
-    position: absolute
+#btnCadastrar:disabled{
+    opacity: 0.2;
+}
+
+#termos{
+    margin: 0 auto;
 }
 
 @keyframes botar {

@@ -4,7 +4,6 @@ function popupLogin(){
      $('#blackcover').detach();
      $('#form-login').hide();
 }
-
 /* -- when main doc is ready --*/
 $('document').ready(function (){
 

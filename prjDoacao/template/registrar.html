@@ -1,0 +1,25 @@
+
+<article id="cadastrar">
+         <h1 class="%h1Class%">%mensagem%</h1>
+         <section id="tipo-user">
+             <div id="doador">
+                 <p>sou um doador</p>
+             </div>
+             <div id="instituicao">
+                 <p>sou uma instituição</p>
+             </div>
+         </section>
+         <section id="formulario">
+            <form method="POST">
+                 <input type="text" class="txt" name="txtNome" placeholder="nome" value="%txtNome%">
+                 <input type="email" class="txt" name="txtEmail" placeholder="email" value="%txtEmail%">
+                 <input type="text" class="txt" id="txtCNPJ" name="txtCNPJ" placeholder="CNPJ" value="%txtCNPJ%" hidden>
+                 <input type="password" class="txt" name="txtSenha" placeholder="senha" value="%txtSenha%" >
+                 <input type="password" class="txt" name="txtRepitaSenha" placeholder="repita sua senha" value="%txtRepitaSenha%" >
+                 <input type="hidden" id="tipo" name="tipo" value="%tipo%" >
+                 <button type="submit" id="btnCadastrar" disabled>Cadastrar</button>
+            </form>
+        </section>
+</article>
+<p id="termos">*Li e aceito os Termos de Uso</p>
+

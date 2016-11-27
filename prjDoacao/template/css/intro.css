@@ -162,6 +162,10 @@ video {
     z-index: 1;
 }
 
+nav li{
+    padding: 3vh 3vw;
+}
+
 
 /*----------ARTICLE------------*/
 
@@ -206,6 +210,7 @@ footer {
     display: flex;
     justify-content: center;
     background-color: lightgray;
+    padding: 15vh 0;
 }
 
 footer p {
