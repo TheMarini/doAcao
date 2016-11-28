@@ -61,7 +61,7 @@ class Request
     */
     public function isAjax()
     {
-        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])? (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'xmlhttprequest') == 0) : false; 
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])? (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'XMLHttpRequest') == 0) : false; 
     }
    
 }

@@ -1,38 +1,220 @@
+/*----------NORMALIZAÇÃO------------*/
+
 body {
     background-color: whitesmoke
 }
 
-#content {
-    padding-top: 14vh;
+svg {
+    width: 95%;
+    height: 2px;
     margin: 0 auto;
+    display: flex;
+    padding: 2px 0px;
+}
+
+line {
+    stroke: whitesmoke;
+    stroke-width: 1px;
+}
+
+input {
+    background-color: transparent;
+    width: auto;
+    color: gray
+}
+
+textarea {
+    vertical-align: top;
+    transition: 0.5s;
+    background-color: transparent;
+    resize: none;
+    width: 100%;
+    color: gray
+}
+
+textarea:focus,
+input:focus {
+    outline-color: lightblue;
+    outline-style: solid;
+    outline-width: 0px;
+}
+
+
+/*----------NAV------------*/
+
+#home {
+    position: absolute;
+    border-radius: 100%
+}
+
+
+/*----------MENSAGEM------------*/
+
+#mensagem {
+    z-index: 5;
+    width: 35%;
+    background-color: gray;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 5px 5px 0px 0px;
+    position: absolute;
+    bottom: 0;
+    left: 32vw;
+}
+
+#opc {
+    display: flex;
+}
+
+#mensagem h1 {
+    font-weight: 100;
+    padding-left: 5px;
+    ;
+    font-size: 5vh
+}
+
+#mensagem button {
+    width: 50%;
+    font-size: 3vh;
+    transition: 1s;
+    padding: 7px 0px
+}
+
+#mensagem button:hover {
+    width: 150%
+}
+
+#sim {
+    background-color: darkseagreen
+}
+
+#nao {
+    background-color: indianred
+}
+
+
+/*----------ADICIONAR------------*/
+
+#adicionar {/* 
+    background-color: gainsboro; */
+    z-index: 6;
+    position: absolute;
+    width: 50%;
+    left: 25vw;
+    color: black;
+    font-size: 4vh;
+    border-bottom: solid cadetblue 5px
+}
+
+#adicionar header {
+    display: flex;
+    width: 100%
+}
+
+#color{background-color: cadetblue; display: flex; 
+    justify-content: space-between;width: 100%}
+
+#adicionar h1 {
+    background-color: cadetblue;
+    font-size: 5vh;
+    text-align: center;
+    color: whitesmoke;;
+    margin: 0 auto
+}
+
+#adicionar p{
+    color: dimgray
+}
+
+#adicionar button {
+    cursor: pointer;
+    color: whitesmoke;
+    transition: 1s ease
+}
+#adicionar button:hover{
+    transform: scale(1.05,1.05);
+    
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.12), 0px 0px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+#btnVoltar{
+    background-color: cadetblue;
+    width: 6vw;
+    font-size: 2.5vh;
+}
+#btnVoltar:hover{background-color: transparent}
+
+#btnConcluir{
+    background-color: rgba(140, 180, 160, 1);;
+    margin-right: -0.1px;
+    width: 11vw;
+        font-size: 3.3vh;
+    text-decoration: underline
+}
+
+#adicionar form{background-color: gainsboro; padding: 8px; position: relative;}
+
+#adicionar form input {
+    background-color: white;
+    text-align: center;
+    font-size: 4.5vh;
+}
+
+#add-nome {
+    width: 100%
+}
+
+#adicionar form textarea {
+    background-color: white;
+    font-size: 4vh;
+    max-height: 18vh
+}
+
+#qtd {
+    text-align: right;
+    position: absolute;
+    top: 9.5vh;
+    right: 0;
+    padding: 8px
+}
+
+#qtd input {
+    width: 50%;
+}
+
+#unid{
+    font-size: 4vh;
+}
+
+
+/*----------ARTICLE------------*/
+
+#content {
     width: 95%;
     display: flex;
+    margin: 0 auto;
+    padding-top: 12vh;
 }
 
 #left,
 #right {
     background-color: white;
-    box-shadow:  0px 0px 3px 0 rgba(0, 0, 0, 0.24);
-    height: 82vh
-}    
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    margin-bottom: 1.2vh
+}
+
+
+/*----------LEFT------------*/
 
 #left {
     width: 40%;
-    padding: 0px 5px
+    max-height: 85vh;
+    position: relative;
 }
 
 #left h1 {
     font-size: 6vh;
     color: cadetblue;
-}
-
-#btnAdicionar{
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 5vh;
-    background-color: cadetblue;
-    padding: 5px
+    margin-left: 5px
 }
 
 #left h2 {
@@ -45,14 +227,41 @@ body {
     color: dimgray;
 }
 
-
-#estado {
-    text-align: right
+#left ul {
+    margin-top: 1px;
 }
+
+#left li {
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+    padding: 2px 6px
+}
+
+#left li:hover {
+    border-left: 2px solid #00bcd4;
+    background-color: rgba(0, 0, 0, 0.07)
+}
+
+#btnAdicionar {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    font-size: 3vh;
+    background-color: cadetblue;
+    padding: 5px 10px;
+    transition:all 0.5s ease;
+}
+#btnAdicionar:hover{
+    padding-top: 10px;
+}
+
+
+/*----------RIGHT------------*/
 
 #right {
     margin-left: 0.6vw;
     width: 55%;
+    min-height: 85vh;
 }
 
 #right header {
@@ -63,45 +272,113 @@ body {
     height: 20vh;
 }
 
-#right h1{
+#right header input {
     position: absolute;
     bottom: 0;
     color: dimgray;
-    font-size: 5vh
+    font-size: 5vh;
+    font-weight: 900;
 }
 
-#dados p
-{
+#right header img {
+    height: 20%;
+    float: right;
+    margin: 4px;
+    opacity: 0.6;
+    transition: 0.5s;
+    cursor: pointer
+}
+
+#right header img:hover {
+    opacity: 1
+}
+
+#dados p,
+#dados input {
     font-size: 4vh;
+}
+
+#dados p {
     color: black
 }
 
-#tipo {color: #00bcd4}
-#quantidade{position: absolute; right: 0; top: 0}
-#quantidade span, #descricao span{color: gray}
-#descricao{margin-top: 5px;text-align: justify}
-
-#instituicoes{
-    margin-top: 20px;
-    color: cadetblue;
-    text-align: center
+#tipo input {
+    color: #00bcd4
 }
 
-#opcoes{
+#quantidade input,
+#descricao textarea {
+    color: gray
+}
+
+#quantidade {
     position: absolute;
+    right: 0;
+    top: 0;
+    display: flex
+}
+
+#quantidade input {
+    width: 70px;
+    text-align: center;
+    margin-left: 7px
+}
+
+#descricao {
+    margin-top: 3px
+}
+
+#descricao textarea {
+    display: flex;
+    font-size: 4vh;
+}
+
+#descricao textarea:focus {
+    background-color: whitesmoke;
+    color: white
+}
+
+#descricao textarea:hover {
+    background-color: whitesmoke
+}
+
+#descricao textarea:first-line {
+    text-decoration: overline;
+}
+
+#instituicoes {
+    color: whitesmoke;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.3);
+    transition: 1s;
+    min-height: 33vh;
+    background-color: rgba(95, 158, 160, 0.9)
+}
+
+#instituicoes:hover {
+    margin-top: -20vh;
+    padding-bottom: 20vh;
+    background-color: rgba(95, 158, 160, 1)
+}
+
+#opcoes {
     bottom: 0;
     width: 100%;
     background-color: whitesmoke;
 }
 
-#btnEditar, #btnRemover{font-size: 5vh;padding: 5px;}
+#btnEditar,
+#btnRemover {
+    font-size: 5vh;
+    padding: 5px;
+}
 
-#btnEditar{
+#btnEditar {
     background-color: dimgrey;
     width: 71%
 }
 
-#btnRemover{
+#btnRemover {
     background-color: indianred;
     position: absolute;
     right: 0;
