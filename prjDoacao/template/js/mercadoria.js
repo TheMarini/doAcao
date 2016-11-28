@@ -31,6 +31,7 @@ function loadTipoMercadoria(){
         url: "mercadoria/novo",
         success: function(result){
             TipoMercadoria = result;
+            $("#unid").empty();
             $('#tipos').empty();
             TipoMercadoria.forEach(function(tpmec){
                 $('#tipos').append('<option value="'+tpmec.codigo+'">'+ tpmec.nome +'</option>');
@@ -69,14 +70,17 @@ $(document).ready(function(){
     //unid change evnt
     $("#tipoMercadoria").change(function(){
         cd = $(this).val();
-        alert(cd);
         unidades = [];
         TipoMercadoria.forEach(function(item){
             if(item.codigo == cd){
-                unidade = item.unidades[0];
+                unidades = item.unidades;
             }
-        });
-        alert(unidades);
+        })
+        $("#unid").empty();
+        unidades.forEach(function(un){
+            $("#unid").append('<option value="' + un +'">'+ un +'</option>');
+        })
+
     });
 
     
