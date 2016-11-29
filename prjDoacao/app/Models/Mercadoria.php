@@ -90,7 +90,29 @@ class Mercadoria extends Model
     */
     public function Salvar()
     {
-        $comand = "INSERT INTO mercadoria VALUES()";
+        $comand = "INSERT INTO mercadoria VALUES(NULL, '$this->nome', '$this->descricao', $this->quantidade, $this->usuario, $this->tipo, '$this->unidade')";
+        $result = $this->db->query($comand);
+        
+        if($result){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+    *   Delete an item
+    */
+    public function Excluir($_codigo)
+    {
+        $comand = "DELETE FROM mercadoria WHERE cd_mercadoria='$_codigo'";
+
+        $result = $this->db->query($comand);
+        if($result){
+            return true;
+        }
+
+        return false;
     }
 
 }

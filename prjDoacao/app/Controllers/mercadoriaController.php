@@ -48,6 +48,43 @@ class mercadoriaController extends Controller
             echo json_encode((new TipoMercadoria)->Consultar());
             return;
         }
+
+        $nome = $this->request->post('nome');
+        $codigoTipoMercadoria = $this->request->post('tipo');
+        $unidade = $this->request->post('unidade');
+        $quantidade = $this->request->post('quantidade');
+        $descricao = $this->request->post('descricao');
+
+        if(empty($nome)){
+            echo json_encode("Preencha o nome!");
+            return;
+        }
+        if(empty($codigoTipoMercadoria)){
+            echo json_encode("Selecione o tipo de mercadoria!");
+            return;
+        }
+        if(empty($unidade)){
+            echo json_encode("Selecione a unidade da mercadoria!");
+            return;
+        }
+        if(empty($quantidade) || $quantidade <= 0){
+            echo json_encode("Quantidade Inválida");
+            return;
+        }
+
+        $novamercadoria = new Mercadoria();
+        $novamercadoria->nome = $nome;
+        $novamercadoria->tipo = $codigoTipoMercadoria;
+        $novamercadoria->unidade = $unidade; 
+        $novamercadoria->quantidade = $quantidade;
+        $novamercadoria->descricao = $descricao;
+        $novamercadoria->usuario = Session::getSession('userid')->codigo;
+
+        if($novamercadoria->Salvar()){
+            echo json_encode(true);
+        }else{
+            echo json_encode(false);
+        }
     }
 
 }

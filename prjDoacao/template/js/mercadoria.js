@@ -4,7 +4,7 @@ TipoMercadoria = [];
 /* FUNCTIONS */
 function listarItens(){
     $.ajax({
-        url: "mercadoria/listar",
+        url: "/mercadoria/listar",
         success: function(result){
             $('#itensList').html(result);
         },
@@ -19,6 +19,13 @@ function toggleAddItem(){
     if($('#adicionar').is(':hidden') ){
         $('#blackcover').fadeIn('fast');
         $('#adicionar').slideDown('fast');
+        $('#add-nome').val("");
+        $('#tipoMercadoria').val("");
+        $('#tipoMercadoria').removeClass("selected");
+        $('#cdTipoMercadoria').val(-1);
+        $('#unid').empty();
+        $('#nbrQuantidade').val("1");
+        $('#txtDesc').val("");
     }else{
         $('#blackcover').fadeOut('fast');
         $('#adicionar').slideUp('fast');
@@ -28,7 +35,7 @@ function toggleAddItem(){
 function loadTipoMercadoria(){
     $.ajax({
         dataType: 'json',
-        url: "mercadoria/novo",
+        url: "/mercadoria/novo",
         success: function(result){
             TipoMercadoria = result;
         },
@@ -57,8 +64,28 @@ function searchTipoMercadoria(termo = ""){
     });
 }
 
-function loadUnidade(){
+function salvar(_nome, _tipo, _unidade, _quantidade, _descricao){
+    resultado = false;
+    $.ajax({
+        dataType: 'json',
+        type: 'POST',
+        async: false,
+        url: '/mercadoria/novo',
+        data: {send: 'insert', nome: _nome, quantidade: _quantidade, tipo: _tipo, unidade: _unidade, descricao: _descricao},
+        success: function(result){
+            if(result === true){
+                listarItens();
+                resultado = true;
+            }else{
+                resultado = result;
+            }
 
+        },
+        error: function () {
+            alert('Erro ao realizar requisição Ajax');
+        }
+    });
+    return resultado;
 }
 
 
@@ -124,6 +151,34 @@ $(document).ready(function(){
             $("#unid").append('<option value="' + un +'">'+ un +'</option>');
         })
 
+    });
+
+    // btnConcluir evt
+    $('#btnConcluir').click(function(evt){
+        var nome = $('#add-nome').val();
+        var tipo = $('#cdTipoMercadoria').val();
+        var unidade = $('#unid').val();
+        var quantidade = $('#nbrQuantidade').val();
+        var descricao = $('#txtDesc').html();
+
+        if(nome == null){
+            alert('Preencha o nome');
+            return;
+        }
+        if(tipo == 0 || !$('#tipoMercadoria').hasClass('selected')){
+            alert('Selecione um tipo!');
+            return;
+        }
+        if(unidade == null){
+            alert('Selecione a unidade!');
+            return;    
+        }
+        //save mercadoria
+        if((result = salvar(nome, tipo, unidade, quantidade, descricao)) === true){
+            toggleAddItem();
+        }else{
+            alert(result);
+        }
     });
 
     

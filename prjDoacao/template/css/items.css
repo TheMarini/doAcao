@@ -208,6 +208,18 @@ input:focus {
     margin-bottom: 1.2vh
 }
 
+#itensList{
+    max-height: 78vh;
+    overflow-y: scroll;
+}
+
+#itensList::-webkit-scrollbar{
+    width: 1%;
+    background: #f4f4f4;
+}
+#itensList::-webkit-scrollbar-thumb{
+    background: cadetblue;
+}
 
 /*----------LEFT------------*/
 
@@ -276,13 +288,15 @@ input:focus {
     background-position: center;
     background-size: contain;
     height: 20vh;
+    position: relative;
 }
 
 #right header input {
     position: absolute;
-    bottom: 0;
+    left: 5px;
+    bottom: 5px;
     color: dimgray;
-    font-size: 5vh;
+    font-size: 7vh;
     font-weight: 900;
 }
 
@@ -302,6 +316,7 @@ input:focus {
 #dados p,
 #dados input {
     font-size: 4vh;
+    margin: auto 5px;
 }
 
 #dados p {

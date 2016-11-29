@@ -29,7 +29,7 @@
             </label>
             <label>
                 <span>Unidade</span>
-                <select name="cmbUnidade" id="unid">
+                <select id="unid">
                 <!-- ajax request goes here 
                     <option value="Un">Un</option>
                 -->
@@ -41,7 +41,7 @@
             </label>
             <label class="flexFullLine">
                 <span>Descrição</span>
-                <textarea name="txtDescricao" id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+                <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
             </label>
         </form>
     </div>
@@ -57,29 +57,24 @@
         <article id="right">
             <header>
                 <form id="cover">
-                    <input id="file" type="file" accept="image/*" style="display: none" />
+                    <input type="file" id="file"  accept="image/*" style="display: none" />
                 </form>
-
-                <img id="camera" src="img/icons/camera.png" alt="camera">
+                <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
                 <input id="txtNome" type="text" value="Cestas Básicas" disabled>
             </header>
             <section id="dados">
                 <p id="tipo">Tipo:
-                    <a href="">
-                        <input id="txtTipo" type="text" value="Cestas Básicas" disabled>
-                    </a>
+                    <input id="txtTipo" type="text" value="Cestas Básicas" disabled>
                 </p>
                 <div id="quantidade">
                     <p>Quantidade:</p>
                     <input id="txtQuantidade" type="number" value="12">
                 </div>
-                <br>
-                <br>
-                <br>
                 <p id="descricao">Descrição
                     <textarea name="" id="txtDescricao">Cestas básicas TUPY contendo produtos não perecíveis. Lote 22/05</textarea>
                 </p>
             </section>
+            <!--
             <section id="instituicoes">
                 <h2>INSTITUIÇÕS INTERESSADAS</h2>
                 <ul>
@@ -89,7 +84,7 @@
             <div id="opcoes">
                 <button id="btnEditar" class="btn">Editar</button>
                 <button id="btnRemover" class="btn">Remover</button>
-            </div>
+            </div> -->
         </article>
     </article>
 </body>
