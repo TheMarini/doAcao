@@ -10,34 +10,39 @@
     <div id="adicionar" hidden>
         <header>
             <button id="btnVoltar">voltar</button>
-            <div id="color">
-                <h1>adicionar um item</h1>
-                <button id="btnConcluir">Concluir</button>
-            </div>
+            <h1>adicionar um item</h1>
+            <button id="btnConcluir">concluir</button>
         </header>
-        <form action="">
-            <p>Nome do item</p>
-            <input id="add-nome" type="text" class="txt" placeholder="ex.: Casaco do Carlos">
-            </br>
-            <p>Tipo</p>
-            <input id="tipoMercadoria" type="text" list="tipos" placeholder="ex.: roupa">
-            <datalist id="tipos">
+        <form id="frmNovo">
+            <label class="flexFullLine">
+                <span>Nome do item</span>
+                <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
+            </label>
+            <label>
+                <span>Tipo</span>
+                <input type="text" id="tipoMercadoria" placeholder="ex.: roupa" >
+                <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
+                <ul id="tipos" class="dropDownList">
                 <!-- ajax request goes here -->
-            </datalist>
-            <p>Unidade</p>
-            <select id="unid">
+                </ul>
+                </select>
+            </label>
+            <label>
+                <span>Unidade</span>
+                <select name="cmbUnidade" id="unid">
                 <!-- ajax request goes here 
                     <option value="Un">Un</option>
                 -->
-            </select>
-            </br>
-            <div id="qtd">
-                <p>Quantidade</p>
-                <input type="number" min="1" value="1">
-            </div>
-            
-            <p>Descrição</p>
-            <textarea name="" id="" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+                </select>
+            </label>
+            <label>
+                <span>Quantidade</span>
+                <input type="number" id="nbrQuantidade" min="1" value="1">
+            </label>
+            <label class="flexFullLine">
+                <span>Descrição</span>
+                <textarea name="txtDescricao" id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+            </label>
         </form>
     </div>
 

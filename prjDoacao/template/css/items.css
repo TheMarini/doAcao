@@ -94,8 +94,7 @@ input:focus {
 
 /*----------ADICIONAR------------*/
 
-#adicionar {/* 
-    background-color: gainsboro; */
+#adicionar {
     z-index: 6;
     position: absolute;
     width: 50%;
@@ -107,28 +106,25 @@ input:focus {
 
 #adicionar header {
     display: flex;
+    justify-content: space-between;
+    background-color: cadetblue;
+    overflow: hidden;
     width: 100%
 }
-
-#color{background-color: cadetblue; display: flex; 
-    justify-content: space-between;width: 100%}
 
 #adicionar h1 {
     background-color: cadetblue;
     font-size: 5vh;
     text-align: center;
     color: whitesmoke;;
-    margin: 0 auto
-}
-
-#adicionar p{
-    color: dimgray
+    margin: 0 auto;
 }
 
 #adicionar button {
     cursor: pointer;
     color: whitesmoke;
-    transition: 1s ease
+    transition: 0.5s ease;
+    outline: none;
 }
 #adicionar button:hover{
     transform: scale(1.05,1.05);
@@ -151,40 +147,50 @@ input:focus {
     text-decoration: underline
 }
 
-#adicionar form{background-color: gainsboro; padding: 8px; position: relative;}
+#frmNovo{
+    background-color: gainsboro; 
+    padding: 8px; 
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
 
-#adicionar form input {
+.flexFullLine{
+    flex-basis: 100%;
+}
+
+#frmNovo label span{
+    display: block;
+    color: dimgray;
+}
+#frmNovo input {
     background-color: white;
     text-align: center;
     font-size: 4.5vh;
 }
-
-#add-nome {
-    width: 100%
+#frmNovo select{
+    padding: 2px;
+    font-size: 4.5vh;
 }
 
-#adicionar form textarea {
+#frmNovo textarea {
     background-color: white;
     font-size: 4vh;
     max-height: 18vh
 }
-
-#qtd {
-    text-align: right;
+#frmNovo input[type="number"]{
     position: absolute;
-    top: 9.5vh;
-    right: 0;
-    padding: 8px
+    width: 10%;
 }
 
-#qtd input {
-    width: 50%;
+#add-nome {
+    width: 100%;
 }
 
-#unid{
-    font-size: 4vh;
+#frmNovo .selected{
+    background: rgba(5, 225, 255, 0.7);
+    transition: 0.5s;    
 }
-
 
 /*----------ARTICLE------------*/
 

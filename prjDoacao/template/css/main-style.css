@@ -57,8 +57,38 @@ body {
 
 /*----------CLASSES------------*/
 
-.txt{color: dimgray; outline: none;}
+.txt{color: dimgray; outline: none; transition: 0.5s; box-sizing: content-box;}
+.txt:focus{ border: 1px solid #f4f4f4;}
+
 .btn {color: white; cursor: pointer; outline: none;}
+
+/* - DropDownList for ul's - */
+.dropDownList{
+    z-index: 100;
+    position: absolute;
+    max-height: 50vh;
+    background: #fff;
+    overflow-y: scroll;
+    display: none;
+}
+
+.dropDownList li{
+    padding: 5px; 
+}
+
+.dropDownList li:hover{
+    background: #f4f4f4;
+    box-sizing: content-box;
+}
+
+.dropDownList::-webkit-scrollbar{
+    background: #f4f4f4;
+    border-bottom-right-radius: 5px;
+}
+
+.dropDownList::-webkit-scrollbar-thumb{
+    background: cadetblue;
+}
 
 #blackcover{
     position: fixed;
