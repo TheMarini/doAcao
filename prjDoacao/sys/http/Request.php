@@ -25,7 +25,7 @@ class Request
     *@return array with get values
     *@return get value if @param arrayIndex is set
     */
-    public function get(string $arrayIndex = null){
+    public function get($arrayIndex = null){
         if(isset($_GET)){
             $get = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
@@ -43,7 +43,7 @@ class Request
     *@return array with post values
     *@return post value if @param arrayIndex is set
     */
-    public function post(string $arrayIndex = null)
+    public function post($arrayIndex = null)
     {
          if(isset($_POST)){
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
