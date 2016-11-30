@@ -12,6 +12,10 @@ use prjDoacao\sys\session\Session as Session;
  */
 class usuarioController extends Controller
 {
+    public function indexAction(){
+       $this->perfilAction($params[0]=null);
+    }
+
     public function loginAction(){
         if(Session::isLogged()){
             header('Location: '. BASE_URL);

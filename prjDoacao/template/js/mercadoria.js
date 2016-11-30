@@ -7,6 +7,7 @@ function listarItens(){
         url: "/mercadoria/listar",
         success: function(result){
             $('#itensList').html(result);
+            selecionarItem($('#itensList > li:first-child'));
         },
         error: function(){
             alert('Erro ao realizar requisição Ajax');
@@ -29,6 +30,16 @@ function toggleAddItem(){
     }else{
         $('#blackcover').fadeOut('fast');
         $('#adicionar').slideUp('fast');
+    }
+}
+
+function toggleMensagem(){
+    if($('#mensagem').is(':hidden')){
+        $('#blackcover').fadeIn('fast');
+        $('#mensagem').fadeIn();
+    }else{
+        $('#blackcover').fadeOut('fast');
+        $('#mensagem').fadeOut('fast');
     }
 }
 
@@ -88,12 +99,61 @@ function salvar(_nome, _tipo, _unidade, _quantidade, _descricao){
     return resultado;
 }
 
+function selecionarItem(target){
+    if($(target).is('li')){
+        $('.selectedItem').removeClass('selectedItem');
+        $(target).addClass('selectedItem');
+        var cd = $(target).val();
+        
+        $.ajax({
+            url: '/mercadoria/item/'+cd,
+            dataType: 'json',
+            success: function(result){
+                $('#txtNome').val(result.nome);
+                TipoMercadoria.forEach(function(item){
+                    if(item.codigo == result.tipo){
+                        $('#txtTipo').val(item.nome);
+                    }
+                });
+                $('#txtDescricao').val(result.descricao);
+                $('#txtQuantidade').val(result.quantidade);
+                $('#unidade > input').val(result.unidade);
+            },
+            error: function () {
+                alert('Erro ao realizar requisição Ajax');
+            },
+            complete: function(){
+                $('#right').fadeIn('fast');
+            }
+        });
+        
+    }else{
+        $('#right').fadeOut('fast');
+    }
+}
+
+function removerItem(_codigo){
+    $.ajax({
+        type: 'POST',
+        url: '/mercadoria/remover',
+        data: {codigo: _codigo},
+        success: function(result){
+            $('#itensList > li[value="'+_codigo+'"] ').slideUp('fast');
+            listarItens();
+        },
+        error:function () {
+            alert('Erro ao realizar requisição Ajax');
+        }
+    })
+}
+
 
 /* EVENTS */
 
 $(document).ready(function(){
     //onLoad
     listarItens();
+    loadTipoMercadoria();
 
     //document click evnt
     $(document).click(function(evt){
@@ -104,7 +164,12 @@ $(document).ready(function(){
 
     //blackcover click
     $('#blackcover').click(function (evt){
-        toggleAddItem();
+        if($('#adicionar').is(':visible')){
+            toggleAddItem();
+        }
+        if($('#mensagem').is(':visible')){
+            toggleMensagem();
+        }
     });
 
     //btnAdicionar evnt
@@ -159,7 +224,7 @@ $(document).ready(function(){
         var tipo = $('#cdTipoMercadoria').val();
         var unidade = $('#unid').val();
         var quantidade = $('#nbrQuantidade').val();
-        var descricao = $('#txtDesc').html();
+        var descricao = $('#txtDesc').val();
 
         if(nome == null){
             alert('Preencha o nome');
@@ -181,6 +246,30 @@ $(document).ready(function(){
         }
     });
 
+    //Selecionar item click evnt
+    $('#itensList').on('click', 'li', function(evt){
+            if($(evt.target).is('button')){
+                if($(evt.target).hasClass('edit')){
+
+                }else{
+                    toggleMensagem();
+                }
+            }
+            selecionarItem($(evt.target).closest('li'));
+            
+        
+    })
+
+    //Excluir item evt
+    $('#mensagem').on('click', '#nao', function(evt){
+        toggleMensagem();
+    });
+
+    $('#mensagem').on('click', '#sim', function(evt){
+        var cd = $('.selectedItem').val();
+        removerItem(cd);
+        toggleMensagem();
+    });
     
 
 })

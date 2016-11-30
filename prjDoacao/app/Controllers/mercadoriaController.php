@@ -14,6 +14,16 @@ use prjDoacao\sys\session\Session;
 class mercadoriaController extends Controller
 {
     public function indexAction(){
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(Session::getSession('userid')->tipo == 2){
+            header('Location: '.BASE_URL);
+            return;
+        }
+
         $meusitensview = new view\meusItens();
         $meusitensview->render(); 
     }
@@ -23,8 +33,13 @@ class mercadoriaController extends Controller
     */
     public function listarAction()
     {
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
         if(!$this->request->isAjax()){
-            (new Router)->routeToController('erro404');
+            header('Location: ' . BASE_URL . 'mercadoria');
             return;
         }
 
@@ -39,8 +54,13 @@ class mercadoriaController extends Controller
     */
     public function novoAction()
     {
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+        
         if(!$this->request->isAjax()){
-            (new Router)->routeToController('erro404');
+            header('Location: ' . BASE_URL . 'mercadoria');
             return;
         }
 
@@ -85,6 +105,78 @@ class mercadoriaController extends Controller
         }else{
             echo json_encode(false);
         }
+    }
+
+    /**
+    * Select Item - AJAX FUNCTION!
+    */
+    public function itemAction($codigo)
+    {
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        if(is_null($codigo[0])){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        $mercadoriamodel = new Mercadoria($codigo[0]);
+
+        //validating pass
+        if(empty($mercadoriamodel->codigo)){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+        if($mercadoriamodel->usuario != Session::getSession('userid')->codigo && Session::getSession('userid')->tipo != 2){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        echo json_encode($mercadoriamodel);
+    }
+
+    /**
+    *   Remover item
+    */
+    public function removerAction()
+    {
+       if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        $codigo = $this->request->post('codigo');
+
+        if(empty($codigo)){
+            header('Location ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        $mercadoriaModel = new Mercadoria($codigo);
+
+        if($mercadoriaModel->usuario != Session::getSession('userid')->codigo){
+            header('Location ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        if($mercadoriaModel->Excluir($codigo)){
+            echo "Excluído com sucesso!";
+        }else{
+            echo "Erro ao excluir";
+        }
+
     }
 
 }

@@ -55,10 +55,11 @@ input:focus {
     width: 35%;
     background-color: gray;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
+    overflow: hidden;
     position: absolute;
-    bottom: 0;
-    left: 32vw;
+    top: 35%;
+    left: 35%;
 }
 
 #opc {
@@ -221,6 +222,57 @@ input:focus {
     background: cadetblue;
 }
 
+#itensList li{
+    position: relative;
+}
+
+#itensList .controls{
+    top: 0;
+    right: 0;
+}
+
+.controls{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#itensList .btn{
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width: 4vh;
+    height: 4vh;
+    background-position: center;
+    background-size: 90%;
+    opacity: 0.6;
+    transition: 0.5s;
+    display: none;
+}
+
+#itensList .btn:hover{
+    opacity: 1;
+}
+
+#itensList .btn.edit{
+    background-image: url('../img/icons/edit.png');
+    background-color: #00bcd4;
+}
+#itensList .btn.delete{
+    background-image: url('../img/icons/excluir.png');
+    background-color: indianred;
+}
+
+#itensList p{
+    text-align: center;
+    color: dimgray;
+    font-size: 3vh;
+    margin: 5vh auto;
+}
+
 /*----------LEFT------------*/
 
 #left {
@@ -240,7 +292,7 @@ input:focus {
     color: grey;
 }
 
-#left p {
+#left dd{
     font-size: 3vh;
     color: dimgray;
 }
@@ -255,9 +307,13 @@ input:focus {
     padding: 2px 6px
 }
 
-#left li:hover {
+#left li:hover, .selectedItem{
     border-left: 2px solid #00bcd4;
     background-color: rgba(0, 0, 0, 0.07)
+}
+
+#left li:hover .btn{
+    display: block;
 }
 
 #btnAdicionar {
@@ -268,6 +324,7 @@ input:focus {
     background-color: cadetblue;
     padding: 5px 10px;
     transition:all 0.5s ease;
+    color: whitesmoke;
 }
 #btnAdicionar:hover{
     padding-top: 10px;
@@ -280,6 +337,8 @@ input:focus {
     margin-left: 0.6vw;
     width: 55%;
     min-height: 85vh;
+    position: relative;
+    display: none;
 }
 
 #right header {
@@ -313,6 +372,10 @@ input:focus {
     opacity: 1
 }
 
+#dados{
+    position: relative;
+}
+
 #dados p,
 #dados input {
     font-size: 4vh;
@@ -334,19 +397,20 @@ input:focus {
 
 #quantidade {
     position: absolute;
+    display: flex;
     right: 0;
-    top: 0;
-    display: flex
+    top:0;
 }
 
 #quantidade input {
     width: 70px;
     text-align: center;
-    margin-left: 7px
+    margin-left: 7px;
+    display: inline;
 }
 
 #descricao {
-    margin-top: 3px
+    margin-top: 3px;
 }
 
 #descricao textarea {
@@ -354,17 +418,8 @@ input:focus {
     font-size: 4vh;
 }
 
-#descricao textarea:focus {
-    background-color: whitesmoke;
-    color: white
-}
-
-#descricao textarea:hover {
-    background-color: whitesmoke
-}
-
-#descricao textarea:first-line {
-    text-decoration: overline;
+#unidade{
+    display: flex;
 }
 
 #instituicoes {
@@ -373,35 +428,14 @@ input:focus {
     box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.3);
     transition: 1s;
     min-height: 33vh;
-    background-color: rgba(95, 158, 160, 0.9)
+    background-color: rgba(95, 158, 160, 0.9);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 #instituicoes:hover {
     margin-top: -20vh;
     padding-bottom: 20vh;
     background-color: rgba(95, 158, 160, 1)
-}
-
-#opcoes {
-    bottom: 0;
-    width: 100%;
-    background-color: whitesmoke;
-}
-
-#btnEditar,
-#btnRemover {
-    font-size: 5vh;
-    padding: 5px;
-}
-
-#btnEditar {
-    background-color: dimgrey;
-    width: 71%
-}
-
-#btnRemover {
-    background-color: indianred;
-    position: absolute;
-    right: 0;
-    width: 30%
 }

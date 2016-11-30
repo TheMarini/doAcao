@@ -42,7 +42,7 @@ class Usuario extends Model
 		        $usuario_atual->codigo = $row[0];
 			    $usuario_atual->nome = $row[1];
 			    $usuario_atual->email = $row[2];
-			    $usuario_atual->tipo = $row[3];
+			    $usuario_atual->tipo = $row[4];
 		    }
 
             Session::setSession('userid', $usuario_atual);
