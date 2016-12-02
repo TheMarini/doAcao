@@ -5,13 +5,14 @@ use prjDoacao\sys\View as View;
 use prjDoacao\app\Views\partials as partials;
 
 /**
- * Index view
+ * Index Doador view
  */
-class indexLogged extends View
+class indexDoador extends View
 {
    public function render()
    {
        $head = new partials\head();
+       $head->setIncludeCss('css/index.css');
        $head->render();
        $nav = new partials\nav();
        $nav->render();

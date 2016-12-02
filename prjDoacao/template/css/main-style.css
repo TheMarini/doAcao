@@ -45,7 +45,7 @@ body {
 
 body {
     font-size: 100%;
-    color: whitesmoke;
+    color: #696969;
     position: relative;
 }
 
@@ -57,10 +57,49 @@ body {
 
 /*----------CLASSES------------*/
 
-.txt{color: dimgray; outline: none; transition: 0.5s; box-sizing: content-box;}
-.txt:focus{ border: 1px solid #f4f4f4;}
+.show{
+    display: block;
+}
 
-.btn {color: white; cursor: pointer; outline: none;}
+.msg{
+    padding: 0.3em;
+    font-size: 1.5em;
+    background: lightblue;
+    border-radius: 5px;
+    margin: 5px auto;
+    display: none;
+}
+
+.msg.alert{
+    background: darkorange;
+    display: inline-block;
+}
+
+.msg.error{
+    background: #ff4444;
+    display: inline-block;
+}
+
+.msg.show{
+    display: inline-block;
+}
+
+.txt{
+    box-sizing: content-box;
+    color: dimgray;
+    outline: none;
+    background:#f5f5f5;
+    transition: 0.3s;
+    border: 1px solid lightgrey;
+}
+
+.txt:focus{ background: #fff;}
+
+.btn {
+    color: white; 
+    cursor: pointer; 
+    outline: none;
+}
 
 /* - DropDownList for ul's - */
 .dropDownList{
@@ -90,6 +129,7 @@ body {
     background: cadetblue;
 }
 
+/* - BlackCover to hide back elements - */
 #blackcover{
     position: fixed;
     top: 0;
@@ -109,27 +149,20 @@ nav {
     transition: 0.5s;
     width: 100%;
     position: fixed;
+    color: whitesmoke;
 }
 
-#menu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+nav.notLogged{
+    background: #fff;
+    color: #00bcd4;
 }
 
-#home {
-    width: 3vw;
-    margin: 15px 0px 15px 10px;
-    float: left;
-    transition: 0.5s;
-    opacity: 0.9;
-    position: relative;
-    z-index: 2;
+nav a{
+    color: whitesmoke;
 }
 
-#home:hover {
-    opacity: 1;
-    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+nav.notLogged a {
+    color: #00bcd4
 }
 
 nav > ul {
@@ -148,7 +181,6 @@ nav > ul {
 }
 
 nav > ul li{
-    color: whitesmoke;
     padding: 2vh 2vw;
     opacity: 0.8;
     transition: 0.5s;
@@ -169,7 +201,7 @@ nav > ul li:hover {
 nav img{
     height: 5vh;
     opacity: 0.9;
-    padding: 0 1vw;
+    margin: 0 1vw;
     transition: all 0.5s ease;
 }
 nav img:hover{
@@ -202,19 +234,45 @@ nav input:focus {
     background-color: white;
 }
 
-/* user photo and link */
-#btnUser{
+#menu{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+#home {
+    width: 3vw;
+    margin: 15px 0px 15px 10px;
+    float: left;
+    transition: 0.5s;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+}
+
+#home:hover {
+    opacity: 1;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+/* user photo and link */
+#btnUser{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
 #btnUser span{
-    color: #fff;
     opacity: 0.8;
     font-size: 3vh;
     transition: 0.5s;
 }
+
+#btnUser img{
+    border: 1px solid #00bcd4;
+    border-radius: 100%;
+}
+
 
 #btnUser:hover img, #btnUser:hover span, .contentOpen{
     opacity: 1;
@@ -269,4 +327,8 @@ nav input:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
     display: none;
     border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.content a{
+    color: #00bcd4;
 }

@@ -13,7 +13,7 @@ use prjDoacao\sys\session\Session as Session;
 class usuarioController extends Controller
 {
     public function indexAction(){
-       $this->perfilAction($params[0]=null);
+       header('Location: ' . BASE_URL . 'usuario/perfil');
     }
 
     public function loginAction(){
@@ -22,6 +22,7 @@ class usuarioController extends Controller
             return;
         }
         
+        $data["%msgClass%"] = "";
         $data["%txtEmail%"] = "";
         $data["%mensagem%"] = "";
 
@@ -31,6 +32,7 @@ class usuarioController extends Controller
 
             //valida as entradas
             if(empty($email) || empty($senha)){
+                $data["%msgClass%"] = "error";
                 $data["%mensagem%"] = "Preencha os campos corretamente!";
                 $data["%txtEmail%"] = $email;
                 $loginview = new view\login($data);
@@ -43,6 +45,7 @@ class usuarioController extends Controller
             if($usermodel->login($email, $senha)){
                 header('Location: '.BASE_URL);
             }else{
+                $data["%msgClass%"] = "alert";
                 $data["%mensagem%"] = "Usuário ou senha inválidos!";
                 $data["%txtEmail%"] = $email;
                 $loginview = new view\login($data);
@@ -68,8 +71,8 @@ class usuarioController extends Controller
             return;
         }
 
-        $data["%h1Class%"] = "";
-        $data["%mensagem%"] = "Agora precisamos de alguns dados...";
+        $data["%msgClass%"] = "";
+        $data["%mensagem%"] = "";
         $data["%txtNome%"] = "";
         $data["%txtEmail%"] = "";
         $data["%txtCNPJ%"] = "";
@@ -93,7 +96,7 @@ class usuarioController extends Controller
             $data["%tipo%"] = $tipo;
 
             if(empty($nome) || empty($email) || empty($senha) || empty($senhaVerif) || empty($tipo)){
-                $data["%h1Class%"] = "error"; 
+                $data["%msgClass%"] = "error"; 
                 $data["%mensagem%"] = "Preencha os campos corretamente!";
 
                 $registerview = new view\registrar($data);
@@ -102,7 +105,7 @@ class usuarioController extends Controller
             }
 
             if($tipo == 2 && empty($cnpj)){
-                $data["%h1Class%"] = "alert"; 
+                $data["%msgClass%"] = "alert"; 
                 $data["%mensagem%"] = "É necessário preencher um cnpj válido!";
 
                 $registerview = new view\registrar($data);
@@ -111,7 +114,7 @@ class usuarioController extends Controller
             }
 
             if($senha != $senhaVerif){
-                $data["%h1Class%"] = "alert"; 
+                $data["%msgClass%"] = "alert"; 
                 $data["%mensagem%"] = "As senhas não são identicas!";
 
                 $registerview = new view\registrar($data);

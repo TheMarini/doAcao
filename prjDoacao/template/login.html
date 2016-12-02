@@ -1,11 +1,14 @@
-<body>
-    <div id="mensagem">%mensagem%</div>
-    <form id="form-login" method="POST">
-        <input type="email" id="txtEmail" name="txtEmail" class="txt" placeholder="email" value="%txtEmail%" ></input>
-        <input type="password" id="txtSenha" name="txtSenha" class="txt" placeholder="senha"></input>
-        <input type="submit" id="btnEntrar" class="btn" value="entrar">
-        <a data-scroll href="#btnCadastrar">
-            <p id="nao-cadastrado">não sou cadastrado</p>
-        </a>
-    </form>
-</body>
+<div class="centralize">
+    <h1>Doar nunca foi tão fácil! <br>Faça login com seu email e senha</h1>
+    <span class="msg %msgClass%">%mensagem%</span>
+    <article id="cadastrar">
+            <section id="formulario">
+                <form method="POST">
+                    <input type="email" class="txt" name="txtEmail" placeholder="email" value="%txtEmail%">
+                    <input type="password" class="txt" name="txtSenha" placeholder="senha" value="" >
+                    <button type="submit" id="btnCadastrar" >Entrar</button>
+                </form>
+            </section>
+    </article>
+    <p id="otherOptions"><a href="#">Esqueci minha senha</a> ou <a href="%registrar%">Não tenho uma conta</a></p>
+</div>

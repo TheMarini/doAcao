@@ -16,6 +16,8 @@ class registrar extends View
         $head->setIncludeCss("css/cadastrar.css");
         $head->setIncludeScript("js/cadastro.js");
         $head->render();
+        $nav = new partials\nav();
+        $nav->render();
         parent::render();
         (new partials\footer())->render();
     }

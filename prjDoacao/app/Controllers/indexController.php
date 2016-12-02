@@ -2,7 +2,7 @@
 namespace prjDoacao\app\Controllers;
 
 use prjDoacao\sys\Controller as Controller;
-use prjDoacao\app\Views\index as index;
+use prjDoacao\app\Views\index as views;
 use prjDoacao\sys\session\Session as Session;
 
 /**
@@ -12,12 +12,18 @@ class indexController extends Controller
 {
     public function indexAction(){
         if(Session::isLogged()){
-            $indexview = new index\indexLogged();
-            $indexview->data["%variavel%"] = "Aqui vai um texto na index!";
-            $indexview->render();
-        }else{
-            $indexview = new index\index();
-            $indexview->render();
-        }   
+            if(Session::getSession('userid')->tipo != 2){
+                $indexviewdoador = new views\indexDoador();
+                $indexviewdoador->render();
+            }else{
+                $indexviewreceptor = new views\indexReceptor();
+                $indexviewreceptor->render();
+            
+            }
+            return;
+         }
+
+        $indexview = new views\index();
+        $indexview->render();
     }
 }
