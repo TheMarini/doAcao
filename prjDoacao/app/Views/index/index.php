@@ -15,6 +15,8 @@ class index extends View
        $head->setIncludeCss('css/intro.css');
        $head->setIncludeScript('js/script.js');
        $head->render();
+       $nav = new partials\nav();
+       $nav->render(true);
        parent::render();
    }
    

@@ -9,7 +9,7 @@ use prjDoacao\sys\session\Session as Session;
  */
 class nav extends View
 {
-     public function render()
+     public function render($isIntroIndex = null)
     {
         if(Session::isLogged()){
             //user normal links
@@ -31,7 +31,11 @@ class nav extends View
         //index Link
             $this->data['%index%'] = BASE_URL;
         //login link
-            $this->data['%login%'] = BASE_URL . "usuario/login";
+            if(is_null($isIntroIndex)){
+                $this->data['%login%'] = BASE_URL . 'usuario/login';
+            }else{
+                $this->data['%login%'] = 'javascript:void(0);';
+            }
         
         parent::render();
     }

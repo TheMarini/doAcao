@@ -8,7 +8,7 @@ function popupLogin(){
 $('document').ready(function (){
 
     //Login button event click
-    $('#login').click(function(){
+    $('#btnUser').click(function(){
         $('body').append('<div id="blackcover" onclick="popupLogin()" hidden></div>');
         $('#blackcover').fadeIn();
         $('body').css('overflow-y', 'hidden');
