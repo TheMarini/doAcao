@@ -129,7 +129,7 @@ svg {
 
 .cont-img p{
     box-sizing: content-box;
-    padding: 0px 10px 10px 10px;
+    padding: 4px 10px 5px 10px;
     background-color: dimgray;
     color: whitesmoke;
     margin-top: -5px
@@ -153,12 +153,8 @@ svg {
     margin-top: 2vh;
     transition: 0.5s;
     width: 30vw;
-    cursor: pointer
-}
-
-.stat-container:hover {
-    border-bottom: 2px solid #00bcd4;
-    padding-bottom: 100px
+    cursor: pointer;
+    overflow: hidden
 }
 
 .stat-container header {
@@ -170,4 +166,19 @@ svg {
     color: #00bcd4;
     font-size: 2em;
     font-weight: 400;
+}
+
+.stat-container ul {
+    margin-top: 1px;
+}
+
+.stat-container li {
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+    padding: 2px 6px
+}
+
+.stat-container li:hover {
+    border-left: 2px solid #00bcd4;
+    background-color: rgba(0, 0, 0, 0.07)
 }
