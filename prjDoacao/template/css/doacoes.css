@@ -1,29 +1,328 @@
+/*----------NORMALIZAÇÃO------------*/
+
 body {
-    background-color: whitesmoke
+    background-color: whitesmoke;
 }
 
-#content {
-    padding-top: 14vh;
+svg {
+    width: 95%;
+    height: 2px;
     margin: 0 auto;
+    display: flex;
+    padding: 2px 0px;
+}
+
+line {
+    stroke: whitesmoke;
+    stroke-width: 1px;
+}
+
+input {
+    background-color: transparent;
+    width: auto;
+    color: gray
+}
+
+textarea {
+    vertical-align: top;
+    transition: 0.5s;
+    background-color: transparent;
+    resize: none;
+    width: 100%;
+    color: gray
+}
+
+textarea:focus,
+input:focus {
+    outline-color: lightblue;
+    outline-style: solid;
+    outline-width: 0px;
+}
+
+/* --- CLASSES --- */
+
+.centralize{
+    display: flex;
+}
+
+.dataSection{
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1vh 1vh;
+    box-sizing: content-box;
+}
+
+.dataSection{
+    text-align: left;
+    width: 100%;
+}
+
+.dataSection span{
+    font-weight: 100;
+    color: black;
+}
+
+.dataSection tr{
+    width: 100%;
+}
+
+.dataSection tr td{
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 3vh;
+}
+
+.dataSection tr:last-child td{
+    border: none;
+}
+
+
+/*----------NAV------------*/
+
+#home {
+    position: absolute;
+    border-radius: 100%
+}
+
+
+/*----------MENSAGEM------------*/
+
+#mensagem {
+    z-index: 5;
+    width: 35%;
+    background-color: gray;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+#opc {
+    display: flex;
+}
+
+#mensagem h1 {
+    font-weight: 100;
+    padding-left: 5px;
+    ;
+    font-size: 5vh
+}
+
+#mensagem button {
+    width: 50%;
+    font-size: 3vh;
+    transition: 1s;
+    padding: 7px 0px
+}
+
+#mensagem button:hover {
+    width: 150%
+}
+
+#sim {
+    background-color: darkseagreen
+}
+
+#nao {
+    background-color: indianred
+}
+
+
+/*----------ADICIONAR------------*/
+
+#adicionar {
+    z-index: 6;
+    position: absolute;
+    width: 50%;
+    left: 25vw;
+    color: black;
+    font-size: 4vh;
+    border-bottom: solid cadetblue 5px
+}
+
+#adicionar header {
+    display: flex;
+    justify-content: space-between;
+    background-color: cadetblue;
+    overflow: hidden;
+    width: 100%
+}
+
+#adicionar h1 {
+    background-color: cadetblue;
+    font-size: 5vh;
+    text-align: center;
+    color: whitesmoke;;
+    margin: 0 auto;
+}
+
+#adicionar button {
+    cursor: pointer;
+    color: whitesmoke;
+    transition: 0.5s ease;
+    outline: none;
+}
+#adicionar button:hover{
+    transform: scale(1.05,1.05);
+    
+    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.12), 0px 0px 20px 0 rgba(0, 0, 0, 0.24);
+}
+
+#btnVoltar{
+    background-color: cadetblue;
+    width: 6vw;
+    font-size: 2.5vh;
+}
+#btnVoltar:hover{background-color: transparent}
+
+#btnConcluir{
+    background-color: rgba(140, 180, 160, 1);;
+    margin-right: -0.1px;
+    width: 11vw;
+        font-size: 3.3vh;
+    text-decoration: underline
+}
+
+#frmNovo{
+    background-color: gainsboro; 
+    padding: 8px; 
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.flexFullLine{
+    flex-basis: 100%;
+}
+
+#frmNovo label span{
+    display: block;
+    color: dimgray;
+}
+#frmNovo input {
+    background-color: white;
+    text-align: center;
+    font-size: 4.5vh;
+}
+#frmNovo select{
+    padding: 2px;
+    font-size: 4.5vh;
+}
+
+#frmNovo textarea {
+    background-color: white;
+    font-size: 4vh;
+    max-height: 18vh
+}
+#frmNovo input[type="number"]{
+    position: absolute;
+    width: 10%;
+}
+
+#add-nome {
+    width: 100%;
+}
+
+#frmNovo .selected{
+    background: rgba(5, 225, 255, 0.7);
+    transition: 0.5s;    
+}
+
+/*----------ARTICLE------------*/
+
+#content {
     width: 95%;
     display: flex;
+    margin: 0 auto;
+    padding-top: 12vh;
 }
 
 #left,
 #right {
     background-color: white;
-    box-shadow:  0px 0px 3px 0 rgba(0, 0, 0, 0.24);
-    height: 83vh
-}    
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    margin-bottom: 1.2vh
+}
+
+#itensList{
+    max-height: 78vh;
+    overflow-y: scroll;
+}
+
+#itensList::-webkit-scrollbar{
+    width: 1%;
+    background: #f4f4f4;
+}
+#itensList::-webkit-scrollbar-thumb{
+    background: cadetblue;
+}
+
+#itensList li{
+    position: relative;
+}
+
+#itensList .controls{
+    top: 0;
+    right: 0;
+}
+
+.controls{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#itensList .btn{
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width: 4vh;
+    height: 4vh;
+    background-position: center;
+    background-size: 90%;
+    opacity: 0.6;
+    transition: 0.5s;
+    display: none;
+}
+
+#itensList .btn:hover{
+    opacity: 1;
+}
+
+#itensList .btn.edit{
+    background-image: url('../img/icons/edit.png');
+    background-color: #00bcd4;
+}
+#itensList .btn.delete{
+    background-image: url('../img/icons/excluir.png');
+    background-color: indianred;
+}
+
+#itensList p{
+    text-align: center;
+    color: dimgray;
+    font-size: 3vh;
+    margin: 5vh auto;
+}
+
+/*----------LEFT------------*/
 
 #left {
     width: 40%;
-    padding: 0px 5px
+    max-height: 85vh;
+    position: relative;
 }
 
 #left h1 {
     font-size: 6vh;
-    color: cadetblue;
+    color: #00bcd4;
+    margin-left: 5px
 }
 
 #left h2 {
@@ -31,18 +330,53 @@ body {
     color: grey;
 }
 
-#left p {
+#left dd{
     font-size: 3vh;
     color: dimgray;
 }
 
-#estado {
-    text-align: right
+#left ul {
+    margin-top: 1px;
 }
+
+#left li {
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+    padding: 2px 6px
+}
+
+#left li:hover, .selectedItem{
+    border-left: 2px solid #00bcd4;
+    background-color: rgba(0, 0, 0, 0.07)
+}
+
+#left li:hover .btn{
+    display: block;
+}
+
+#btnAdicionar {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    font-size: 3vh;
+    background-color: cadetblue;
+    padding: 5px 10px;
+    transition:all 0.5s ease;
+    color: whitesmoke;
+}
+#btnAdicionar:hover{
+    padding-top: 10px;
+}
+
+
+/*----------RIGHT------------*/
 
 #right {
     margin-left: 0.6vw;
-    width: 55%
+    width: 55%;
+    min-height: 85vh;
+    position: relative;
+    display: none;
 }
 
 #right header {
@@ -51,28 +385,86 @@ body {
     background-position: center;
     background-size: contain;
     height: 20vh;
+    position: relative;
 }
 
-#right h1{
+#right header input {
     position: absolute;
-    bottom: 0;
+    left: 5px;
+    bottom: 5px;
     color: dimgray;
-    font-size: 5vh
+    font-size: 7vh;
+    font-weight: 900;
 }
 
-#right form{
+#right header img {
+    height: 20%;
+    float: right;
+    margin: 4px;
+    opacity: 0.6;
+    transition: 0.5s;
+    cursor: pointer
+}
+
+#right header img:hover {
+    opacity: 1
+}
+
+#dados{
+    width: 40%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
+}
+
+#dados table{
+    font-size: 3vh;
+}
+
+#dados h2{
+    color: #00bcd4;
+}
+
+#quantidade input,
+#descricao textarea {
+    color: gray
+}
+
+#quantidade {
     position: absolute;
-    bottom: 0;
-    right: 0
+    display: flex;
+    right: 0;
+    top:0;
 }
 
-#txtCodigo{
-    font-size: 5vh;
-    padding: 5px
+#quantidade input {
+    width: 70px;
+    text-align: center;
+    margin-left: 7px;
+    display: inline;
 }
 
-#btnValidar{
-    font-size: 5vh;
-    background-color: cadetblue;
-    padding: 5px
+#descricao {
+    margin-top: 3px;
+}
+
+#descricao textarea {
+    display: flex;
+    font-size: 4vh;
+}
+
+#unidade{
+    display: flex;
+}
+
+#instituicoes {
+    width: 45%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
+}
+
+#instituicoes h2{
+    color: #00bcd4;
+    margin-bottom: 1vh;
 }

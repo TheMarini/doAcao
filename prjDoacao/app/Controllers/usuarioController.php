@@ -135,7 +135,7 @@ class usuarioController extends Controller
                 $novousuario->login($email, $senha);
                 header('Location: '.BASE_URL.'usuario/perfil');
             }else{
-                $data["%h1Class%"] = "alert"; 
+                $data["%msgClass%"] = "alert"; 
                 $data["%mensagem%"] = "$result";
                 
                 $registerview = new view\registrar($data);

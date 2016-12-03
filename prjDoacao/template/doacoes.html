@@ -1,0 +1,49 @@
+<div id="blackcover" hidden></div>
+    <div id="mensagem" hidden>
+        <h1>Deseja realmente excluir esse item?</h1>
+        <div id="opc">
+            <button id="nao" class="btn">Não</button>
+            <button id="sim" class="btn">Sim</button>
+        </div>
+    </div>
+
+    <article id="content">
+        <article id="left">
+            <h1>DOAÇÕES</h1>
+            <ul id="itensList">
+                <!-- ajax request goes here -->
+            </ul>
+        </article> 
+        <article id="right">
+            <!-- Capa com carrossel de fotos -->
+            <header>
+                <form id="cover">
+                    <input type="file" id="file"  accept="image/*" style="display: none" />
+                </form>
+                <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
+                <input id="txtNome" type="text" value="Cestas Básicas" disabled>
+            </header>
+            <!-- Dados da mercadoria -->
+            <div class="centralize">
+                <section id="dados" >
+                    <h2>DADOS DA MERCADORIA</h2>
+                    <table class="dataSection">
+                        <tr><td>Tipo: <span id="valTipo">Aqui é um tipo!</span></td></tr>
+                        <tr><td>Unidade: <span id="valUnidade">Aqui é uma unidade!</span></td></tr>
+                        <tr><td>Quantidade: <span id="valQuantidade">Aqui é uma quantidade!</span></td></tr>
+                        <tr><td>Descrição: <span id="valDescricao">Aqui é uma descricao</span></td></tr>         
+                    </table>
+                </section>
+                <!-- Instituições Interessadas -->       
+                <section id="instituicoes" >
+                    <h2>INSTITUIÇÕS INTERESSADAS</h2>
+                    <span class="msg show">Nenhuma instituição interessada!</span>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </section>
+            </div>
+        </article>
+    </article>
+</body>
+</html>
