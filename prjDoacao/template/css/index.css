@@ -109,7 +109,7 @@ svg {
 .tempo {
     float: right;
     margin: 3px 6px;
-        font-size: 2.5vh
+    font-size: 2.5vh
 }
 
 .cont p{
@@ -117,7 +117,6 @@ svg {
     color: dimgray;
     text-align: justify
 }
-
 
 .cont-txt{
     box-sizing: content-box;
@@ -132,7 +131,8 @@ svg {
     box-sizing: content-box;
     padding: 0px 10px 10px 10px;
     background-color: dimgray;
-    color: whitesmoke
+    color: whitesmoke;
+    margin-top: -5px
 }
 
 
