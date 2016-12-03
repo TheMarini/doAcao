@@ -25,7 +25,7 @@ class Request
     *@return array with get values
     *@return get value if @param arrayIndex is set
     */
-    public function get(string $arrayIndex = null){
+    public function get($arrayIndex = null){
         if(isset($_GET)){
             $get = filter_input_array(INPUT_GET, FILTER_SANITIZE_STRING);
             
@@ -43,7 +43,7 @@ class Request
     *@return array with post values
     *@return post value if @param arrayIndex is set
     */
-    public function post(string $arrayIndex = null)
+    public function post($arrayIndex = null)
     {
          if(isset($_POST)){
             $post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -61,7 +61,7 @@ class Request
     */
     public function isAjax()
     {
-        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])? (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'xmlhttprequest') == 0) : false; 
+        return isset($_SERVER['HTTP_X_REQUESTED_WITH'])? (strcmp($_SERVER['HTTP_X_REQUESTED_WITH'], 'XMLHttpRequest') == 0) : false; 
     }
    
 }

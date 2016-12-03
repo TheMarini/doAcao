@@ -1,0 +1,108 @@
+.centralize{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+hr{
+    border: 1px solid #00bcd4;
+}
+
+/* --- FEED --- */
+#newsfeed{
+    background-color: white;
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    min-height: 80vh;
+    width: 60%;
+    margin-top: 11vh;
+}
+
+#newsfeed header{
+    padding: 1em;  
+    border-left: 2px solid #00bcd4;
+}
+
+#newsfeed header h1{
+    color: #00bcd4;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+/* --- CONQUISTAS --- */
+#conquistas li{
+    display: flex;
+    align-items: center;
+    font-size: 3vh;
+    transition: 0.5s;
+    cursor: default;
+}
+#conquistas li:hover{opacity: 1; background-color: whitesmoke}
+
+#conquistas li img{
+    width:  5%;
+    min-width:  30px;
+    margin-right: 5px
+}
+
+/* --- POST --- */
+.post {
+    height: 250px;
+    width: 100%;
+    margin: 0px 0px 5px 0px;
+    
+    background-color: rgba(0,0,0,0.01);
+    transition: 1s
+}
+
+.from {
+    color: black;
+    display: flex;
+    width: 50%;
+}
+
+.from img {
+    height: 10vh;
+    width: 5vw;
+    background-color: white;
+}
+
+.from .texto {
+    margin-left: 3px
+}
+
+.from h1 {
+    font-size: 3vh
+}
+
+.from h2 {
+    font-size: 2.3vh
+}
+
+.from p {
+    font-size: 2vh
+}
+
+/* --- STATS --- */
+#stats{
+    margin-left: 3%;
+    width: 30%;
+    padding-top: 9vh;
+    display: flex;
+    flex-flow: column;
+}
+
+.stat-container{
+    background-color: white;
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    margin-top: 2vh;
+}
+
+.stat-container header h1{
+    color: #00bcd4;
+    font-size: 2em;
+    font-weight: 400;
+}
+.stat-container header{
+    float: left;
+    padding: 1em;
+}

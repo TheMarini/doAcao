@@ -1,0 +1,91 @@
+    <div id="blackcover" hidden></div>
+    <div id="mensagem" hidden>
+        <h1>Deseja realmente excluir esse item?</h1>
+        <div id="opc">
+            <button id="nao" class="btn">Não</button>
+            <button id="sim" class="btn">Sim</button>
+        </div>
+    </div>
+
+    <div id="adicionar" hidden>
+        <header>
+            <button id="btnVoltar">voltar</button>
+            <h1>adicionar um item</h1>
+            <button id="btnConcluir">concluir</button>
+        </header>
+        <form id="frmNovo">
+            <label class="flexFullLine">
+                <span>Nome do item</span>
+                <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
+            </label>
+            <label>
+                <span>Tipo</span>
+                <input type="text" id="tipoMercadoria" placeholder="ex.: roupa" >
+                <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
+                <ul id="tipos" class="dropDownList">
+                <!-- ajax request goes here -->
+                </ul>
+                </select>
+            </label>
+            <label>
+                <span>Unidade</span>
+                <select id="unid">
+                <!-- ajax request goes here 
+                    <option value="Un">Un</option>
+                -->
+                </select>
+            </label>
+            <label>
+                <span>Quantidade</span>
+                <input type="number" id="nbrQuantidade" min="1" value="1">
+            </label>
+            <label class="flexFullLine">
+                <span>Descrição</span>
+                <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+            </label>
+        </form>
+    </div>
+
+    <article id="content">
+        <article id="left">
+            <h1>MEUS ITEMS</h1>
+            <button id="btnAdicionar" class="btn">adicionar item</button>
+            <ul id="itensList">
+                <!-- ajax request goes here -->
+            </ul>
+        </article>
+        <article id="right">
+            <header>
+                <form id="cover">
+                    <input type="file" id="file"  accept="image/*" style="display: none" />
+                </form>
+                <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
+                <input id="txtNome" type="text" value="Cestas Básicas" disabled>
+            </header>
+            <section id="dados">
+                <p id="tipo">Tipo:
+                    <input id="txtTipo" type="text" value="Cestas Básicas" disabled>
+                </p>
+                <div id="quantidade">
+                    <p>Quantidade:</p>
+                    <input id="txtQuantidade" type="number" value="12" disabled>
+                </div>
+                <div id="unidade">
+                    <p>Unidade:</p>
+                    <input type="text" value="Cx" disabled>
+                </div>
+                <p id="descricao">Descrição:
+                    <textarea name="" id="txtDescricao" disabled>Cestas básicas TUPY contendo produtos não perecíveis. Lote 22/05</textarea>
+                </p>
+            </section>
+            
+            <section id="instituicoes">
+                <h2>INSTITUIÇÕS INTERESSADAS</h2>
+                <ul>
+                    <li></li>
+                </ul>
+            </section>
+        </article>
+    </article>
+</body>
+</html>

@@ -1,4 +1,4 @@
-﻿/*----------NORMALIZAÇÃO------------*/
+/*----------NORMALIZAÇÃO------------*/
 
 body {
     background-color: whitesmoke
@@ -55,10 +55,11 @@ input:focus {
     width: 35%;
     background-color: gray;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px;
+    overflow: hidden;
     position: absolute;
-    bottom: 0;
-    left: 32vw;
+    top: 35%;
+    left: 35%;
 }
 
 #opc {
@@ -94,8 +95,7 @@ input:focus {
 
 /*----------ADICIONAR------------*/
 
-#adicionar {/* 
-    background-color: gainsboro; */
+#adicionar {
     z-index: 6;
     position: absolute;
     width: 50%;
@@ -107,28 +107,25 @@ input:focus {
 
 #adicionar header {
     display: flex;
+    justify-content: space-between;
+    background-color: cadetblue;
+    overflow: hidden;
     width: 100%
 }
-
-#color{background-color: cadetblue; display: flex; 
-    justify-content: space-between;width: 100%}
 
 #adicionar h1 {
     background-color: cadetblue;
     font-size: 5vh;
     text-align: center;
     color: whitesmoke;;
-    margin: 0 auto
-}
-
-#adicionar p{
-    color: dimgray
+    margin: 0 auto;
 }
 
 #adicionar button {
     cursor: pointer;
     color: whitesmoke;
-    transition: 1s ease
+    transition: 0.5s ease;
+    outline: none;
 }
 #adicionar button:hover{
     transform: scale(1.05,1.05);
@@ -151,36 +148,50 @@ input:focus {
     text-decoration: underline
 }
 
-#adicionar form{background-color: gainsboro; padding: 8px}
+#frmNovo{
+    background-color: gainsboro; 
+    padding: 8px; 
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
 
-#adicionar form input {
+.flexFullLine{
+    flex-basis: 100%;
+}
+
+#frmNovo label span{
+    display: block;
+    color: dimgray;
+}
+#frmNovo input {
     background-color: white;
     text-align: center;
     font-size: 4.5vh;
 }
-
-#add-nome {
-    width: 100%
+#frmNovo select{
+    padding: 2px;
+    font-size: 4.5vh;
 }
 
-#adicionar form textarea {
+#frmNovo textarea {
     background-color: white;
     font-size: 4vh;
     max-height: 18vh
 }
-
-#qtd {
-    text-align: right;
+#frmNovo input[type="number"]{
     position: absolute;
-    top: 9.5vh;
-    right: 0;
-    padding: 8px
+    width: 10%;
 }
 
-#qtd input {
-    width: 50%;
+#add-nome {
+    width: 100%;
 }
 
+#frmNovo .selected{
+    background: rgba(5, 225, 255, 0.7);
+    transition: 0.5s;    
+}
 
 /*----------ARTICLE------------*/
 
@@ -188,7 +199,7 @@ input:focus {
     width: 95%;
     display: flex;
     margin: 0 auto;
-    padding-top: 12vh
+    padding-top: 12vh;
 }
 
 #left,
@@ -198,13 +209,76 @@ input:focus {
     margin-bottom: 1.2vh
 }
 
+#itensList{
+    max-height: 78vh;
+    overflow-y: scroll;
+}
+
+#itensList::-webkit-scrollbar{
+    width: 1%;
+    background: #f4f4f4;
+}
+#itensList::-webkit-scrollbar-thumb{
+    background: cadetblue;
+}
+
+#itensList li{
+    position: relative;
+}
+
+#itensList .controls{
+    top: 0;
+    right: 0;
+}
+
+.controls{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#itensList .btn{
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width: 4vh;
+    height: 4vh;
+    background-position: center;
+    background-size: 90%;
+    opacity: 0.6;
+    transition: 0.5s;
+    display: none;
+}
+
+#itensList .btn:hover{
+    opacity: 1;
+}
+
+#itensList .btn.edit{
+    background-image: url('../img/icons/edit.png');
+    background-color: #00bcd4;
+}
+#itensList .btn.delete{
+    background-image: url('../img/icons/excluir.png');
+    background-color: indianred;
+}
+
+#itensList p{
+    text-align: center;
+    color: dimgray;
+    font-size: 3vh;
+    margin: 5vh auto;
+}
 
 /*----------LEFT------------*/
 
 #left {
     width: 40%;
-    height: 100%;
     max-height: 85vh;
+    position: relative;
 }
 
 #left h1 {
@@ -218,7 +292,7 @@ input:focus {
     color: grey;
 }
 
-#left p {
+#left dd{
     font-size: 3vh;
     color: dimgray;
 }
@@ -233,18 +307,27 @@ input:focus {
     padding: 2px 6px
 }
 
-#left li:hover {
+#left li:hover, .selectedItem{
     border-left: 2px solid #00bcd4;
     background-color: rgba(0, 0, 0, 0.07)
 }
 
+#left li:hover .btn{
+    display: block;
+}
+
 #btnAdicionar {
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 0;
-    font-size: 5vh;
+    font-size: 3vh;
     background-color: cadetblue;
-    padding: 5px
+    padding: 5px 10px;
+    transition:all 0.5s ease;
+    color: whitesmoke;
+}
+#btnAdicionar:hover{
+    padding-top: 10px;
 }
 
 
@@ -254,6 +337,8 @@ input:focus {
     margin-left: 0.6vw;
     width: 55%;
     min-height: 85vh;
+    position: relative;
+    display: none;
 }
 
 #right header {
@@ -262,13 +347,15 @@ input:focus {
     background-position: center;
     background-size: contain;
     height: 20vh;
+    position: relative;
 }
 
 #right header input {
     position: absolute;
-    bottom: 0;
+    left: 5px;
+    bottom: 5px;
     color: dimgray;
-    font-size: 5vh;
+    font-size: 7vh;
     font-weight: 900;
 }
 
@@ -285,9 +372,14 @@ input:focus {
     opacity: 1
 }
 
+#dados{
+    position: relative;
+}
+
 #dados p,
 #dados input {
     font-size: 4vh;
+    margin: auto 5px;
 }
 
 #dados p {
@@ -305,19 +397,20 @@ input:focus {
 
 #quantidade {
     position: absolute;
+    display: flex;
     right: 0;
-    top: 0;
-    display: flex
+    top:0;
 }
 
 #quantidade input {
     width: 70px;
     text-align: center;
-    margin-left: 7px
+    margin-left: 7px;
+    display: inline;
 }
 
 #descricao {
-    margin-top: 3px
+    margin-top: 3px;
 }
 
 #descricao textarea {
@@ -325,16 +418,8 @@ input:focus {
     font-size: 4vh;
 }
 
-#descricao textarea:focus {
-    background-color: whitesmoke;
-}
-
-#descricao textarea:hover {
-    background-color: whitesmoke
-}
-
-#descricao textarea:first-line {
-    text-decoration: overline;
+#unidade{
+    display: flex;
 }
 
 #instituicoes {
@@ -343,35 +428,14 @@ input:focus {
     box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.3);
     transition: 1s;
     min-height: 33vh;
-    background-color: rgba(95, 158, 160, 0.9)
+    background-color: rgba(95, 158, 160, 0.9);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 #instituicoes:hover {
     margin-top: -20vh;
     padding-bottom: 20vh;
     background-color: rgba(95, 158, 160, 1)
-}
-
-#opcoes {
-    bottom: 0;
-    width: 100%;
-    background-color: whitesmoke;
-}
-
-#btnEditar,
-#btnRemover {
-    font-size: 5vh;
-    padding: 5px;
-}
-
-#btnEditar {
-    background-color: dimgrey;
-    width: 71%
-}
-
-#btnRemover {
-    background-color: indianred;
-    position: absolute;
-    right: 0;
-    width: 30%
 }

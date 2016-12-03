@@ -5,17 +5,19 @@ use prjDoacao\sys\View as View;
 use prjDoacao\app\Views\partials as partials;
 
 /**
- * Index view
+ * Index Receptor view
  */
-class index extends View
+class indexReceptor extends View
 {
    public function render()
    {
        $head = new partials\head();
-       $head->setIncludeCss('css/intro.css');
-       $head->setIncludeScript('js/index.js');
+       $head->setIncludeCss('css/index.css');
        $head->render();
+       $nav = new partials\nav();
+       $nav->render();
        parent::render();
+       (new partials\footer)->render();
    }
    
 }

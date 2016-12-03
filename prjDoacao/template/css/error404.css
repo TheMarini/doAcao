@@ -1,0 +1,61 @@
+* {
+    text-align: center;
+    overflow: hidden
+}
+
+body {
+    background-color: #00bcd4;
+    color: #fff;
+}
+
+header {
+    height: 85vh;
+    background-color: #00bcd4;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1 {
+    text-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+header img {
+    height: 20vh;
+}
+
+footer {
+    background-color: gray;
+    box-shadow: 0px 5px 0px gray;
+    transition: transform 0.6s;
+    animation: go-up 2s
+}
+
+footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer button {
+    height: 15vh;
+    width: 100%;
+    cursor: pointer;
+    color: dimgray;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-size: 5vh;
+}
+
+footer:hover {
+    transform: translate(0, -5px);
+}
+
+@keyframes go-up {
+    from {
+        transform: translate(0, 10vh)
+    }
+    to {
+        transform: translate(0, 0)
+    }
+}

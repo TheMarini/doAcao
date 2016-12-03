@@ -10,7 +10,8 @@ use prjDoacao\app\Views\erro404 as erro404;
 class erro404Controller extends Controller
 {
     public function indexAction(){
-        $erroview = new erro404\erro404();
+        $data['%index%'] = BASE_URL;
+        $erroview = new erro404\erro404($data);
         $erroview->render();
     }
 }
