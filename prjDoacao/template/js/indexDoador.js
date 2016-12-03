@@ -1,10 +1,10 @@
-/* -- when main doc is ready 
+/* -- when main doc is ready --*/
 $('document').ready(function () {
-    $('#ul').mouseover(function () {
-        $('.li').css('opacity', '0.5');
-    });
+    var altura = parseInt($('header').height()) + parseInt($('header').css('padding')) +  parseInt($('header').css('padding')) + parseInt($('#conquistas').css('height')) + parseInt($('svg').css('padding')) + parseInt($('#first-post').css('height')) + parseInt($('#first-post').css('margin-bottom'));
+
+    $('#newsfeed').css('height', altura);
     
-    $('#ul').mouseleave(function () {
-        $('.li').css('opacity', '1');
+    $('.stat-container').click(function(){
+        $(this).css('height','200px');
     });
-});--*/
+});

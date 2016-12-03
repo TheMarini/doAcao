@@ -1,108 +1,147 @@
-.centralize{
+.centralize {
     display: flex;
     justify-content: center;
-    height: 100%;
 }
 
-hr{
+hr {
     border: 1px solid #00bcd4;
 }
 
+svg {
+    width: 95%;
+    height: 2px;
+    margin: 0 auto;
+    display: flex;
+    padding: 4px 0px;
+    stroke: whitesmoke
+}
+
+
 /* --- FEED --- */
-#newsfeed{
+
+#newsfeed {
     background-color: white;
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
-    min-height: 80vh;
     width: 60%;
     margin-top: 11vh;
 }
 
-#newsfeed header{
-    padding: 1em;  
+#newsfeed header {
+    padding: 1em;
     border-left: 2px solid #00bcd4;
 }
 
-#newsfeed header h1{
+#newsfeed header h1 {
     color: #00bcd4;
     font-size: 2em;
     font-weight: 400;
 }
 
+
 /* --- CONQUISTAS --- */
-#conquistas li{
+
+#conquistas li {
     display: flex;
     align-items: center;
     font-size: 3vh;
     transition: 0.5s;
     cursor: default;
+    opacity: 0.8
 }
-#conquistas li:hover{opacity: 1; background-color: whitesmoke}
 
-#conquistas li img{
-    width:  5%;
-    min-width:  30px;
+#conquistas li:hover {
+    opacity: 1;
+    background-color: whitesmoke
+}
+
+#conquistas li img {
+    width: 5%;
+    min-width: 30px;
     margin-right: 5px
 }
 
+
 /* --- POST --- */
+
+.post:first-child {
+    box-shadow: none;
+}
+
 .post {
     height: 250px;
     width: 100%;
-    margin: 0px 0px 5px 0px;
-    
-    background-color: rgba(0,0,0,0.01);
-    transition: 1s
+    margin-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.01);
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    transition: 1s;
 }
 
-.from {
-    color: black;
+.autor {
+    color: dimgray;
     display: flex;
     width: 50%;
 }
 
-.from img {
+.autor img {
     height: 10vh;
     width: 5vw;
     background-color: white;
 }
 
-.from .texto {
-    margin-left: 3px
+.autor .titulo {
+    margin-left: 3px;
 }
 
-.from h1 {
+.autor h1{
+    font-weight: 100;
     font-size: 3vh
 }
 
-.from h2 {
-    font-size: 2.3vh
+.autor .nome {
+    font-size: 4vh
 }
 
-.from p {
-    font-size: 2vh
+.autor .legenda {
+    font-size: 2.9vh;
+    font-weight: 100
 }
+.tempo {
+    float: right;
+    margin: 3px 6px;
+        font-size: 2.5vh
+}
+
 
 /* --- STATS --- */
-#stats{
+
+#stats {
     margin-left: 3%;
-    width: 30%;
     padding-top: 9vh;
     display: flex;
     flex-flow: column;
 }
 
-.stat-container{
+.stat-container {
     background-color: white;
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
     margin-top: 2vh;
+    transition: 0.5s;
+    width: 30vw;
+    cursor: pointer
 }
 
-.stat-container header h1{
+.stat-container:hover {
+    border-bottom: 2px solid #00bcd4;
+    padding-bottom: 100px
+}
+
+.stat-container header {
+    padding: 1em;
+    text-align: center
+}
+
+.stat-container header h1 {
     color: #00bcd4;
     font-size: 2em;
     font-weight: 400;
-}
-.stat-container header{
-    float: left;
-    padding: 1em;
 }
