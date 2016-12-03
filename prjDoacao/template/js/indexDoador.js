@@ -8,7 +8,7 @@ $('document').ready(function () {
 
     /*Expand aside*/
     var AlturaOriginal = parseInt($('.stat-container').css('height'));
-    var AlturaReduzida = AlturaOriginal - 67;
+    var AlturaReduzida = AlturaOriginal - 140;
 
     $('.stat-container').css('height', AlturaReduzida);
 
