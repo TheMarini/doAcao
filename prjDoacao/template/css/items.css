@@ -39,6 +39,44 @@ input:focus {
     outline-width: 0px;
 }
 
+/* --- CLASSES --- */
+
+.centralize{
+    display: flex;
+}
+
+.dataSection{
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1vh 1vh;
+    box-sizing: content-box;
+}
+
+.dataSection{
+    text-align: left;
+    width: 100%;
+}
+
+.dataSection span{
+    font-weight: 100;
+    color: black;
+}
+
+.dataSection tr{
+    width: 100%;
+}
+
+.dataSection tr td{
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 3vh;
+}
+
+.dataSection tr:last-child td{
+    border: none;
+}
+
 
 /*----------NAV------------*/
 
@@ -283,7 +321,7 @@ input:focus {
 
 #left h1 {
     font-size: 6vh;
-    color: cadetblue;
+    color: #00bcd4;
     margin-left: 5px
 }
 
@@ -373,21 +411,18 @@ input:focus {
 }
 
 #dados{
-    position: relative;
+    width: 40%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
 }
 
-#dados p,
-#dados input {
-    font-size: 4vh;
-    margin: auto 5px;
+#dados table{
+    font-size: 3vh;
 }
 
-#dados p {
-    color: black
-}
-
-#tipo input {
-    color: #00bcd4
+#dados h2{
+    color: #00bcd4;
 }
 
 #quantidade input,
@@ -423,19 +458,13 @@ input:focus {
 }
 
 #instituicoes {
-    color: whitesmoke;
+    width: 45%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
     text-align: center;
-    box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.3);
-    transition: 1s;
-    min-height: 33vh;
-    background-color: rgba(95, 158, 160, 0.9);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
 }
 
-#instituicoes:hover {
-    margin-top: -20vh;
-    padding-bottom: 20vh;
-    background-color: rgba(95, 158, 160, 1)
+#instituicoes h2{
+    color: #00bcd4;
+    margin-bottom: 1vh;
 }

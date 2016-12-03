@@ -53,8 +53,9 @@
             <ul id="itensList">
                 <!-- ajax request goes here -->
             </ul>
-        </article>
+        </article> 
         <article id="right">
+            <!-- Capa com carrossel de fotos -->
             <header>
                 <form id="cover">
                     <input type="file" id="file"  accept="image/*" style="display: none" />
@@ -62,29 +63,26 @@
                 <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
                 <input id="txtNome" type="text" value="Cestas Básicas" disabled>
             </header>
-            <section id="dados">
-                <p id="tipo">Tipo:
-                    <input id="txtTipo" type="text" value="Cestas Básicas" disabled>
-                </p>
-                <div id="quantidade">
-                    <p>Quantidade:</p>
-                    <input id="txtQuantidade" type="number" value="12" disabled>
-                </div>
-                <div id="unidade">
-                    <p>Unidade:</p>
-                    <input type="text" value="Cx" disabled>
-                </div>
-                <p id="descricao">Descrição:
-                    <textarea name="" id="txtDescricao" disabled>Cestas básicas TUPY contendo produtos não perecíveis. Lote 22/05</textarea>
-                </p>
-            </section>
-            
-            <section id="instituicoes">
-                <h2>INSTITUIÇÕS INTERESSADAS</h2>
-                <ul>
-                    <li></li>
-                </ul>
-            </section>
+            <!-- Dados da mercadoria -->
+            <div class="centralize">
+                <section id="dados" >
+                    <h2>DADOS DA MERCADORIA</h2>
+                    <table class="dataSection">
+                        <tr><td>Tipo: <span id="valTipo">Aqui é um tipo!</span></td></tr>
+                        <tr><td>Unidade: <span id="valUnidade">Aqui é uma unidade!</span></td></tr>
+                        <tr><td>Quantidade: <span id="valQuantidade">Aqui é uma quantidade!</span></td></tr>
+                        <tr><td>Descrição: <span id="valDescricao">Aqui é uma descricao</span></td></tr>         
+                    </table>
+                </section>
+                <!-- Instituições Interessadas -->       
+                <section id="instituicoes" >
+                    <h2>INSTITUIÇÕS INTERESSADAS</h2>
+                    <span class="msg show">Nenhuma instituição interessada!</span>
+                    <ul>
+                        <li></li>
+                    </ul>
+                </section>
+            </div>
         </article>
     </article>
 </body>

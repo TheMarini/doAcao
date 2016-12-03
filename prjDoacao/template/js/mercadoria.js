@@ -1,5 +1,6 @@
 /* GLOBAL VARS*/
 TipoMercadoria = [];
+Mercadorias = [];
 
 /* FUNCTIONS */
 function listarItens(){
@@ -112,12 +113,12 @@ function selecionarItem(target){
                 $('#txtNome').val(result.nome);
                 TipoMercadoria.forEach(function(item){
                     if(item.codigo == result.tipo){
-                        $('#txtTipo').val(item.nome);
+                        $('#valTipo').text(item.nome);
                     }
                 });
-                $('#txtDescricao').val(result.descricao);
-                $('#txtQuantidade').val(result.quantidade);
-                $('#unidade > input').val(result.unidade);
+                $('#valDescricao').text(result.descricao);
+                $('#valQuantidade').text(result.quantidade);
+                $('#valUnidade').text(result.unidade);
             },
             error: function () {
                 alert('Erro ao realizar requisição Ajax');
