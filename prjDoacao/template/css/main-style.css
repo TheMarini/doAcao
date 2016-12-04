@@ -131,6 +131,45 @@ body {
     background: cadetblue;
 }
 
+/* flex objects */
+
+.centralize{
+    display: flex;
+}
+
+/* table data sections */
+.dataSection{
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1vh 1vh;
+    box-sizing: content-box;
+}
+
+.dataSection{
+    text-align: left;
+    width: 100%;
+}
+
+.dataSection span{
+    font-weight: 100;
+    color: black;
+}
+
+.dataSection tr{
+    width: 100%;
+}
+
+.dataSection tr td{
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 1vh;
+}
+
+.dataSection tr:last-child td{
+    border: none;
+}
+
 /* - BlackCover to hide back elements - */
 #blackcover{
     position: fixed;

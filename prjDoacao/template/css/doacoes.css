@@ -41,48 +41,32 @@ input:focus {
 
 /* --- CLASSES --- */
 
-.centralize{
+.controls{
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.7vh;
 }
 
-.dataSection{
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 5px;
-    margin: 1vh 1vh;
-    box-sizing: content-box;
+.controls .btn{
+    background: #00bcd4;
+    border-radius: 3px;
+    font-size: 2.5vh;
+    color: #fff;
+    padding: 0.5vh;
+    margin-left: 0.5vh;
 }
 
-.dataSection{
-    text-align: left;
-    width: 100%;
+.controls .btn:active{
+    background: #00acd4;
 }
 
-.dataSection span{
-    font-weight: 100;
-    color: black;
+.controls .btn.delete{
+    background: #ff4444;
 }
 
-.dataSection tr{
-    width: 100%;
-}
-
-.dataSection tr td{
-    border-bottom: 1px solid #e0e0e0;
-    width: 100%;
-    padding: 3vh;
-}
-
-.dataSection tr:last-child td{
-    border: none;
-}
-
-
-/*----------NAV------------*/
-
-#home {
-    position: absolute;
-    border-radius: 100%
+.controls .btn.delete:active{
+    background: #de4444;
 }
 
 
@@ -130,107 +114,6 @@ input:focus {
     background-color: indianred
 }
 
-
-/*----------ADICIONAR------------*/
-
-#adicionar {
-    z-index: 6;
-    position: absolute;
-    width: 50%;
-    left: 25vw;
-    color: black;
-    font-size: 4vh;
-    border-bottom: solid cadetblue 5px
-}
-
-#adicionar header {
-    display: flex;
-    justify-content: space-between;
-    background-color: cadetblue;
-    overflow: hidden;
-    width: 100%
-}
-
-#adicionar h1 {
-    background-color: cadetblue;
-    font-size: 5vh;
-    text-align: center;
-    color: whitesmoke;;
-    margin: 0 auto;
-}
-
-#adicionar button {
-    cursor: pointer;
-    color: whitesmoke;
-    transition: 0.5s ease;
-    outline: none;
-}
-#adicionar button:hover{
-    transform: scale(1.05,1.05);
-    
-    box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.12), 0px 0px 20px 0 rgba(0, 0, 0, 0.24);
-}
-
-#btnVoltar{
-    background-color: cadetblue;
-    width: 6vw;
-    font-size: 2.5vh;
-}
-#btnVoltar:hover{background-color: transparent}
-
-#btnConcluir{
-    background-color: rgba(140, 180, 160, 1);;
-    margin-right: -0.1px;
-    width: 11vw;
-        font-size: 3.3vh;
-    text-decoration: underline
-}
-
-#frmNovo{
-    background-color: gainsboro; 
-    padding: 8px; 
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-}
-
-.flexFullLine{
-    flex-basis: 100%;
-}
-
-#frmNovo label span{
-    display: block;
-    color: dimgray;
-}
-#frmNovo input {
-    background-color: white;
-    text-align: center;
-    font-size: 4.5vh;
-}
-#frmNovo select{
-    padding: 2px;
-    font-size: 4.5vh;
-}
-
-#frmNovo textarea {
-    background-color: white;
-    font-size: 4vh;
-    max-height: 18vh
-}
-#frmNovo input[type="number"]{
-    position: absolute;
-    width: 10%;
-}
-
-#add-nome {
-    width: 100%;
-}
-
-#frmNovo .selected{
-    background: rgba(5, 225, 255, 0.7);
-    transition: 0.5s;    
-}
-
 /*----------ARTICLE------------*/
 
 #content {
@@ -264,17 +147,22 @@ input:focus {
     position: relative;
 }
 
-#itensList .controls{
+#itensList .status{
     top: 0;
     right: 0;
 }
 
-.controls{
+.status{
     display: flex;
     position: absolute;
     height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.status span{
+    margin-right: 5px;
+    font-size: 2.5vh;
 }
 
 #itensList .btn{
@@ -354,21 +242,6 @@ input:focus {
     display: block;
 }
 
-#btnAdicionar {
-    position: absolute;
-    right: 5px;
-    top: 0;
-    font-size: 3vh;
-    background-color: cadetblue;
-    padding: 5px 10px;
-    transition:all 0.5s ease;
-    color: whitesmoke;
-}
-#btnAdicionar:hover{
-    padding-top: 10px;
-}
-
-
 /*----------RIGHT------------*/
 
 #right {
@@ -411,7 +284,7 @@ input:focus {
 }
 
 #dados{
-    width: 40%;
+    width: 45%;
     margin: 2vh 2vh;
     font-size: 2vh;
     text-align: center;
@@ -425,46 +298,18 @@ input:focus {
     color: #00bcd4;
 }
 
-#quantidade input,
-#descricao textarea {
-    color: gray
-}
-
-#quantidade {
-    position: absolute;
-    display: flex;
-    right: 0;
-    top:0;
-}
-
-#quantidade input {
-    width: 70px;
-    text-align: center;
-    margin-left: 7px;
-    display: inline;
-}
-
-#descricao {
-    margin-top: 3px;
-}
-
-#descricao textarea {
-    display: flex;
-    font-size: 4vh;
-}
-
-#unidade{
-    display: flex;
-}
-
-#instituicoes {
+#instituicao {
     width: 45%;
     margin: 2vh 2vh;
     font-size: 2vh;
     text-align: center;
 }
 
-#instituicoes h2{
+#instituicao table{
+    font-size: 3vh;
+}
+
+#instituicao h2{
     color: #00bcd4;
     margin-bottom: 1vh;
 }

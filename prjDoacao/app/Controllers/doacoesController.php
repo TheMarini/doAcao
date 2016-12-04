@@ -28,10 +28,10 @@ class doacoesController extends Controller
             return;
         }
 
-       // if(!$this->request->isAjax()){
-         //   header('Location: ' . BASE_URL . 'doacoes');
-           // return;
-        //}
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'doacoes');
+            return;
+        }
 
         $doacaomodel = new Doacao();
         $listarview = new view\listar([],$doacaomodel->Listar());

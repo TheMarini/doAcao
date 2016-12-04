@@ -20,8 +20,8 @@ class Necessidade extends Model
     function __construct($_usuario = null, $_tipo = null, $_unidade = null) 
     {
         parent::__construct();
-        if(!is_null($_usuario) && !is_null($_tipo) && !is_null($_unidade)){
-            $comand = "SELECT * FROM necessidade WHERE cd_usuario = $_usuario AND cd_tipo_mercadoria = $_tipo AND cd_unidade = $_unidade";
+        if(!(is_null($_usuario) && is_null($_tipo) && is_null($_unidade))){
+            $comand = "SELECT * FROM necessidade WHERE cd_usuario = $_usuario AND cd_tipo_mercadoria = $_tipo AND sg_unidade = '$_unidade'";
             $result = $this->db->query($comand);
 
             if($result){
