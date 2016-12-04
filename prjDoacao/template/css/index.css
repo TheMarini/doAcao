@@ -16,6 +16,14 @@ svg {
     stroke: whitesmoke
 }
 
+progress {
+    width: 100%;
+    height: 5vh
+}
+
+body {
+    background-color: whitesmoke
+}
 
 /* --- FEED --- */
 
@@ -25,7 +33,8 @@ svg {
     width: 62.5%;
     margin-top: 11vh;
     position: absolute;
-    left: 10vh
+    left: 10vh;
+    transition: 0.5s ease-out
 }
 
 #newsfeed header {
@@ -71,8 +80,8 @@ svg {
 
 .post {
     width: 100%;
-    margin-bottom: 5px;
-    background-color: rgba(0, 0, 0, 0.01);
+    margin-bottom: 10px;
+    background-color: white;
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
     transition: 1s;
 }
@@ -87,52 +96,102 @@ svg {
     height: 10vh;
     width: 5vw;
     background-color: white;
+    background-image: url('../img/bg/cubos.jpg');
+    background-position: center;
+    background-size: 50px;
 }
 
-.autor .titulo {
+.time {
+    float: right;
+    margin: 3px 6px;
+    font-size: 2.5vh;
+    transition: 0.5s
+}
+
+.titulo {
     margin-left: 3px;
 }
 
-.autor h1{
+.legenda {
+    font-size: 3.5vh;
+}
+
+/* --- TEXT and PROGRESS --- */
+
+.post-txt .cont,
+.post-progress .cont {
+    box-sizing: content-box;
+    padding: 10px;
+    font-size: 3.5vh;
+    font-weight: 100
+}
+
+.post-txt .autor h1,
+.post-progress .autor h1 {
     font-weight: 100;
     font-size: 3vh
 }
 
-.autor .nome {
+.post-txt .autor .nome,
+.post-progress .autor .nome {
     font-size: 4vh
 }
 
-.autor .legenda {
-    font-size: 2.9vh;
-    font-weight: 100
-}
-.tempo {
-    float: right;
-    margin: 3px 6px;
-    font-size: 2.5vh
+
+/* --- POST IMAGE --- */
+.post-img .autor {
+    position: absolute;
+    color: white;
+    align-items: center;
+    opacity: 0.2;
+    transition: 0.5s;
+    margin: 6px
 }
 
-.cont p{
-    font-size: 3.5vh;
-    color: dimgray;
-    text-align: justify
+.post-img .autor img {
+    height: 7vh;
+    width: 4vw;
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 1);
+    border-radius: 100%;
 }
 
-.cont-txt{
-    box-sizing: content-box;
-    padding: 10px
+.post-img a {
+    color: white
 }
 
-.cont img{
+.post-img .titulo {
+    margin-left: 5px
+}
+
+.post-img .time {
+    position: absolute;
+    right: 0;
+    color: white;
+    opacity: 0.2
+}
+
+.post-img .cont {
+    display: flex;
+    flex-flow: column
+}
+
+.post-img .cont img {
     max-width: 100%;
+    cursor: pointer
 }
 
-.cont-img p{
+.post-img .cont footer {
     box-sizing: content-box;
-    padding: 4px 10px 5px 10px;
-    background-color: dimgray;
+    padding: 5px 10px 5px 10px;
+    overflow: hidden;
+    border-top: 5px solid dimgray;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post-img .cont .legenda {
+    bottom: 0;
     color: whitesmoke;
-    margin-top: -5px
+    font-size: 3.2vh;
 }
 
 
@@ -153,7 +212,7 @@ svg {
     margin-top: 2vh;
     transition: 0.5s;
     width: 30vw;
-    overflow: hidden
+    overflow: hidden;
 }
 
 .stat-container header {
@@ -179,14 +238,15 @@ svg {
 
 .stat-container li:hover {
     border-left: 2px solid #00bcd4;
-    background-color: rgba(0, 0, 0, 0.07)
+    background-color: rgba(0, 0, 0, 0.03)
 }
 
-.stat-container button{
+.stat-container button {
     width: 100%;
     height: 3vh;
     cursor: pointer;
     background-color: #00bcd4;
     color: whitesmoke;
-    font-size: 2vh
+    font-size: 2vh;
+    font-weight: 900
 }
