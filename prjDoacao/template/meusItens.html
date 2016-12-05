@@ -1,111 +1,147 @@
-    <div id="blackcover" hidden></div>
-    <div id="mensagem" hidden>
-        <h1>Deseja realmente excluir esse item?</h1>
-        <div id="opc">
-            <button id="nao" class="btn">Não</button>
-            <button id="sim" class="btn">Sim</button>
-        </div>
+<div id="blackcover" hidden></div>
+<div id="mensagem" hidden>
+    <h1>Deseja realmente excluir esse item?</h1>
+    <div id="opc">
+        <button id="nao" class="btn">Não</button>
+        <button id="sim" class="btn">Sim</button>
     </div>
+</div>
 
-    <div id="adicionar" hidden>
-        <header>
-            <button id="btnVoltar">voltar</button>
-            <h1>adicionar um item</h1>
-            <button id="btnConcluir">concluir</button>
-        </header>
-        <form id="frmNovo">
-            <label class="flexFullLine">
-                <span>Nome do item</span>
-                <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
-            </label>
-            <label>
-                <span>Tipo</span>
-                <input type="text" id="tipoMercadoria" placeholder="ex.: roupa" >
-                <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
-                <ul id="tipos" class="dropDownList">
+<div id="adicionar" hidden>
+    <header>
+        <button id="btnVoltar">voltar</button>
+        <h1>adicionar um item</h1>
+        <button id="btnConcluir">concluir</button>
+    </header>
+    <form id="frmNovo">
+        <label class="flexFullLine">
+            <span>Nome do item</span>
+            <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
+        </label>
+        <label>
+            <span>Tipo</span>
+            <input type="text" id="tipoMercadoria" placeholder="ex.: roupa">
+            <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
+            <ul id="tipos" class="dropDownList">
                 <!-- ajax request goes here -->
-                </ul>
-                </select>
-            </label>
-            <label>
-                <span>Unidade</span>
-                <select id="unid">
+            </ul>
+            </select>
+        </label>
+        <label>
+            <span>Unidade</span>
+            <select id="unid">
                 <!-- ajax request goes here 
                     <option value="Un">Un</option>
                 -->
-                </select>
-            </label>
-            <label>
-                <span>Quantidade</span>
-                <input type="number" id="nbrQuantidade" min="1" value="1">
-            </label>
-            <label class="flexFullLine">
-                <span>Descrição</span>
-                <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
-            </label>
-        </form>
-    </div>
+            </select>
+        </label>
+        <label>
+            <span>Quantidade</span>
+            <input type="number" id="nbrQuantidade" min="1" value="1">
+        </label>
+        <label class="flexFullLine">
+            <span>Descrição</span>
+            <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+        </label>
+    </form>
+</div>
 
-    <article id="content">
-        <article id="left">
-            <h1>MEUS ITEMS</h1>
-            <button id="btnAdicionar" class="btn">adicionar item</button>
-            <ul id="itensList">
-                <!-- ajax request goes here -->
-            </ul>
-        </article> 
-        <article id="right">
-            <!-- Capa com carrossel de fotos -->
-            <header>
-                <form id="cover">
-                    <input type="file" id="file"  accept="image/*" style="display: none" />
-                </form>
-                <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
-                <input id="txtNome" type="text" value="Cestas Básicas" disabled>
-            </header>
-            <!-- Dados da mercadoria -->
-            <div class="centralize">
-                <section id="dados" >
-                    <h2>DADOS DA MERCADORIA</h2>
-                    <table class="dataSection">
-                        <tr><td>Tipo: <span id="valTipo">Aqui é um tipo!</span></td></tr>
-                        <tr><td>Unidade: <span id="valUnidade">Aqui é uma unidade!</span></td></tr>
-                        <tr><td>Quantidade: <span id="valQuantidade">Aqui é uma quantidade!</span></td></tr>
-                        <tr><td>Descrição: <span id="valDescricao">Aqui é uma descricao</span></td></tr>         
-                    </table>
-                </section>
-                <!-- Instituições Interessadas -->       
-                <section id="instituicoes" >
-                    <h2>INSTITUIÇÕS INTERESSADAS</h2>
-                    <ul id="matchList">
-                        <li value="0">
-                            <h3>Cada da vó benedita</h3>
-                            <dd id="valLocal">Santos/SP</dd>
-                            <div class="controls">
-                                <a href="">Ver Perfil</a>
-                                <button class="btn">Doar</a>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-        </article>
+<article id="content">
+    <article id="left">
+        <h1>MEUS ITEMS</h1>
+        <button id="btnAdicionar" class="btn">adicionar item</button>
+        <ul id="itensList">
+            <!-- ajax request goes here -->
+        </ul>
     </article>
-
-    <div id="frmNovaDoacao" hidden>
+    <article id="right">
+        <!-- Capa com carrossel de fotos -->
         <header>
-            <button id="btnVoltarDoa">voltar</button>
-            <h1>efetuar doação</h1>
-            <button id="btnConcluirDoa">concluir</button>
+            <form id="cover">
+                <input type="file" id="file" accept="image/*" style="display: none" />
+            </form>
+            <img id="camera" src="%TEMPLATE_PATH%img/icons/camera.png" alt="camera">
+            <input id="txtNome" type="text" value="Cestas Básicas" disabled>
         </header>
-        <form id="frmNovo">
-            <label>
-                <span>Quantidade</span>
-                <input type="number" id="nbrQuantidadeDoa" min="1" value="1">
-                <input type="hidden" id="indexComb" value="-1">
-            </label>
-        </form>
+
+        <!-- Dados da mercadoria -->
+        <div class="centralize">
+            <section id="dados">
+                <h2>DADOS DA MERCADORIA</h2>
+                <table class="dataSection">
+                    <tr>
+                        <td>Tipo: <span id="valTipo">Aqui é um tipo!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Unidade: <span id="valUnidade">Aqui é uma unidade!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Quantidade: <span id="valQuantidade">Aqui é uma quantidade!</span></td>
+                    </tr>
+                    <tr>
+                        <td>Descrição: <span id="valDescricao">Aqui é uma descricao</span></td>
+                    </tr>
+                </table>
+            </section>
+            <!-- Instituições Interessadas -->
+            <section id="instituicoes">
+                <h2>INSTITUIÇÕS INTERESSADAS</h2>
+                <ul id="matchList">
+                    <li value="0">
+                        <h3>Cada da vó benedita</h3>
+                        <dd id="valLocal">Santos/SP</dd>
+                        <div class="controls">
+                            <a href="">Ver Perfil</a>
+                            <button class="btn">Doar</a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </article>
+</article>
+
+<div id="frmNovaDoacao" hidden>
+    <header>
+        <button id="btnVoltarDoa">voltar</button>
+        <h1>efetuar doação</h1>
+        <button id="btnConcluirDoa">concluir</button>
+    </header>
+    <form id="frmNovo">
+        <label>
+            <span>Quantidade</span>
+            <input type="number" id="nbrQuantidade" min="1" value="1">
+        </label>
+    </form>
+</div>
+
+<div id="blackcover"></div>
+<div id="frmNovaDoacao">
+    <header>
+        <button id="btnVoltarDoa">voltar</button>
+        <h1>efetuar doação</h1>
+        <button id="btnConcluirDoa">concluir</button>
+    </header>
+    <form id="frmNovo">
+        <label class="flexFullLine">
+            <span>Nome do Item</span>
+            <input type="text" id="txtNome" class="txt" readonly>
+        </label>
+        <label>
+            <span>Tipo</span>
+            <input type="text" class="txt" id="tipoMercadoriaDoa" readonly>
+        </label>
+        <label>
+            <span>Unidade</span>
+            <input id="unid" name="unidMercadoriaDoa" value="0" readonly>
+        </label>
+        <label>
+            <span>Quantidade</span>
+            <input type="number" id="nbrQuantidadeDoa" min="1" value="1" style="color: cadetblue; border: 2px solid cadetblue">
+        </label>
+    </form>
 </div>
 
 </body>
+
 </html>
