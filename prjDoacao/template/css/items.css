@@ -468,3 +468,33 @@ input:focus {
     color: #00bcd4;
     margin-bottom: 1vh;
 }
+
+/* --- Interessados --- */
+#matchList{
+}
+#matchList li{
+    position: relative;
+    padding: 1vh;
+    border-top: 1px solid #e4e4e4;
+}
+
+#matchList li:first-child{
+    border-top: none;
+}
+
+#matchList li h3{
+    text-align: left;
+}
+
+#matchList li dd{
+    text-align: left;
+}
+
+#matchList li .controls{
+    top: 0;
+    right: 0;
+}
+
+#matchList .btn{
+    margin-left: 2vh;
+}

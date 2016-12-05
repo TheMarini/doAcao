@@ -7,23 +7,23 @@ use prjDoacao\app\Views\partials as partials;
 /**
  * Show Perfil of request user
  */
-class perfil extends View
+class perfilReceptor extends View
 {
     public function render()
     {
         $head = new partials\head();
         $head->setIncludeCss('css/perfil.css');
+        $head->setIncludeCss('js/slick/slick.css');
+        $head->setIncludeScript('js/slick/slick.min.js');
+        $head->setIncludeScript('js/perfilReceptor.js');
         $head->setTitle($this->model->nome);
         $head->render();
         $nav = new partials\nav();
         $nav->render();
-        if($this->model->tipo == 1){
-            $this->data['%nome_usuario%'] = $this->model->nome;
-            $this->data['%usuario_photo%'] = BASE_URL . $this->model->getPhoto();
-            $this->setTemplate('perfilDoador');            
-        }else{
-            
-        }
+
+        $this->data['%nome_usuario%'] = $this->model->nome;
+        $this->data['%usuario_photo%'] = BASE_URL . $this->model->getPhoto();
+
         parent::render();
     }
 }

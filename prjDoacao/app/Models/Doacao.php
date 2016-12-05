@@ -14,6 +14,7 @@ class Doacao extends Model
     public $dataInicio;
     public $dataTermino;
     public $codigoValidar;
+    public $quantDoacao;
     public $pontos;
     public $mercadoria;
     public $necessidade;
@@ -22,11 +23,11 @@ class Doacao extends Model
 
     public function Listar($status = null)
     {
-        $comand = "SELECT * FROM doacao";
+        $comand = "SELECT * FROM doacao d join mercadoria m on (d.cd_mercadoria_doacao = m.cd_mercadoria)";
         if(Session::getSession('userid')->tipo != 2)
-            $comand .= " d join mercadoria m on (d.cd_mercadoria_doacao = m.cd_mercadoria) WHERE m.cd_usuario = " . Session::getSession('userid')->codigo;
+            $comand .= " WHERE m.cd_usuario = " . Session::getSession('userid')->codigo;
         else{
-            $comand .= " WHERE cd_usuario = ". Session::getSession('userid')->codigo;   
+            $comand .= " WHERE d.cd_usuario = ". Session::getSession('userid')->codigo;   
         }
 
         if($status == 1){
@@ -47,15 +48,34 @@ class Doacao extends Model
                 $doacao->dataInicio = $row[1];
                 $doacao->dataTermino = $row[2];
                 $doacao->codigoValidar = $row[3];
-                $doacao->pontos = $row[4];
-                $doacao->mercadoria = new Mercadoria($row[5]);
-                $doacao->necessidade = new Necessidade($row[6], $row[7], $row[8]);
+                $doacao->quantDoacao = $row[4];
+                $doacao->pontos = $row[5];
+                $doacao->mercadoria = new Mercadoria($row[6]);
+                $doacao->necessidade = new Necessidade($row[7], $row[8], $row[9]);
                 $doacao->status = $row[2] == null? 1:2;
-                $doacao->anonima = $row[9];
+                $doacao->anonima = $row[10];
                 $listDoacao[] = $doacao;
             }
             return $listDoacao;
         }
         return false;
     }
+
+    public function Salvar(){
+
+        $cd_mercadoria = $this->mercadoria->codigo;
+        $cd_tipo_mercadoria = $this->mercadoria->tipo;
+        $cd_unidade = $this->mercadoria->unidade;
+        $quantidade = $this->mercadoria->quantidade;
+
+        $comand = "INSERT INTO doacao VALUES(NULL, now(), NULL, NULL, $this->quantDoacao, NULL, , $cd_mercadoria, $cd_tipo_mercadoria, '$cd_unidade', $this->anonima)";
+        
+        if($result = $this->db->query($comand)){
+            $result = $this->db->query("UPDATE mercadoria SET qt_mercadoria = $quantidade - 1 WHERE cd_mercadoria = $cd_mercadoria");
+            return $result === true;
+        }
+        
+        return false;
+    }
+
 }

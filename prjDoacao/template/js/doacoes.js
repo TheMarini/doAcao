@@ -19,18 +19,22 @@ function listarItens() {
        },
        complete: function () {
            $('#itensList').empty();
-           var cd = 0;
-           doacoesList.forEach(function(item) {
-                var newitem  = '<li value="'+ cd +'">';
-                    newitem += '<h2 class="nome">'+item.mercadoria.nome+'</h2>';
-                    newitem += '<dd>para: <span class="interessados"><a href="'+ BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo +'">'+item.necessidade.usuario.nome+'</a></span></dd>';
-                    newitem += '<div class="status"><span>'+ (item.status == 1 ? 'Em Andamento' : 'Finalizada') +'</span></div>'
-                    newitem += '</li>'; 
-                    newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
-                $('#itensList').append(newitem);
-                cd++;
-           });
-           selecionarItem(0);
+           if(doacoesList.lenght > 0){
+                var cd = 0;
+                doacoesList.forEach(function(item) {
+                        var newitem  = '<li value="'+ cd +'">';
+                            newitem += '<h2 class="nome">'+item.mercadoria.nome+'</h2>';
+                            newitem += '<dd>para: <span class="interessados"><a href="'+ BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo +'">'+item.necessidade.usuario.nome+'</a></span></dd>';
+                            newitem += '<div class="status"><span>'+ (item.status == 1 ? 'Em Andamento' : 'Finalizada') +'</span></div>'
+                            newitem += '</li>'; 
+                            newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
+                        $('#itensList').append(newitem);
+                        cd++;
+                });
+                selecionarItem(0);
+           }else{
+               $('#itensList').append('<p>Nenhuma doação até o momento </p>');
+           }
          }
     });
 }
