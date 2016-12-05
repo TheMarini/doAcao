@@ -1,5 +1,5 @@
 body {
-    background-color: gainsboro
+    background-color: whitesmoke
 }
 
 form {
@@ -7,14 +7,11 @@ form {
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
     width: 90%;
     min-height: 85vh;
-    margin-top: 11vh;
+    margin-top: 13vh;
     margin-bottom: 0.5vh;
     box-sizing: content-box;
     padding: 10px
 }
-
-input,textarea{
-    background-color: whitesmoke;}
 
 header {
     display: flex;
@@ -52,31 +49,21 @@ header {
     text-align: center;
     height: 10vh;
     width: 100%;
+    background-color: gainsboro;
 }
 
 #personal textarea {
     width: 100%;
     resize: none;
     margin-top: 4px;
+    background-color: whitesmoke;
     min-height: 24.2vh;
     font-size: 4vh;
     box-sizing: border-box;
     padding: 5px
 }
 
-#endereco{background-color: dimgray; height: 20%}
 #endereco input{
-    height: 5vh;
-    text-align: center;
-    font-size: 4vh;
+    background-color: gainsboro;
+    height: 5vh
 }
-
-#cep{
-    border: 2px solid dimgray
-}
-
-#rua{
-    width: 100%
-}
-
-#items{height: 10vh;position: absolute; z-index: 90}
