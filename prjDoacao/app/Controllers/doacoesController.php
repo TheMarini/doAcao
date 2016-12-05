@@ -58,8 +58,9 @@ class doacoesController extends Controller
         $novadoacao->quantDoacao = $this->request->post('quantidade');
         $novadoacao->mercadoria = new Mercadoria($this->request->post('mercadoria'));
         $novadoacao->usuario = (new Usuario)->getById(($this->request->post('usuario')));
-        $novadoacao->anonima = ($this->request->post('usuario') == 'yes')? true:false;
+        $novadoacao->anonima = ($this->request->post('anonima') == 'yes')? true:false;
 
+        var_dump($novadoacao->mercadoria);        
         if($novadoacao->Salvar()){
             echo 'foi';
         }else{

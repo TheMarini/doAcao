@@ -187,8 +187,20 @@ function removerItem(_codigo){
 
 //DOAR item
 
-function doarItem(_codigo){
+function doarItem(_index, _quantidade){
+    var comb = Combinacoes[_index];
 
+    $.ajax({
+        type: 'POST',
+        data: {quantidade: _quantidade, usuario: comb.usuarioReceptor.codigo, mercadoria: comb.codigoMercadoria.codigo, anonima: 'yes'},
+        url: '/doacoes/novo',
+        success: function(result){
+            alert(result);
+        },
+        error: function () {
+            alert('Ajax Error');
+          }
+    })
 }
 
 
@@ -317,9 +329,16 @@ $(document).ready(function(){
 
     //DOAR item
     $('#matchList').on('click', 'li button', function(){
-        var index = $(this).closest('li').val();
+        $('#indexComb').val($(this).closest('li').val());
         $('#frmNovaDoacao').toggle();        
     })
-    
+
+    //btnConcluirDoa
+    $('#btnConcluirDoa').click(function(){
+        var quantidade = $('#nbrQuantidadeDoa').val();
+        var indexComb = $('#indexComb').val();
+
+        doarItem(indexComb, quantidade);
+    });    
 
 })

@@ -91,6 +91,9 @@ class Mercadoria extends Model
     public function Salvar()
     {
         $comand = "INSERT INTO mercadoria VALUES(NULL, '$this->nome', '$this->descricao', $this->quantidade, $this->usuario, $this->tipo, '$this->unidade')";
+        
+        $this->db->query("DELETE FROM combinacao");
+
         $result = $this->db->query($comand);
         
         if($result){
