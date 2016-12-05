@@ -1,5 +1,8 @@
 /* GLOBAL VARS*/
 TipoMercadoria = [];
+Mercadorias = [];
+Combinacoes = [];
+
 
 /* FUNCTIONS */
 function listarItens(){
@@ -14,6 +17,41 @@ function listarItens(){
         }
 
     });
+}
+
+function listarMatch(codigo){
+    $.ajax({
+        dataType: 'json',
+        type: 'GET',
+        url:'mercadoria/listarCombinacoes/'+codigo,
+        data: {cd: codigo},
+        success: function(result){
+            Combinacoes = result;
+        },
+        error: function(){
+            alert('Erro ao efetuar Ajax');
+        },
+        complete: function(){
+            $('#matchList').empty();
+            if(Combinacoes == ""){
+                $('#matchList').append('<span class="msg show">Nenhuma instituição interessada!</span>');
+                return;
+            }
+
+            index = 0;
+            Combinacoes.forEach(function(comb) {
+                var item = '<li value="'+index+'">';
+                   item += '<h3>'+comb.usuarioReceptor.nome+'</h3>';
+                   item += '<dd id="valLocal">'+comb.usuarioReceptor.cep+'</dd>';
+                   item +=  '<div class="controls"><a href="'+BASE_URL+'usuario/perfil/'+ comb.usuarioReceptor.codigo+'">Ver Perfil</a><button class="btn">Doar</a></div></li>';
+                
+                $('#matchList').append(item); 
+                item++;
+            });
+
+
+        }
+    })
 }
 
 function toggleAddItem(){
@@ -112,12 +150,13 @@ function selecionarItem(target){
                 $('#txtNome').val(result.nome);
                 TipoMercadoria.forEach(function(item){
                     if(item.codigo == result.tipo){
-                        $('#txtTipo').val(item.nome);
+                        $('#valTipo').text(item.nome);
                     }
                 });
-                $('#txtDescricao').val(result.descricao);
-                $('#txtQuantidade').val(result.quantidade);
-                $('#unidade > input').val(result.unidade);
+                $('#valDescricao').text(result.descricao);
+                $('#valQuantidade').text(result.quantidade);
+                $('#valUnidade').text(result.unidade);
+                listarMatch(cd);
             },
             error: function () {
                 alert('Erro ao realizar requisição Ajax');
@@ -145,6 +184,12 @@ function removerItem(_codigo){
             alert('Erro ao realizar requisição Ajax');
         }
     })
+}
+
+//DOAR item
+
+function doarItem(_codigo){
+
 }
 
 
@@ -270,6 +315,11 @@ $(document).ready(function(){
         removerItem(cd);
         toggleMensagem();
     });
-    
+
+    //DOAR item
+    $('#matchList').on('click', 'li button', function(){
+        var index = $(this).closest('li').val();
+        $('#frmNovaDoacao').toggle();        
+    })
 
 })

@@ -39,6 +39,43 @@ input:focus {
     outline-width: 0px;
 }
 
+/* --- CLASSES --- */
+
+.centralize{
+    display: flex;
+}
+
+.dataSection{
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1vh 1vh;
+    box-sizing: content-box;
+}
+
+.dataSection{
+    text-align: left;
+    width: 100%;
+}
+
+.dataSection span{
+    font-weight: 100;
+    color: black;
+}
+
+.dataSection tr{
+    width: 100%;
+}
+
+.dataSection tr td{
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 3vh;
+}
+
+.dataSection tr:last-child td{
+    border: none;
+}
 
 /*----------NAV------------*/
 
@@ -283,8 +320,8 @@ input:focus {
 
 #left h1 {
     font-size: 6vh;
-    color: cadetblue;
-    margin-left: 5px
+    color: #00bcd4;
+    margin-left: 5px;
 }
 
 #left h2 {
@@ -357,6 +394,7 @@ input:focus {
     color: dimgray;
     font-size: 7vh;
     font-weight: 900;
+
 }
 
 #right header img {
@@ -373,21 +411,18 @@ input:focus {
 }
 
 #dados{
-    position: relative;
+    width: 40%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
 }
 
-#dados p,
-#dados input {
-    font-size: 4vh;
-    margin: auto 5px;
+#dados table{
+    font-size: 3vh;
 }
 
-#dados p {
-    color: black
-}
-
-#tipo input {
-    color: #00bcd4
+#dados h2{
+    color: #00bcd4;
 }
 
 #quantidade input,
@@ -423,19 +458,125 @@ input:focus {
 }
 
 #instituicoes {
-    color: whitesmoke;
+    width: 45%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
     text-align: center;
-    box-shadow: 0px 0px 5px 0 rgba(0, 0, 0, 0.3);
-    transition: 1s;
-    min-height: 33vh;
-    background-color: rgba(95, 158, 160, 0.9);
+}
+
+#instituicoes h2{
+    color: #00bcd4;
+    margin-bottom: 1vh;
+}
+
+/* --- Interessados --- */
+#matchList{
+}
+#matchList li{
+    position: relative;
+    padding: 1vh;
+    border-top: 1px solid #e4e4e4;
+}
+
+#matchList li:first-child{
+    border-top: none;
+}
+
+#matchList li h3{
+    text-align: left;
+}
+
+#matchList li dd{
+    text-align: left;
+}
+
+#matchList li .controls{
+    top: 0;
+    right: 0;
+}
+
+#matchList .btn{
+    margin-left: 2vh;
+}
+
+
+/* --- NOVA NECESSIDADE --- */
+#frmNovaDoacao{
+    background: #fff;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    z-index: 2;
+    font-size: 3vh;
+    width: 40%;
+}
+
+#frmNovaDoacao button{cursor: pointer}
+
+#frmNovaDoacao h1{
+    color: #fff;
+    font-size: 4vh;
+}
+
+#frmNovaDoacao header{
+    background: cadetblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+#btnVoltarDoa{
+    color: #fff;
+    background-color: cadetblue;
+    width: 6vw;
+    font-size: 2.5vh;
+}
+#btnVoltarDoa:hover{background-color: transparent}
+
+#btnConcluirDoa{
+    color: #fff;
+    background-color: rgba(140, 180, 160, 1);;
+    margin-right: -0.1px;
+    width: 11vw;
+    font-size: 3.3vh;
+    text-decoration: underline;
+}
+
+#frmNovaDoacao #frmNovo{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.flexFullLine{
+    flex-basis: 100%;
+}
+
+#frmNovo label span{
+    display: block;
+    color: dimgray;
+}
+#frmNovo input {
+    text-align: center;
+    font-size: 3.5vh;
+}
+#frmNovo select{
+    padding: 2px;
+    font-size: 3.5vh;
+    border: 1px solid lightgray;
+}
+
+#frmNovo input[type="number"]{
     position: absolute;
-    bottom: 0;
+    width: 10%;
+     border: 1px solid lightgray;
+}
+
+#txtNome{
     width: 100%;
 }
 
-#instituicoes:hover {
-    margin-top: -20vh;
-    padding-bottom: 20vh;
-    background-color: rgba(95, 158, 160, 1)
+#frmNovo .selected{
+    background: rgba(5, 225, 255, 0.7);
+    transition: 0.5s;
 }

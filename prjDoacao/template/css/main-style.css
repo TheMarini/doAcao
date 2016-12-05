@@ -35,7 +35,7 @@
 
 a {
     text-decoration: none;
-    color: #00bcd4
+    color: #00bcd4;
 }
 
 html,
@@ -47,6 +47,7 @@ body {
     font-size: 100%;
     color: #696969;
     position: relative;
+    background-color: #f5f5f5;
 }
 
 ::selection {
@@ -77,6 +78,7 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 5px;
     margin: 5px auto;
     display: none;
+    color: #fff;
 }
 
 .msg.alert{
@@ -104,11 +106,21 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .txt:focus{ background: #fff;}
 
-.btn {
-    color: white; 
-    cursor: pointer; 
+.btn{
+    background: #00bcd4;
+    border-radius: 3px;
+    font-size: 2.5vh;
+    color: #fff;
+    padding: 0.5vh;
+    margin-left: 0.5vh;
     outline: none;
+    cursor: pointer;
 }
+
+.btn:active{
+    background: #00acd4;
+}
+
 
 /* - DropDownList for ul's - */
 .dropDownList{
@@ -136,6 +148,46 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .dropDownList::-webkit-scrollbar-thumb{
     background: cadetblue;
+}
+
+
+/* flex objects */
+
+.centralize{
+    display: flex;
+}
+
+/* table data sections */
+.dataSection{
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 1vh 1vh;
+    box-sizing: content-box;
+}
+
+.dataSection{
+    text-align: left;
+    width: 100%;
+}
+
+.dataSection span{
+    font-weight: 100;
+    color: black;
+}
+
+.dataSection tr{
+    width: 100%;
+}
+
+.dataSection tr td{
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    padding: 1vh;
+}
+
+.dataSection tr:last-child td{
+    border: none;
 }
 
 /* - BlackCover to hide back elements - */

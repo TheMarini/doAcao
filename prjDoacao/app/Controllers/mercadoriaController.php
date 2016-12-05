@@ -7,6 +7,8 @@ use prjDoacao\app\Models\TipoMercadoria;
 use prjDoacao\app\Views\mercadoria as view;
 use prjDoacao\sys\Router;
 use prjDoacao\sys\session\Session;
+use prjDoacao\app\Models\Match;
+use prjDoacao\app\Models\Usuario;
 
 /**
  * Index Controller
@@ -25,7 +27,7 @@ class mercadoriaController extends Controller
         }
 
         $meusitensview = new view\meusItens();
-        $meusitensview->render(); 
+        $meusitensview->render();
     }
 
     /**
@@ -47,6 +49,25 @@ class mercadoriaController extends Controller
         $listarview = new view\listar([],$mercadoriaModel->Consultar(Session::getSession('userid')->codigo));
         $listarview->setTemplate('meusItens-list-ajax');
         $listarview->render();
+    }
+
+    public function listarCombinacoesAction($params)
+    {
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'mercadoria');
+            return;
+        }
+
+        if(isset($params[0])){
+            $matchList = (new Match())->listarCombinacoes($params[0]);
+            echo json_encode($matchList);
+            return;
+        }
     }
     
     /**

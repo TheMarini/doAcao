@@ -1,29 +1,216 @@
+/*----------NORMALIZAÇÃO------------*/
+
 body {
-    background-color: whitesmoke
+    background-color: whitesmoke;
 }
 
-#content {
-    padding-top: 14vh;
+svg {
+    width: 95%;
+    height: 2px;
     margin: 0 auto;
+    display: flex;
+    padding: 2px 0px;
+}
+
+line {
+    stroke: whitesmoke;
+    stroke-width: 1px;
+}
+
+input {
+    background-color: transparent;
+    width: auto;
+    color: gray
+}
+
+textarea {
+    vertical-align: top;
+    transition: 0.5s;
+    background-color: transparent;
+    resize: none;
+    width: 100%;
+    color: gray
+}
+
+textarea:focus,
+input:focus {
+    outline-color: lightblue;
+    outline-style: solid;
+    outline-width: 0px;
+}
+
+/* --- CLASSES --- */
+
+.controls{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.7vh;
+}
+
+.controls .btn{
+    background: #00bcd4;
+    border-radius: 3px;
+    font-size: 2.5vh;
+    color: #fff;
+    padding: 0.5vh;
+    margin-left: 0.5vh;
+}
+
+.controls .btn:active{
+    background: #00acd4;
+}
+
+.controls .btn.delete{
+    background: #ff4444;
+}
+
+.controls .btn.delete:active{
+    background: #de4444;
+}
+
+
+/*----------MENSAGEM------------*/
+
+#mensagem {
+    z-index: 5;
+    width: 35%;
+    background-color: gray;
+    box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+
+#opc {
+    display: flex;
+}
+
+#mensagem h1 {
+    font-weight: 100;
+    padding-left: 5px;
+    ;
+    font-size: 5vh
+}
+
+#mensagem button {
+    width: 50%;
+    font-size: 3vh;
+    transition: 1s;
+    padding: 7px 0px
+}
+
+#mensagem button:hover {
+    width: 150%
+}
+
+#sim {
+    background-color: darkseagreen
+}
+
+#nao {
+    background-color: indianred
+}
+
+/*----------ARTICLE------------*/
+
+#content {
     width: 95%;
     display: flex;
+    margin: 0 auto;
+    padding-top: 12vh;
 }
 
 #left,
 #right {
     background-color: white;
-    box-shadow:  0px 0px 3px 0 rgba(0, 0, 0, 0.24);
-    height: 83vh
-}    
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    margin-bottom: 1.2vh
+}
+
+#itensList{
+    max-height: 78vh;
+    overflow-y: scroll;
+}
+
+#itensList::-webkit-scrollbar{
+    width: 1%;
+    background: #f4f4f4;
+}
+#itensList::-webkit-scrollbar-thumb{
+    background: cadetblue;
+}
+
+#itensList li{
+    position: relative;
+}
+
+#itensList .status{
+    top: 0;
+    right: 0;
+}
+
+.status{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.status span{
+    margin-right: 5px;
+    font-size: 2.5vh;
+}
+
+#itensList .btn{
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width: 4vh;
+    height: 4vh;
+    background-position: center;
+    background-size: 90%;
+    opacity: 0.6;
+    transition: 0.5s;
+    display: none;
+}
+
+#itensList .btn:hover{
+    opacity: 1;
+}
+
+#itensList .btn.edit{
+    background-image: url('../img/icons/edit.png');
+    background-color: #00bcd4;
+}
+#itensList .btn.delete{
+    background-image: url('../img/icons/excluir.png');
+    background-color: indianred;
+}
+
+#itensList p{
+    text-align: center;
+    color: dimgray;
+    font-size: 3vh;
+    margin: 5vh auto;
+}
+
+/*----------LEFT------------*/
 
 #left {
     width: 40%;
-    padding: 0px 5px
+    max-height: 85vh;
+    position: relative;
 }
 
 #left h1 {
     font-size: 6vh;
-    color: cadetblue;
+    color: #00bcd4;
+    margin-left: 5px
 }
 
 #left h2 {
@@ -31,18 +218,38 @@ body {
     color: grey;
 }
 
-#left p {
+#left dd{
     font-size: 3vh;
     color: dimgray;
 }
 
-#estado {
-    text-align: right
+#left ul {
+    margin-top: 1px;
 }
+
+#left li {
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+    padding: 2px 6px
+}
+
+#left li:hover, .selectedItem{
+    border-left: 2px solid #00bcd4;
+    background-color: rgba(0, 0, 0, 0.07)
+}
+
+#left li:hover .btn{
+    display: block;
+}
+
+/*----------RIGHT------------*/
 
 #right {
     margin-left: 0.6vw;
-    width: 55%
+    width: 55%;
+    min-height: 85vh;
+    position: relative;
+    display: none;
 }
 
 #right header {
@@ -51,28 +258,58 @@ body {
     background-position: center;
     background-size: contain;
     height: 20vh;
+    position: relative;
 }
 
-#right h1{
+#right header input {
     position: absolute;
-    bottom: 0;
+    left: 5px;
+    bottom: 5px;
     color: dimgray;
-    font-size: 5vh
+    font-size: 7vh;
+    font-weight: 900;
 }
 
-#right form{
-    position: absolute;
-    bottom: 0;
-    right: 0
+#right header img {
+    height: 20%;
+    float: right;
+    margin: 4px;
+    opacity: 0.6;
+    transition: 0.5s;
+    cursor: pointer
 }
 
-#txtCodigo{
-    font-size: 5vh;
-    padding: 5px
+#right header img:hover {
+    opacity: 1
 }
 
-#btnValidar{
-    font-size: 5vh;
-    background-color: cadetblue;
-    padding: 5px
+#dados{
+    width: 45%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
+}
+
+#dados table{
+    font-size: 3vh;
+}
+
+#dados h2{
+    color: #00bcd4;
+}
+
+#instituicao {
+    width: 45%;
+    margin: 2vh 2vh;
+    font-size: 2vh;
+    text-align: center;
+}
+
+#instituicao table{
+    font-size: 3vh;
+}
+
+#instituicao h2{
+    color: #00bcd4;
+    margin-bottom: 1vh;
 }

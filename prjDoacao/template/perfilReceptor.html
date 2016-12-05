@@ -1,0 +1,78 @@
+<header id="header">
+    <section id="photos">
+        <div><img src="%TEMPLATE_PATH%img/bg/blur.jpg"></div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed/v1/place?q=Lar%20das%20Mo%C3%A7as%20ceas&key=AIzaSyCW1KI3HCMgjAL7Yd5uNkB_o4KfqLn3CuY" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div><img src="%TEMPLATE_PATH%img/bg/somos.jpg"></div>
+    </section>
+
+    <section id="intro">
+        <div id="avatar">
+            <img src="%usuario_photo%" alt="usuário">
+        </div>
+        <h1 id="nome">%nome_usuario%</h1>
+        <p id="cidade"><img src="%TEMPLATE_PATH%img/icons/map-pin.png" height="18vh" alt=""> Santos / SP </p>
+    </section>
+</header>
+<article>
+    <section id="timeline">
+        <section id="feed">
+            <h2>Ultimas atualizações</h2>
+            <svg width="100%" height="15px">
+                <line x1="1" y1="1" x2="100%" y2="1" style="stroke:cadetblue; stroke-width: 1"/>
+            </svg>
+            <span>asdasd</span>
+            </section>
+        <aside>
+            <header>
+                <button id="bntNovaNecessidade" class="btn">+ necessidade</button>
+                <h2>Necessidades</h2>
+            </header>
+            <svg width="100%">
+                <line x1="1" y1="1" x2="100%" y2="1" style="stroke:darkgoldenrod; stroke-width: 1"/>
+            </svg>
+            <ul id="itensListNec">
+                <!-- Ajax goes here -->
+            </ul>
+        </aside>
+    </section>
+</article>
+<!-- hiden itens -->
+<div id="blackcover" hidden></div>
+<div id="frmNovaNecessidade" hidden>
+        <header>
+            <button id="btnVoltar">voltar</button>
+            <h1>adicionar necessidade</h1>
+            <button id="btnConcluir">concluir</button>
+        </header>
+        <form id="frmNovo">
+            <label class="flexFullLine">
+                <span>Nome da Necessidade</span>
+                <input type="text" id="txtNome" class="txt" placeholder="ex.: Campanha Leite Sempre">
+            </label>
+            <label>
+                <span>Tipo</span>
+                <input type="text" class="txt" id="tipoMercadoria" placeholder="ex.: roupa" >
+                <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
+                <ul id="tipos" class="dropDownList">
+                <!-- ajax request goes here -->
+                </ul>
+                </select>
+            </label>
+            <label>
+                <span>Unidade</span>
+                <select id="unid">
+                <!-- ajax request goes here 
+                    <option value="Un">Un</option>
+                -->
+                </select>
+            </label>
+            <label>
+                <span>Quantidade</span>
+                <input type="number" id="nbrQuantidade" min="1" value="1">
+            </label>
+        </form>
+</div>
+</body>
+</html>

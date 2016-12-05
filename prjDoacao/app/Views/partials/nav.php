@@ -9,12 +9,13 @@ use prjDoacao\sys\session\Session as Session;
  */
 class nav extends View
 {
-     public function render()
+     public function render($isIntroIndex = null)
     {
         if(Session::isLogged()){
             //user normal links
             $this->data['%perfil%'] = BASE_URL . "usuario/perfil";
             $this->data['%logout%'] = BASE_URL . "usuario/logout";
+            $this->data['%doacoes%'] = BASE_URL . "doacoes";
             $this->data['%usuario_logado%'] = Session::getSession('userid')->nome;
             $this->data['%usuario_photo%'] = BASE_URL . Session::getSession('userid')->getPhoto();
 
@@ -31,8 +32,12 @@ class nav extends View
         //index Link
             $this->data['%index%'] = BASE_URL;
         //login link
-            $this->data['%login%'] = BASE_URL . "usuario/login";
-        
+            if(is_null($isIntroIndex)){
+                $this->data['%login%'] = BASE_URL . 'usuario/login';
+            }else{
+                $this->data['%login%'] = 'javascript:void(0);';
+            }
+     
         parent::render();
     }
 }

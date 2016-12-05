@@ -135,7 +135,7 @@ class usuarioController extends Controller
                 $novousuario->login($email, $senha);
                 header('Location: '.BASE_URL.'usuario/perfil');
             }else{
-                $data["%h1Class%"] = "alert"; 
+                $data["%msgClass%"] = "alert";
                 $data["%mensagem%"] = "$result";
                 
                 $registerview = new view\registrar($data);
@@ -150,7 +150,7 @@ class usuarioController extends Controller
     public function perfilAction($params){
         if(!empty($params)){
             if($usuariomodel = (new Usuario())->getById($params[0])){
-                if($usuariomodel->tipo != 1){
+                if($usuariomodel->tipo == 2){
                     $perfilview = new view\perfil([], $usuariomodel);
                     $perfilview->render();
                     return;
@@ -162,11 +162,16 @@ class usuarioController extends Controller
 
         if(Session::isLogged()){
             $usuariomodel = (new Usuario())->getById(Session::getSession('userid')->codigo);
-            $perfilview = new view\perfil([], $usuariomodel);
-            $perfilview->render();
+            if($usuariomodel->tipo == 1){
+                $perfilview = new view\perfilDoador([], $usuariomodel);
+                $perfilview->render();
+            }else{
+                $perfilview = new view\perfilReceptor([], $usuariomodel);
+                $perfilview->render();
+            }
+
         }else{
-            $notLoggedview = new view\notLogged();
-            $notLoggedview->render();
+            header('Location: '. BASE_URL . 'usuario/login');
         }
     }
 

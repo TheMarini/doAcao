@@ -1,3 +1,7 @@
+/* CONSTANTES */
+
+const BASE_URL = 'http://' + window.location.hostname + '/';  
+
 /* FUNCTIONS */
 function showSubMenu(seletor){
     $('.content').fadeOut('fast');
