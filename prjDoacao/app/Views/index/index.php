@@ -13,7 +13,7 @@ class index extends View
    {
        $head = new partials\head();
        $head->setIncludeCss('css/intro.css');
-       $head->setIncludeScript('js/script.js');
+       $head->setIncludeScript('js/index.js');
        $head->render();
        $nav = new partials\nav();
        $nav->render(true);
