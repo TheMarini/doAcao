@@ -1,51 +1,3 @@
-<div id="blackcover" hidden></div>
-<div id="mensagem" hidden>
-    <h1>Deseja realmente excluir esse item?</h1>
-    <div id="opc">
-        <button id="nao" class="btn">Não</button>
-        <button id="sim" class="btn">Sim</button>
-    </div>
-</div>
-
-<div id="adicionar" hidden>
-    <header>
-        <button id="btnVoltar">voltar</button>
-        <h1>adicionar um item</h1>
-        <button id="btnConcluir">concluir</button>
-    </header>
-    <form id="frmNovo">
-        <label class="flexFullLine">
-            <span>Nome do item</span>
-            <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
-        </label>
-        <label>
-            <span>Tipo</span>
-            <input type="text" id="tipoMercadoria" placeholder="ex.: roupa">
-            <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
-            <ul id="tipos" class="dropDownList">
-                <!-- ajax request goes here -->
-            </ul>
-            </select>
-        </label>
-        <label>
-            <span>Unidade</span>
-            <select id="unid">
-                <!-- ajax request goes here 
-                    <option value="Un">Un</option>
-                -->
-            </select>
-        </label>
-        <label>
-            <span>Quantidade</span>
-            <input type="number" id="nbrQuantidade" min="1" value="1">
-        </label>
-        <label class="flexFullLine">
-            <span>Descrição</span>
-            <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
-        </label>
-    </form>
-</div>
-
 <article id="content">
     <article id="left">
         <h1>MEUS ITEMS</h1>
@@ -92,7 +44,7 @@
                         <dd id="valLocal">Santos/SP</dd>
                         <div class="controls">
                             <a href="">Ver Perfil</a>
-                            <button class="btn">Doar</a>
+                            <button class="btn">Doar</button>
                         </div>
                     </li>
                 </ul>
@@ -100,6 +52,55 @@
         </div>
     </article>
 </article>
+<!-- blackcover -->
+<div id="blackcover" hidden></div>
+<!-- mensagem -->
+<div id="mensagem" hidden>
+    <h1>Deseja realmente excluir esse item?</h1>
+    <div id="opc">
+        <button id="nao" class="btn">Não</button>
+        <button id="sim" class="btn">Sim</button>
+    </div>
+</div>
+<!-- form Adicionar -->
+<div id="adicionar" hidden>
+    <header>
+        <button id="btnVoltar">voltar</button>
+        <h1>adicionar um item</h1>
+        <button id="btnConcluir">concluir</button>
+    </header>
+    <form id="frmNovo">
+        <label class="flexFullLine">
+            <span>Nome do item</span>
+            <input type="text" name="txtNome" id="add-nome" class="txt" placeholder="ex.: Casaco do Carlos">
+        </label>
+        <label>
+            <span>Tipo</span>
+            <input type="text" id="tipoMercadoria" placeholder="ex.: roupa">
+            <input type="hidden" id="cdTipoMercadoria" name="codigoTipoMercadoria" value="0">
+            <ul id="tipos" class="dropDownList">
+                <!-- ajax request goes here -->
+            </ul>
+        </label>
+        <label>
+            <span>Unidade</span>
+            <select id="unid">
+                <!-- ajax request goes here
+                    <option value="Un">Un</option>
+                -->
+            </select>
+        </label>
+        <label>
+            <span>Quantidade</span>
+            <input type="number" id="nbrQuantidade" min="1" value="1">
+        </label>
+        <label class="flexFullLine">
+            <span>Descrição</span>
+            <textarea id="txtDesc" placeholder="ex.: casaco semi-usado (tamanho: P)"></textarea>
+        </label>
+    </form>
+</div>
+<!-- form Doar -->
 <div id="frmNovaDoacao" hidden>
     <header>
         <button id="btnVoltarDoa">voltar</button>
@@ -126,7 +127,5 @@
         </label>
     </form>
 </div>
-
 </body>
-
 </html>

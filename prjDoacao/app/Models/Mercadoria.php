@@ -45,20 +45,14 @@ class Mercadoria extends Model
     * List all itens
     */
     public function Consultar($_usuario = null, $_termo = null ){
-           $com = "SELECT * FROM mercadoria";
+           $com = "SELECT * FROM mercadoria WHERE qt_mercadoria <> 0";
 
-           if(!is_null($_usuario) || !is_null($_termo)){
-               $com .= " WHERE ";
-               if(!is_null($_usuario)){
-                   $com .= "cd_usuario = $_usuario ";
-               }
-               if(!is_null($_termo)){
-                   $com .= (!is_null($_usuario))? "AND ":"";
-                   $com .="nm_mercadoria like '%$_termo%' ";
-               }
+           if(!is_null($_usuario)){
+               $com .= " AND cd_usuario = $_usuario ";
            }
-
-           //$com .= "ORDER BY nm_mercadoria";	
+           if(!is_null($_termo)){
+               $com .=" AND nm_mercadoria like '%$_termo%' ";
+           }
        
            $result = $this->db->query($com);
 
@@ -103,11 +97,31 @@ class Mercadoria extends Model
         return false;
     }
 
+    public function Editar(){
+        $comand = "SELECT * FROM doacao WHERE cd_mercadoria = $this->codigo";
+        $result = $this->db->query('$comand');
+
+        if($result->num_rows > 0 ){
+            return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
+        }
+        // FALTA FAZER
+        //$comand = "UPDATE mercadoria SET "
+    }
+
     /**
     *   Delete an item
     */
     public function Excluir($_codigo)
     {
+        //VERIFY EXISTENCE
+        $comand = "SELECT * FROM doacao WHERE cd_mercadoria = $this->codigo";
+        $result = $this->db->query('$comand');
+
+        if($result->num_rows > 0 ){
+            return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
+        }
+
+        //DELETE OPERATION
         $comand = "DELETE FROM mercadoria WHERE cd_mercadoria='$_codigo'";
 
         $result = $this->db->query($comand);

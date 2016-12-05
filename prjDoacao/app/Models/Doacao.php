@@ -73,7 +73,7 @@ class Doacao extends Model
         
         if($result = $this->db->query($comand)){
 
-           //$result = $this->db->query("UPDATE mercadoria SET qt_mercadoria = $quantidade - 1 WHERE cd_mercadoria = $cd_mercadoria");
+            $result = $this->db->query("UPDATE mercadoria SET qt_mercadoria = $quantidade - 1 WHERE cd_mercadoria = $cd_mercadoria");
             return $result === true;
         }
         
