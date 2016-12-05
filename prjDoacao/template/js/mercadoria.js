@@ -195,7 +195,8 @@ function doarItem(_index, _quantidade){
         data: {quantidade: _quantidade, usuario: comb.usuarioReceptor.codigo, mercadoria: comb.codigoMercadoria.codigo, anonima: 'yes'},
         url: '/doacoes/novo',
         success: function(result){
-            alert(result);
+                alert('Doação efetuada com sucesso');
+            
         },
         error: function () {
             alert('Ajax Error');
@@ -225,6 +226,9 @@ $(document).ready(function(){
         }
         if($('#mensagem').is(':visible')){
             toggleMensagem();
+        }
+        if($('#frmNovaDoacao').is('visible')){
+            $('#frmNovaDoacao').fadeOut();
         }
     });
 
@@ -330,6 +334,11 @@ $(document).ready(function(){
     //DOAR item
     $('#matchList').on('click', 'li button', function(){
         $('#indexComb').val($(this).closest('li').val());
+        var indexComb = $('#indexComb').val();
+        $('#txtNomeDoa').val(Combinacoes[indexComb].codigoMercadoria.nome);
+        $('#tipoMercadoriaDoa').val(Combinacoes[indexComb].codigoMercadoria.tipo);
+        $('#unid').val(Combinacoes[indexComb].unidade);
+        $('#blackcover').fadeIn('fast');
         $('#frmNovaDoacao').toggle();        
     })
 
@@ -337,8 +346,10 @@ $(document).ready(function(){
     $('#btnConcluirDoa').click(function(){
         var quantidade = $('#nbrQuantidadeDoa').val();
         var indexComb = $('#indexComb').val();
-
         doarItem(indexComb, quantidade);
+        $('#blackcover').fadeOut('fast');
+        $('#frmNovaDoacao').toggle();
+
     });    
 
 })

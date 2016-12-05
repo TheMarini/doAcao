@@ -67,11 +67,13 @@ class Doacao extends Model
         $cd_tipo_mercadoria = $this->mercadoria->tipo;
         $cd_unidade = $this->mercadoria->unidade;
         $quantidade = $this->mercadoria->quantidade;
+        $usuario = $this->usuario->codigo;
 
-        $comand = "INSERT INTO doacao VALUES(NULL, now(), NULL, NULL, $this->quantDoacao, NULL, , $cd_mercadoria, $cd_tipo_mercadoria, '$cd_unidade', $this->anonima)";
+        $comand = "INSERT INTO doacao VALUES(NULL, now(), NULL, NULL, $this->quantDoacao, NULL, $cd_mercadoria, $usuario ,$cd_tipo_mercadoria, '$cd_unidade', $this->anonima)";
         
         if($result = $this->db->query($comand)){
-            $result = $this->db->query("UPDATE mercadoria SET qt_mercadoria = $quantidade - 1 WHERE cd_mercadoria = $cd_mercadoria");
+
+           //$result = $this->db->query("UPDATE mercadoria SET qt_mercadoria = $quantidade - 1 WHERE cd_mercadoria = $cd_mercadoria");
             return $result === true;
         }
         

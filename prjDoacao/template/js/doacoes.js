@@ -19,7 +19,8 @@ function listarItens() {
        },
        complete: function () {
            $('#itensList').empty();
-           if(doacoesList.lenght > 0){
+           if(doacoesList.lenght != 0){
+               
                 var cd = 0;
                 doacoesList.forEach(function(item) {
                         var newitem  = '<li value="'+ cd +'">';
@@ -68,7 +69,7 @@ function selecionarItem(index){
 $(document).ready(function (evt) {
     //on page load
     listarItens();
-    
+
 
     //Left list item click
     $('#itensList').on('click', 'li', function(evt){

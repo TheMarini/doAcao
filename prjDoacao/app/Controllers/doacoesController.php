@@ -64,6 +64,7 @@ class doacoesController extends Controller
         if($novadoacao->Salvar()){
             echo 'foi';
         }else{
+            var_dump($novadoacao);
             echo 'não foi';
         }
 
