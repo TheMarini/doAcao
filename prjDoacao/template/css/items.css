@@ -498,3 +498,85 @@ input:focus {
 #matchList .btn{
     margin-left: 2vh;
 }
+
+
+/* --- NOVA NECESSIDADE --- */
+#frmNovaDoacao{
+    background: #fff;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    z-index: 2;
+    font-size: 3vh;
+    width: 40%;
+}
+
+#frmNovaDoacao button{cursor: pointer}
+
+#frmNovaDoacao h1{
+    color: #fff;
+    font-size: 4vh;
+}
+
+#frmNovaDoacao header{
+    background: cadetblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+#btnVoltarDoa{
+    color: #fff;
+    background-color: cadetblue;
+    width: 6vw;
+    font-size: 2.5vh;
+}
+#btnVoltarDoa:hover{background-color: transparent}
+
+#btnConcluirDoa{
+    color: #fff;
+    background-color: rgba(140, 180, 160, 1);;
+    margin-right: -0.1px;
+    width: 11vw;
+    font-size: 3.3vh;
+    text-decoration: underline;
+}
+
+#frmNovaDoacao #frmNovo{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+}
+
+.flexFullLine{
+    flex-basis: 100%;
+}
+
+#frmNovo label span{
+    display: block;
+    color: dimgray;
+}
+#frmNovo input {
+    text-align: center;
+    font-size: 3.5vh;
+}
+#frmNovo select{
+    padding: 2px;
+    font-size: 3.5vh;
+    border: 1px solid lightgray;
+}
+
+#frmNovo input[type="number"]{
+    position: absolute;
+    width: 10%;
+     border: 1px solid lightgray;
+}
+
+#txtNome{
+    width: 100%;
+}
+
+#frmNovo .selected{
+    background: rgba(5, 225, 255, 0.7);
+    transition: 0.5s;
+}
