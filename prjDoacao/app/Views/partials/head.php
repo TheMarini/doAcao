@@ -10,7 +10,7 @@ class head extends View
 {
     private $includeCss = "";
     private $includeScript = "";
-    private $pageTitle = "Doacao";
+    private $pageTitle = "doAcao";
 
     public function setIncludeCss($url, $mediatype = 'all'){
         $this->includeCss .= '<link href="'. BASE_URL . TEMPLATE_PATH_INV . $url .'" type="text/css" rel="stylesheet" media="'.$mediatype.'">' . PHP_EOL;
@@ -21,7 +21,7 @@ class head extends View
     }
 
     public function setTitle($title){
-        $this->pageTitle = $title . " - Doação";
+        $this->pageTitle = $title . " - doAcao";
     }
 
     public function render(){

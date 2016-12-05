@@ -13,7 +13,7 @@ $('document').ready(function (){
         $('#blackcover').fadeIn();
         $('body').css('overflow-y', 'hidden');
         $('#form-login').css('top', $('body').scrollTop());
-        $('#form-login').css('max-height', '1000px');   
+        $('#form-login').css('max-height', '1000px');
     });
 
 });
