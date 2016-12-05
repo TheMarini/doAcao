@@ -1,4 +1,4 @@
-    body {
+body {
     background-color: whitesmoke
 }
 
@@ -74,10 +74,8 @@ article li div{
     text-align: center;
     color: dimgray;
     display: flex;
-    justify-content: center;
-    /* Alinhamento Vertical */
-    align-items: center;
-    /* Alinhamento Horizontal */
+    justify-content: center;    /* Alinhamento Vertical */
+    align-items: center;    /* Alinhamento Horizontal */
     height: 8vh;
     width: 5vw;
     background-color: gainsboro;
