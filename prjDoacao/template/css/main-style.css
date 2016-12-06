@@ -25,7 +25,6 @@
     font-weight: 100;
 }
 
-
 /*----------NORMATIZAÇÃO------------*/
 
 * {
@@ -62,6 +61,10 @@ body {
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button {
     display: none;
+}
+
+input[type="password"]{
+    font-family: 'Arial'!important;
 }
 
 /*----------CLASSES------------*/

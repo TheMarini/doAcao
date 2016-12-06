@@ -83,6 +83,11 @@ function loadRanking(){
 /* -- when main doc is ready --*/
 $('document').ready(function () {
 
+    //on load evt
+    loadDoacoes();
+    loadMercadorias();
+    loadRanking();
+
     //STYLE FEATURES
     /*First post together to header*/
     var altura = parseInt($('header').height()) + parseInt($('header').css('padding')) + parseInt($('header').css('padding')) + parseInt($('#conquistas').css('height')) + parseInt($('svg').css('padding')) + parseInt($('#first-post').css('height')) + parseInt($('#first-post').css('margin-bottom'));
@@ -109,9 +114,4 @@ $('document').ready(function () {
         $(this).css('height', aside_redu);
         $(this).css('border-bottom', 'none');
     });
-
-    //on load evt
-    loadDoacoes();
-    loadMercadorias();
-    loadRanking();
 });
