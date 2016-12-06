@@ -28,7 +28,7 @@ class Ranking extends Model
     }
     
     public function Listar(){
-        $comand = "SELECT m.cd_usuario, sum(d.qt_pontos_doacao) FROM doacao d JOIN mercadoria m on(d.cd_mercadoria_doacao = m.cd_mercadoria) GROUP BY m.cd_usuario";
+        $comand = "SELECT m.cd_usuario, sum(d.qt_pontos_doacao) FROM doacao d JOIN mercadoria m on(d.cd_mercadoria_doacao = m.cd_mercadoria) GROUP BY m.cd_usuario;";
         
         $result = $this->db->query($comand);
         $listRanking = [];
@@ -36,7 +36,7 @@ class Ranking extends Model
             $ranking = new Ranking();
             $ranking->usuario = (new Usuario)->getById($row[0]);
             $ranking->quantPontos = $row[1];
-            $listRanking = [];
+            $listRanking[] = $ranking;
         }
         return $listRanking;
     }
