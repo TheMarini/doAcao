@@ -16,4 +16,15 @@ class rankingController extends Controller
         $rankingview = new view\ranking();
         $rankingview->render();
     }
+    
+    public function listarAction(){
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'ranking');
+            return;
+        }
+        
+        $rankingmodel = new Ranking();
+        $rankingview = new view\listar([], $rankingmodel->Listar());
+        $rankingview->render();
+    }
 }
