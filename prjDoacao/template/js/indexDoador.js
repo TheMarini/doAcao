@@ -1,7 +1,62 @@
+/* --- VARIABLES --- */
+
+doacoesList = [];
+mercadoriaList = [];
+rankingList = [];
+postList = [];
+
+
+/* --- FUNCTIONS --- */
+function loadDoacoes() {
+    doacoesList = [];
+    $.ajax({
+       dataType: 'json',
+       url: '/doacoes/listar',
+       success: function (result) {
+           doacoesList = result;
+         },
+       error: function () {  
+           alert('erro de ajax');
+       },
+       complete: function () {
+           $('#donations > ul ').empty();
+           if(doacoesList.lenght != 0){
+                var cd = 0;
+                doacoesList.forEach(function(item) {
+                        var newitem  = '<li value="'+ cd +'">';
+                            newitem += '<h2 class="nome">'+item.mercadoria.nome+'</h2>';
+                            newitem += '<dd>para: <span class="interessados"><a href="'+ BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo +'">'+item.necessidade.usuario.nome+'</a></span></dd>';
+                            newitem += '<div class="status"><span>'+ (item.status == 1 ? 'Em Andamento' : 'Finalizada') +'</span></div>'
+                            newitem += '</li>'; 
+                            newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
+                        $('#donations > ul').append(newitem);
+                        cd++;
+                });
+           }else{
+               $('#donations > ul').append('<p>Nenhuma doação até o momento </p>');
+           }
+         }
+    });
+}
+
+function loadMercadorias(){
+    $.ajax({
+        url: "/mercadoria/listar",
+        success: function (result) {
+            $('#mercadoria > ul').html(result);
+        },
+        error: function () {
+            alert('Erro ao realizar requisição Ajax');
+        }
+
+    });
+}
+
+/* --- EVENTS --- */
 /* -- when main doc is ready --*/
 $('document').ready(function () {
 
-
+    //STYLE FEATURES
     /*First post together to header*/
     var altura = parseInt($('header').height()) + parseInt($('header').css('padding')) + parseInt($('header').css('padding')) + parseInt($('#conquistas').css('height')) + parseInt($('svg').css('padding')) + parseInt($('#first-post').css('height')) + parseInt($('#first-post').css('margin-bottom'));
 
@@ -38,4 +93,9 @@ $('document').ready(function () {
         $(this).find('.autor').css('opacity', 0.2);
         $(this).find('.time').css('opacity', 0.2);
     });
+
+    //on load evt
+    loadDoacoes();
+    loadMercadorias();
+
 });

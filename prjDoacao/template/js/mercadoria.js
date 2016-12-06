@@ -216,7 +216,11 @@ function doarItem(_index, _quantidade) {
         },
         error: function () {
             alert('Ajax Error');
+        },
+        complete: function () {
+            listarItens();
         }
+
     })
 }
 

@@ -11,7 +11,7 @@ use prjDoacao\app\Models\Mercadoria;
 use prjDoacao\app\Models\Usuario;
 
 /**
- * Index Controller
+ * Doacao Controller
  */
 class doacoesController extends Controller
 {
@@ -78,16 +78,15 @@ class doacoesController extends Controller
             return;
         }
 
-        //if(!$this->request->isAjax()){
-        //    header('Location: ' . BASE_URL . 'doacoes');
-        //    return;
-        //}
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'doacoes');
+            return;
+        }
 
         if(isset($params[0])){
             $doacaomodel = new Doacao($params[0]);
-            return $doacaomodel->Encerrar();
+            $doacaomodel->Encerrar();
         }
-
     }
 
 }

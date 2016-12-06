@@ -1,74 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width , initial-scale=1.0">
-    <title>doAcao</title>
-    <link rel="icon" href="img/icons/logo-fechado.ico" />
-    <link href="css/main-style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/ranking.css" type="text/css" rel="stylesheet" media="all">
-
-    <script src="js/jquery.js"></script>
-    <script src="js/main-script.js"></script>
-</head>
-
-<body>
-    <nav id="menu">
-        <a href="%index%">
-            <img id src="img/logos/branco/logo-aberto.png" alt="intro">
-        </a>
-        <ul>
-            <a href="#">
-                <li>Instituições</li>
-            </a>
-            <a href="doacoes.html">
-                <li>Doações</li>
-            </a>
-            <a href="#">
-                <li>Ranking</li>
-            </a>
-            <li id="search">
-                <input type="search" results=5 autosave=unique placeholder="pesquisar">
-            </li>
-
-            <a href="%mercadorias%">
-                <li>Meus Items</li>
-            </a>
-        </ul>
-        <div class="contentContainer">
-            <img id="btnMsg" src="img/icons/chat.png" alt="intro">
-            <div id="msg" class="setaParaCima content"></div>
-        </div>
-        <div class="contentContainer">
-            <img id="btnNotify" src="img/icons/notify.png" alt="intro">
-            <div id="notify" class="setaParaCima content"></div>
-        </div>
-        <div id="user" class="contentContainer">
-            <a id="btnUser">
-                <img src="%usuario_photo%" alt="intro">
-                <span>%usuario_logado%</span>
-            </a>
-            <div id="user-options" class="setaParaCima content">
-                <ul>
-                    <a href="%perfil%">
-                        <li>Ver Pefil</li>
-                    </a>
-                    <a href="%perfil%">
-                        <li>Dados Pessoais</li>
-                    </a>
-                    <a href="%logout%">
-                        <li>Sair</li>
-                    </a>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
     <div class="centralize">
         <header>
-            <img src="img/icons/rank.png" alt="">
+            <img src="%TEMPLATE_PATH%img/icons/rank.png" alt="">
         </header>
         <article>
             <h1>Ranking</h1>
@@ -196,5 +128,4 @@
         </article>
     </div>
 </body>
-
 </html>

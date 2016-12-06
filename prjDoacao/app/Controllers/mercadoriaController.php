@@ -119,7 +119,7 @@ class mercadoriaController extends Controller
         $novamercadoria->unidade = $unidade; 
         $novamercadoria->quantidade = $quantidade;
         $novamercadoria->descricao = $descricao;
-        $novamercadoria->usuario = Session::getSession('userid')->codigo;
+        $novamercadoria->usuario = Session::getSession('userid');
 
         if($novamercadoria->Salvar()){
             echo json_encode(true);
@@ -155,7 +155,7 @@ class mercadoriaController extends Controller
             header('Location: ' . BASE_URL . 'mercadoria');
             return;
         }
-        if($mercadoriamodel->usuario != Session::getSession('userid')->codigo && Session::getSession('userid')->tipo != 2){
+        if($mercadoriamodel->usuario->codigo != Session::getSession('userid')->codigo && Session::getSession('userid')->tipo != 2){
             header('Location: ' . BASE_URL . 'mercadoria');
             return;
         }
@@ -187,7 +187,7 @@ class mercadoriaController extends Controller
 
         $mercadoriaModel = new Mercadoria($codigo);
 
-        if($mercadoriaModel->usuario != Session::getSession('userid')->codigo){
+        if($mercadoriaModel->usuario->codigo != Session::getSession('userid')->codigo){
             header('Location ' . BASE_URL . 'mercadoria');
             return;
         }
