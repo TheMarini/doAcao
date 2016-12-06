@@ -78,15 +78,44 @@
                 </div>
             </header>
 
+            <div id="principals">
+                <input type="text" name="" id="cpf" placeholder="cpf">
+                <input type="text" name="" id="tel" placeholder="telefone">
+                <input type="email" placeholder="email" id="email">
+            </div>
+
+            <h1>Endereço</h1>
+            <svg width="100%" height="15px">
+                <line x1="1" y1="1" x2="100%" y2="1" style="stroke:dimgray; stroke-width: 1" />
+            </svg>
+
             <section id="endereco">
-                <h1>Endereço</h1>
-                <input type="text" id="rua">
-                <input type="text" id="bairro">
-                <input type="text" id="cidade">
-                <input type="text" id="estado">
-                <input type="text" id="pais">
-                <input type="text" id="cep">
+                <input type="text" id="cep" placeholder="cep">
+                <input type="text" id="rua" placeholder="rua">
+                <div>
+                    <input type="text" id="complemento" placeholder="complemento">
+                    <input type="text" id="bairro" placeholder="bairro">
+                    <input type="text" id="cidade" placeholder="cidade">
+                    <input type="text" id="estado" placeholder="estado">
+                </div>
             </section>
+
+            <h1>Minha Conta</h1>
+            <svg width="100%" height="15px">
+                <line x1="1" y1="1" x2="100%" y2="1" style="stroke:dimgray; stroke-width: 1" />
+            </svg>
+            <section id="conta">
+                <input type="password" name="" id="senha-orig" placeholder="senha antiga">
+                <input type="password" name="" id="senha-conf" placeholder="senha nova">
+                <input type="password" name="" id="senha-conf" placeholder="confirme a sua senha nova">
+            </section>
+
+            <div id="ranking-disable">
+                <input type="checkbox" id="ranking">
+                <p>Desejo não aparecer no ranking</p>
+            </div>
+
+            <button>Salvar</button>
         </form>
     </div>
 </body>
