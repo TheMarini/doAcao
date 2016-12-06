@@ -123,3 +123,7 @@ body {
     font-size: 2vh;
     font-weight: 900
 }
+
+#ranking img{
+    height: 6vh
+}
