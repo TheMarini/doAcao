@@ -17,7 +17,7 @@ class perfilReceptor extends View
         $head->setIncludeCss('js/slick/slick.css');
         $head->setIncludeScript('js/slick/slick.min.js');
         $head->setIncludeScript('js/perfilReceptor.js');
-        $head->setIncludeScript('js/feed.js');
+        $head->setIncludeScript('js/feed-widget.js');
         $head->setTitle($this->model->nome);
         $head->render();
         $nav = new partials\nav();
@@ -25,6 +25,11 @@ class perfilReceptor extends View
 
         $this->data['%nome_usuario%'] = $this->model->nome;
         $this->data['%usuario_photo%'] = BASE_URL . $this->model->getPhoto();
+        $this->data['%location%'] = $this->model->cep->cidade . '/' . $this->model->cep->siglaEstado;
+        $this->data['%descricao%'] = $this->model->biografia;
+        $this->data['%telefone%'] = $this->model->telefone;
+        $this->data['%facebook%'] = $this->model->facebook;
+        $this->data['%email%'] = $this->model->email;
 
         parent::render();
     }

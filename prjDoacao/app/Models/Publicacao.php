@@ -38,18 +38,18 @@ class Publicacao extends Model
         }
         
         $result = $this->db->query($comand);
-        publicacoesList = [];
+        $publicacoesList = [];
         if($result->num_rows > 0){
-            while($rows = $result->fetch_array()){
+            while($row = $result->fetch_array()){
                 $publicacao = new Publicacao();
                 $publicacao->data = $row[0];
                 $publicacao->usuario = (new Usuario)->getById($row[1]);
                 $publicacao->tipo = $row[2];
                 $publicacao->conteudo = $row[3];
-                publicacoesList[] = $publicacao;
+                $publicacoesList[] = $publicacao;
             }
         }
-        return publicacoesList;
+        return $publicacoesList;
     }
     
 }
