@@ -112,6 +112,53 @@ body {
     transform: perspective(1000px) rotateX(15deg)
 }
 
+/* --- LATERALS --- */
+#laterals{
+    box-sizing: content-box;
+    padding: 1vh 10vw;
+    position: absolute;
+    display: flex;;
+    flex-flow: row;
+    justify-content: space-between;
+    width: 100%
+
+}
+
+#laterals aside{
+    box-sizing: content-box;
+    padding: 10px;
+}
+
+#bio{
+    width: 28vw;
+    height: 25vh;
+    text-align: justify;
+    border-top: 2px solid dimgray
+
+}
+#bio h2{text-align: center}
+
+#contato {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-right: 20vw;
+
+    color: #152b3f;
+    width: 28vw;
+
+}
+#contato h1 {
+    color: dimgray;
+    font-size: 10vh;
+    font-weight: 100;
+}
+
+#contato p{
+    font-size: 3vh
+}
 
 /*----------ARTICLE------------*/
 
