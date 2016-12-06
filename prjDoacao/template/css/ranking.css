@@ -24,7 +24,8 @@ article {
     width: 90%;
     border-top: 4px solid white;
     border-bottom: 4px solid dimgray;
-    margin-bottom: 0.5vh
+    margin-bottom: 0.5vh;
+    min-height:59vh
 }
 
 article h1 {

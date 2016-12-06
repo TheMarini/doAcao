@@ -20,7 +20,7 @@ class listar extends View
             }
             echo json_encode($rankingList);
         }else{
-            echo "Não há usuário suficientes no sistema para gerar um ranking";    
+            echo json_encode("Não há usuário suficientes no sistema para gerar um ranking");
         }
     }
 }
