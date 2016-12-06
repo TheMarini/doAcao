@@ -13,9 +13,11 @@ class perfilReceptor extends View
     {
         $head = new partials\head();
         $head->setIncludeCss('css/perfil.css');
+        $head->setIncludeCss('css/feed.css');
         $head->setIncludeCss('js/slick/slick.css');
         $head->setIncludeScript('js/slick/slick.min.js');
         $head->setIncludeScript('js/perfilReceptor.js');
+        $head->setIncludeScript('js/feed.js');
         $head->setTitle($this->model->nome);
         $head->render();
         $nav = new partials\nav();

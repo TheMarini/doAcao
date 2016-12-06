@@ -1,5 +1,5 @@
 body{
-    background-color: #fff;    
+    background-color: whitesmoke;
 }
 
 /* classes */
@@ -177,7 +177,7 @@ article{
 #new-post{
     background-color:  cadetblue;
     box-sizing: content-box;
-    padding: 2px
+    padding: 4px
 }
 
 #new-post textarea{
@@ -198,7 +198,8 @@ article{
     cursor: pointer;
     background-color: dimgray;
     color: white;
-    width: 10vw
+    width: 10vw;
+    margin-bottom: 1px
 }
 
 #postar{
@@ -212,9 +213,10 @@ article{
 /* ---- FEED --- */
 #feed{
     width: 50%;
-    color: #00bcd4;
     margin-top: 2vh;
 }
+
+#posts{margin-top: 1vh}
 
 /* --- NECESSIDADES/RANKING --- */
 

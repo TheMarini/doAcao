@@ -13,7 +13,9 @@ class indexDoador extends View
    {
        $head = new partials\head();
        $head->setIncludeCss('css/index.css');
+       $head->setIncludeCss('css/feed.css');
        $head->setIncludeScript('js/indexDoador.js');
+       $head->setIncludeScript('js/feed.js');
        $head->render();
        $nav = new partials\nav();
        $nav->render();
