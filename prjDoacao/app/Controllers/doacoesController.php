@@ -11,7 +11,7 @@ use prjDoacao\app\Models\Mercadoria;
 use prjDoacao\app\Models\Usuario;
 
 /**
- * Index Controller
+ * Doacao Controller
  */
 class doacoesController extends Controller
 {
@@ -49,10 +49,10 @@ class doacoesController extends Controller
             return;
         }
 
-       // if(!$this->request->isAjax()){
-        //    header('Location: ' . BASE_URL . 'doacoes');
-        //    return;
-       // }
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'doacoes');
+            return;
+        }
 
         $novadoacao = new Doacao();
         $novadoacao->quantDoacao = $this->request->post('quantidade');
@@ -60,7 +60,6 @@ class doacoesController extends Controller
         $novadoacao->usuario = (new Usuario)->getById(($this->request->post('usuario')));
         $novadoacao->anonima = ($this->request->post('anonima') == 'yes')? true:false;
 
-        var_dump($novadoacao->mercadoria);        
         if($novadoacao->Salvar()){
             echo 'foi';
         }else{
@@ -68,6 +67,26 @@ class doacoesController extends Controller
             echo 'não foi';
         }
 
+    }
+
+    /**
+    * Encerrar doação
+    */
+    public function encerrarAction($params){
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'doacoes');
+            return;
+        }
+
+        if(isset($params[0])){
+            $doacaomodel = new Doacao($params[0]);
+            $doacaomodel->Encerrar();
+        }
     }
 
 }

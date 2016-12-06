@@ -26,20 +26,20 @@ function listarItens() {
        success: function (result) {
            doacoesList = result;
          },
-       error: function () {  
+       error: function () {
            alert('erro de ajax');
        },
        complete: function () {
            $('#itensList').empty();
            if(doacoesList.lenght != 0){
-               
+
                 var cd = 0;
                 doacoesList.forEach(function(item) {
                         var newitem  = '<li value="'+ cd +'">';
                             newitem += '<h2 class="nome">'+item.mercadoria.nome+'</h2>';
                             newitem += '<dd>para: <span class="interessados"><a href="'+ BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo +'">'+item.necessidade.usuario.nome+'</a></span></dd>';
                             newitem += '<div class="status"><span>'+ (item.status == 1 ? 'Em Andamento' : 'Finalizada') +'</span></div>'
-                            newitem += '</li>'; 
+                            newitem += '</li>';
                             newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
                         $('#itensList').append(newitem);
                         cd++;
@@ -70,17 +70,16 @@ function selecionarItem(index){
     $('#valData').text((new Date(doacao.dataInicio)).toLocaleDateString());
     if(doacao.status == 1){
                var btnMsg ='<button id="btnEnviarMensagem" class="btn">Enviar Mensagem</button>';
-               var btnValidar = '<button id="btnValidarDoacao" class="btn">Validar Doação</button>';
-               var btnCancelar = '<button id="btnCancelarDoacao" class="btn delete">Cancelar</button>';
-        $('#controls').html(btnMsg + btnValidar + btnCancelar);
+               var btnCancelar = '<button id="btnCancelarDoacao" class="btn delete">Finalizar</button>';
+        $('#controls').html(btnMsg + btnCancelar);
     }else{
         $('#controls').html('<h2 style="font-weight: 400; margin: auto">Doação Finalizada</h2>');
     }
     $('#valStatus').text(doacao.status == 1? 'Em andamento':'Finalizada');
     $('#valPontos').text(doacao.pontos);
-    $('#valInstituicao').text(doacao.necessidade.usuario.nome);
-    $('#valNecessidade').text(doacao.necessidade.nome);
-    $('#valEndereco').text(doacao.necessidade.usuario.cep.cidade +'/'+ doacao.necessidade.usuario.cep.siglaEstado);
+    $('#valDoador').text(doacao.mercadoria.usuario.nome);
+    $('#valTelefone').text(doacao.mercadoria.usuario.telefone);
+    $('#valEmail').text(doacao.mercadoria.usuario.email);
     //show the right screen
     $('#right').fadeIn();
 }
@@ -127,7 +126,7 @@ $(document).ready(function (evt) {
     //btnCancelarDoacao click evt
     $('#controls').on('click', '#btnCancelarDoacao', function(){
         $('#dialog').val('CancelarDoa');
-        $('#dialog').closest('h1').text('Deseja cancelar esta doação?');
+        $('#dialog').closest('h1').text('Deseja finalizar esta doação?');
         toggleDialog();
     });
 

@@ -21,6 +21,28 @@ class Doacao extends Model
     public $status; // 1 = pendente | 2 = finalizada
     public $anonima = false;
 
+    function __construct($codigo = null){
+        parent::__construct();
+        if(!is_null($codigo)){
+            $comand = "SELECT * FROM doacao d join mercadoria m on (d.cd_mercadoria_doacao = m.cd_mercadoria) WHERE cd_doacao = $codigo";
+            $result = $this->db->query($comand);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_array()){
+                    $this->codigo = $row[0];
+                    $this->dataTermino = $row[2];
+                    $this->codigoValidar = $row[3];
+                    $this->quantDoacao = $row[4];
+                    $this->pontos = $row[5];
+                    $this->mercadoria = new Mercadoria($row[6]);
+                    $this->necessidade = new Necessidade($row[7], $row[8], $row[9]);
+                    $this->status = $row[2] == null? 1:2;
+                    $this->anonima = $row[10];
+                }
+            }
+        }
+    }
+
     public function Listar($status = null)
     {
         $comand = "SELECT * FROM doacao d join mercadoria m on (d.cd_mercadoria_doacao = m.cd_mercadoria)";
@@ -62,7 +84,6 @@ class Doacao extends Model
     }
 
     public function Salvar(){
-
         $cd_mercadoria = $this->mercadoria->codigo;
         $cd_tipo_mercadoria = $this->mercadoria->tipo;
         $cd_unidade = $this->mercadoria->unidade;
@@ -77,6 +98,29 @@ class Doacao extends Model
             return $result === true;
         }
         
+        return false;
+    }
+
+    public function Encerrar(){
+        $comand = "UPDATE doacao SET dt_termino_doacao = now() WHERE cd_doacao = $this->codigo";
+
+        if($this->db->query($comand)){
+            //NOTIFICAR USUARIO
+            if(Session::getSession('userid')->tipo == $this->mercadoria->usuario->tipo){
+                $cd_user_notify = $this->necessidade->usuario->codigo;
+                $cd_nome_doacao = $this->mercadoria->nome;
+                $comand = "INSERT INTO notificacao VALUES(now(), $cd_user_notify, 1, 'Doação Cancelada', 'A doação $cd_nome_doacao foi cancelada pelo doador', '".BASE_URL."doacoes/item/$this->codigo')";
+            }else{
+                $cd_user_notify = $this->mercadoria->usuario->codigo;
+                $cd_nome_doacao = $this->mercadoria->nome;
+                $comand = "INSERT INTO notificacao VALUES(now(), $cd_user_notify, 1, 'Doação Finalizada', 'A doação $cd_nome_doacao foi cancelada pela instituição', '".BASE_URL."doacoes/item/$this->codigo')";
+            }
+
+            $this->db->query($comand);
+
+            return true;
+        }
+
         return false;
     }
 

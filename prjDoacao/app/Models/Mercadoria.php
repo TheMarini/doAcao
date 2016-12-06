@@ -3,6 +3,7 @@ namespace prjDoacao\app\Models;
 
 use prjDoacao\sys\Model;
 use prjDoacao\sys\session\Session;
+use prjDoacao\app\Models\Usuario;
 
 /**
  * Mercadoria model class
@@ -32,7 +33,7 @@ class Mercadoria extends Model
                $this->nome = $row[1];
                $this->descricao = $row[2];
                $this->quantidade = $row[3];
-               $this->usuario = $row[4];
+               $this->usuario = (new Usuario)->getById($row[4]);
                $this->tipo = $row[5];
                $this->unidade = $row[6];
             }else{
@@ -65,7 +66,7 @@ class Mercadoria extends Model
                    $mercadoria->nome = $row[1];
                    $mercadoria->descricao = $row[2];
                    $mercadoria->quantidade = $row[3];
-                   $mercadoria->usuario = $row[4];
+                   $mercadoria->usuario = (new Usuario)->getById($row[4]);
                    $mercadoria->tipo = $row[5];
                    $mercadoria->unidade = $row[6];
 
@@ -84,7 +85,9 @@ class Mercadoria extends Model
     */
     public function Salvar()
     {
-        $comand = "INSERT INTO mercadoria VALUES(NULL, '$this->nome', '$this->descricao', $this->quantidade, $this->usuario, $this->tipo, '$this->unidade')";
+        $cd_usuario = $this->usuario->codigo;
+
+        $comand = "INSERT INTO mercadoria VALUES(NULL, '$this->nome', '$this->descricao', $this->quantidade, $cd_usuario, $this->tipo, '$this->unidade')";
         
         $this->db->query("DELETE FROM combinacao");
 
@@ -104,6 +107,8 @@ class Mercadoria extends Model
         if($result->num_rows > 0 ){
             return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
         }
+        //DELETAR MATCHES
+        $this->db->query("DELETE FROM combinacao");
         // FALTA FAZER
         //$comand = "UPDATE mercadoria SET "
     }
@@ -120,7 +125,8 @@ class Mercadoria extends Model
         if($result->num_rows > 0 ){
             return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
         }
-
+        //DELETAR MATCHES
+        $this->db->query("DELETE FROM combinacao");
         //DELETE OPERATION
         $comand = "DELETE FROM mercadoria WHERE cd_mercadoria='$_codigo'";
 

@@ -15,6 +15,7 @@ class nav extends View
             //user normal links
             $this->data['%perfil%'] = BASE_URL . "usuario/perfil";
             $this->data['%logout%'] = BASE_URL . "usuario/logout";
+            $this->data['%ranking%'] = BASE_URL . "ranking";
             $this->data['%doacoes%'] = BASE_URL . "doacoes";
             $this->data['%usuario_logado%'] = Session::getSession('userid')->nome;
             $this->data['%usuario_photo%'] = BASE_URL . Session::getSession('userid')->getPhoto();
