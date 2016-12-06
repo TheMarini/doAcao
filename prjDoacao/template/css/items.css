@@ -91,9 +91,9 @@ input:focus {
 #mensagem {
     z-index: 5;
     width: 35%;
-    background-color: gray;
+    background-color: dimgray;
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 5px;
+
     overflow: hidden;
     position: absolute;
     top: 35%;
@@ -107,15 +107,17 @@ input:focus {
 #mensagem h1 {
     font-weight: 100;
     padding-left: 5px;
-    ;
-    font-size: 5vh
+    font-size: 5vh;
+    color: white
 }
 
 #mensagem button {
     width: 50%;
     font-size: 3vh;
     transition: 1s;
-    padding: 7px 0px
+    padding: 7px 0px;
+    margin: 0;
+    border-radius: 0px
 }
 
 #mensagem button:hover {
@@ -140,7 +142,8 @@ input:focus {
     left: 25vw;
     color: black;
     font-size: 4vh;
-    border-bottom: solid cadetblue 5px
+    border-bottom: solid cadetblue 5px;
+    bottom: 0px
 }
 
 #adicionar header {
