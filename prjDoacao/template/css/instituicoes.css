@@ -1,0 +1,79 @@
+body {
+    background-color: whitesmoke
+}
+
+.centralize {
+    flex-flow: wrap
+}
+
+header {
+    text-align: center;
+    margin-top: 10vh;
+    z-index: 0;
+}
+
+header h1 {
+    color: dimgray;
+    font-size: 8vh;
+    padding: 5px 5px 10px 5px;
+    text-align: center;
+}
+
+article {
+    background-color: white;
+    box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
+    width: 90%;
+    border-top: 4px solid dimgray;
+    border-bottom: 4px solid dimgray;
+    margin-bottom: 0.5vh;
+}
+
+article select {
+    font-size: 4vh;
+    color: white;
+    background-color: dimgray;
+    cursor: pointer;
+    width: 100%;
+    text-align: center
+}
+
+article ul {
+    box-sizing: content-box;
+    padding: 7px;
+}
+
+article ul img {
+    height: 8vh;
+}
+
+#instituicoes li {
+    display: flex;
+    align-items: center;
+    font-size: 3vh;
+    margin-bottom: 4px;
+    width: 100%;
+}
+
+.user {
+    display: flex;
+    width: 75%;
+    align-items: center;
+}
+.user p{
+    margin-left:2px
+}
+
+.dados {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 89%
+}
+
+#ranking .necessidades {
+    color: black;
+}
+
+#ranking .endereco {
+    color: dimgray;
+}

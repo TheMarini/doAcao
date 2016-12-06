@@ -13,6 +13,7 @@ class ranking extends View
         $head = new partials\head();
         $head->setTitle('Ranking');
         $head->setIncludeCss('css/ranking.css');
+        $head->setIncludeCss('css/ranking-widget.css');
         $head->setIncludeScript('js/ranking.js');
         $head->render();
         $nav = new partials\nav();

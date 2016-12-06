@@ -1,3 +1,4 @@
+
 /* --- VARIABLES --- */
 publicacaoList = [];
 /* --- FUNCTIONS --- */
@@ -62,6 +63,3 @@ $('document').ready(function () {
     
     loadFeed();
 });
-
-
-
