@@ -16,7 +16,7 @@ class indexDoador extends View
        $head->setIncludeCss('css/feed-widget.css');
        $head->setIncludeCss('css/ranking-widget.css');
        $head->setIncludeScript('js/indexDoador.js');
-       $head->setIncludeScript('js/feed.js');
+       $head->setIncludeScript('js/feed-widget.js');
        $head->render();
        $nav = new partials\nav();
        $nav->render();
