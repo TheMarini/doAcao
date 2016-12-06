@@ -30,7 +30,7 @@ class Publicacao extends Model
         }
     }
     
-    function Consultar($_cd_usuario = null){
+    public function Consultar($_cd_usuario = null){
         $comand = "SELECT * FROM publicacao ";
         
         if(!is_null($_cd_usuario)){
@@ -50,6 +50,13 @@ class Publicacao extends Model
             }
         }
         return $publicacoesList;
+    }
+
+    public function Salvar(){
+        $cd_user = $this->usuario->codigo;
+        $comand = "INSER INTO publicacao VALUES(now(), $cd_user, $cd_user, $this->tipo, $this->conteudo)";
+
+        $this->db->query($comand);
     }
     
 }

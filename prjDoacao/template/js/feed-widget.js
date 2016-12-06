@@ -60,6 +60,4 @@ $('document').ready(function () {
         $(this).find('.autor').css('opacity', 0.2);
         $(this).find('.time').css('opacity', 0.2);
     });
-    
-    loadFeed();
 });

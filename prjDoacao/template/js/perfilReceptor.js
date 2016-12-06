@@ -104,6 +104,20 @@ function salvarNecessidade(_tipo, _nome, _quantidade, _unidade) {
     })
 }
 
+function novoPost(_conteudo){
+    $.ajax({
+        type: 'POST',
+        data: {tipo: '1', conteudo: _conteudo},
+        url: 'publicacao/novo',
+        success: function(result){
+            loadFeed();
+        },
+        error: function(result){
+            alert('erro de ajax');
+        }
+    })
+}
+
 
 /* -- EVENTOS -- */
 $(document).ready(function () {
@@ -120,7 +134,8 @@ $(document).ready(function () {
 
     //on load events
     listarNecessidades();
-
+    loadFeed();
+    
     $(document).click(function (evt) {
         if (!$(evt.target).is('#tipoMercadoria')) {
             $('#tipos').hide();
@@ -197,6 +212,13 @@ $(document).ready(function () {
 
         salvarNecessidade(tipo, nome, quantidade, unidade);
 
-    })
+    });
+
+    //postar
+    $('#postar').click(function(){
+        var conteudo = $('#cont').val();
+        novoPost(conteudo);
+        
+    });
 
 });

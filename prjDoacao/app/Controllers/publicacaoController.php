@@ -32,4 +32,24 @@ class publicacaoController extends Controller
         $publicacaoview->render();
         
     }
+
+    public function novoAction(){
+        if(!Session::isLogged()){
+            header('Location: '. BASE_URL . 'usuario/login');
+            return;
+        }
+
+        if(!$this->request->isAjax()){
+            header('Location: ' . BASE_URL . 'usuario/perfil');
+            return;
+        }
+
+        if(!is_null($this->request->post())){
+            $publicacaomodel = new Publicacao();
+            $publicacaomodel->conteudo = $this->request->post('conteudo');
+            $publicacaomodel->tipo = $this->request->post('tipo');
+            $publicacaomodel->Salvar();
+        }
+
+    }
 }
