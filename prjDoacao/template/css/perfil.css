@@ -1,9 +1,11 @@
-body{
+body {
     background-color: whitesmoke;
 }
 
+
 /* classes */
-.btn{
+
+.btn {
     background: #00bcd4;
     border-radius: 3px;
     font-size: 2.5vh;
@@ -12,66 +14,72 @@ body{
     margin-left: 0.5vh;
 }
 
+
 /*----------HEADER------------*/
-#header{
-    padding-top:8.5vh;
+
+#header {
+    padding-top: 8.5vh;
     width: 100%;
     background-position: center;
     background-size: contain;
     position: relative;
 }
 
-#header #photos{
+#header #photos {
     max-height: 50vh;
     overflow: hidden;
 }
 
-#header #photos img{
+#header #photos img {
     width: 100%;
 }
 
-#header #photos iframe{
+#header #photos iframe {
     width: 100%;
     height: 50vh;
 }
 
-.slick-list{
+.slick-list {
     position: relative;
     z-index: -1;
 }
 
-.slick-prev, .slick-next{
+.slick-prev,
+.slick-next {
     position: absolute;
     width: 5%;
     height: 100%;
     outline: none;
     z-index: 0;
-    top: 0 ;
+    top: 0;
     opacity: 0.6;
     transition: 0.5s;
     cursor: pointer;
 }
 
-.slick-prev:hover, .slick-next:hover{
+.slick-prev:hover,
+.slick-next:hover {
     opacity: 1;
 }
 
-.slick-prev{
-    background: url('../img/icons/prev.png'), linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0.45));
+.slick-prev {
+    background: url('../img/icons/prev.png'), linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.45));
     background-repeat: no-repeat;
     background-position: center;
     left: 0;
 }
 
-.slick-next{
-    background: url('../img/icons/next.png'), linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,0.30));
+.slick-next {
+    background: url('../img/icons/next.png'), linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.30));
     background-repeat: no-repeat;
     background-position: center;
     right: 0;
 }
 
+
 /* - intro - */
-#intro{
+
+#intro {
     padding: 5vh 0;
     display: flex;
     background: whitesmoke;
@@ -82,34 +90,37 @@ body{
     text-align: center
 }
 
-#intro h1{
+#intro h1 {
     font-size: 7vh;
 }
 
-#avatar img{
+#avatar img {
     background-color: whitesmoke;
     border-radius: 100px;
     padding: 10px;
     border: 4px solid #152b3f;
     margin-top: -13vh;
-    box-shadow: 0px 3px 1px 0 rgba(0,0,0,0.12), 0px 3px 1px 0 rgba(0,0,0,0.24);
+    box-shadow: 0px 3px 1px 0 rgba(0, 0, 0, 0.12), 0px 3px 1px 0 rgba(0, 0, 0, 0.24);
     transition: 2s;
     cursor: pointer;
     z-index: 0;
     position: relative;
 }
-#avatar img:hover{
-    box-shadow: 0px 10px 5px 0 rgba(0,0,0,0.12), 0px 12px 5px 0 rgba(0,0,0,0.24);
+
+#avatar img:hover {
+    box-shadow: 0px 10px 5px 0 rgba(0, 0, 0, 0.12), 0px 12px 5px 0 rgba(0, 0, 0, 0.24);
     transform: perspective(1000px) rotateX(15deg)
 }
 
+
 /*----------ARTICLE------------*/
-article{
+
+article {
     width: 95%;
     margin: 0 auto;
 }
 
-#tipo-de-doador{
+#tipo-de-doador {
     left: 0;
     top: 0;
     position: absolute;
@@ -119,78 +130,90 @@ article{
     margin: 1vh
 }
 
-#conquistas{
+#conquistas {
     right: 0;
     top: 0;
     position: absolute;
 }
 
-#conquistas img{height: 8vh}
-
-#conquistas ul{
-    display: flex; /* modo de distribuição dos filhos (adaptativo) */
-    flex-direction: row; /* direção da distribuição (em linha) */
-    flex-wrap: nowrap; /* adaptar os filhos ao tamanho do pai */
-    justify-content: inherit; /* alinhamento horizontal dos filhos */
-    align-content: inherit; /* alinhamento vertical dos filhos */
-    font-size: 3vh; 
-    font-weight: 500; 
+#conquistas img {
+    height: 8vh
 }
 
-#conquistas li{
-    padding: 1vh 0.3vw; 
-    opacity: 0.8; 
-    transition: 0.5s; 
-    
+#conquistas ul {
+    display: flex;
+    /* modo de distribuição dos filhos (adaptativo) */
+    flex-direction: row;
+    /* direção da distribuição (em linha) */
+    flex-wrap: nowrap;
+    /* adaptar os filhos ao tamanho do pai */
+    justify-content: inherit;
+    /* alinhamento horizontal dos filhos */
+    align-content: inherit;
+    /* alinhamento vertical dos filhos */
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+#conquistas li {
+    padding: 1vh 0.3vw;
+    opacity: 0.8;
+    transition: 0.5s;
     animation: menu ease 5s
 }
 
-#cidade{
+#cidade {
     color: black;
     font-size: 3vh;
     font-weight: 400;
 }
 
-#cidade img{vertical-align: baseline}
+#cidade img {
+    vertical-align: baseline
+}
 
-#avatar p{
-    background-color:  rgba(0,0,0,0.40);
+#avatar p {
+    background-color: rgba(0, 0, 0, 0.40);
     text-align: center;
     z-index: -10;
     cursor: pointer;
     font-weight: 600
 }
 
+
 /* ---- TIME-LINE --- */
-#timeline{
+
+#timeline {
     display: flex;
     justify-content: center;
     margin-bottom: 5vh
 }
 
-#timeline h2{
+#timeline h2 {
     font-weight: 100;
     font-size: 5vh;
 }
 
+
 /* ---- NEW POST --- */
-#new-post{
-    background-color:  cadetblue;
+
+#new-post {
+    background-color: cadetblue;
     box-sizing: content-box;
     padding: 4px
 }
 
-#new-post textarea{
+#new-post textarea {
     resize: none;
     width: 98.3%;
     height: 12vh;
-
     box-sizing: padding-box;
     padding: 5px;
     font-size: 3vh
 }
 
-#imagem,#necessidade{
+#imagem,
+#necessidade {
     height: 4vh;
     color: white;
     font-size: 2.5vh;
@@ -202,7 +225,7 @@ article{
     margin-bottom: 1px
 }
 
-#postar{
+#postar {
     background-color: transparent;
     color: white;
     font-size: 3vh;
@@ -210,78 +233,85 @@ article{
     margin: 0 5px;
     cursor: pointer;
 }
+
+
 /* ---- FEED --- */
-#feed{
+
+#feed {
     width: 50%;
     margin-top: 2vh;
 }
 
-#posts{margin-top: 1vh}
+#posts {
+    margin-top: 1vh
+}
+
 
 /* --- NECESSIDADES/RANKING --- */
 
-svg{
+svg {
     height: 5px;
 }
 
-#timeline aside{
+#timeline aside {
     color: darkgoldenrod;
     width: 30%;
     text-align: right;
     margin-top: 2vh;
     margin-left: 1vh;
 }
-#timeline aside header{
+
+#timeline aside header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+
 /* #itensListNec li{
     border-top: 2px solid #f5f5f5;
     padding: 1vh;
 } */
-#itensListNec li{
+
+#itensListNec li {
     transition: background-color 0.3s linear;
     cursor: pointer;
     padding: 2px 6px
 }
 
-#itensListNec li:hover, .selectedItem{
+#itensListNec li:hover,
+.selectedItem {
     border-left: 2px solid #00bcd4;
     border-right: 2px solid #00bcd4;
     background-color: rgba(0, 0, 0, 0.07)
 }
 
-#itensListNec li:first-child{
-    border-top:none;
+#itensListNec li:first-child {
+    border-top: none;
 }
 
 #itensListNec li h3 {
     font-size: 3vh;
 }
 
-#itensListNec progress{
+#itensListNec progress {
     width: 90%;
     height: 2.5vh;
-
 }
 
-#itensListNec progress::-webkit-progress-bar{
+#itensListNec progress::-webkit-progress-bar {
     background: #00bcd4;
-    
 }
 
-#itensListNec progress::-webkit-progress-value{
+#itensListNec progress::-webkit-progress-value {
     background: #00bcd4;
-    
 }
 
-#itensListNec p{
+#itensListNec p {
     font-size: 2.5vh;
 }
 
-.controls{
+.controls {
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -289,7 +319,7 @@ svg{
     position: absolute
 }
 
-.controls .btn{
+.controls .btn {
     cursor: pointer;
     margin: 2px;
     border-radius: 5px;
@@ -302,21 +332,24 @@ svg{
     transition: 0.5s;
 }
 
-.controls .btn:hover{
+.controls .btn:hover {
     opacity: 1;
 }
 
-.controls .btn.edit{
+.controls .btn.edit {
     background-image: url('../img/icons/edit.png');
     background-color: dimgray;
 }
-.controls .btn.delete{
+
+.controls .btn.delete {
     background-image: url('../img/icons/excluir.png');
     background-color: indianred;
 }
 
+
 /* --- NOVA NECESSIDADE --- */
-#frmNovaNecessidade{
+
+#frmNovaNecessidade {
     background: #fff;
     position: fixed;
     top: 30%;
@@ -326,70 +359,76 @@ svg{
     width: 40%;
 }
 
-#frmNovaNecessidade h1{
+#frmNovaNecessidade h1 {
     color: #fff;
     font-size: 4vh;
 }
 
-#frmNovaNecessidade header{
+#frmNovaNecessidade header {
     background: cadetblue;
     display: flex;
     justify-content: space-between;
 }
 
-#btnVoltar{
+#btnVoltar {
     color: #fff;
     background-color: cadetblue;
     width: 6vw;
     font-size: 2.5vh;
 }
-#btnVoltar:hover{background-color: transparent}
 
-#btnConcluir{
+#btnVoltar:hover {
+    background-color: transparent
+}
+
+#btnConcluir {
     color: #fff;
-    background-color: rgba(140, 180, 160, 1);;
+    background-color: rgba(140, 180, 160, 1);
+    ;
     margin-right: -0.1px;
     width: 11vw;
     font-size: 3.3vh;
     text-decoration: underline;
 }
 
-#frmNovaNecessidade #frmNovo{
-    padding: 8px; 
+#frmNovaNecessidade #frmNovo {
+    padding: 8px;
     display: flex;
     justify-content: space-between;
     flex-flow: row wrap;
 }
 
-.flexFullLine{
+.flexFullLine {
     flex-basis: 100%;
 }
 
-#frmNovo label span{
+#frmNovo label span {
     display: block;
     color: dimgray;
 }
-#frmNovo input { 
+
+#frmNovo input {
     text-align: center;
     font-size: 3.5vh;
 }
-#frmNovo select{
+
+#frmNovo select {
     padding: 2px;
     font-size: 3.5vh;
     border: 1px solid lightgray;
 }
 
-#frmNovo input[type="number"]{
+#frmNovo input[type="number"] {
     position: absolute;
     width: 10%;
-     border: 1px solid lightgray;
+    border: 1px solid lightgray;
 }
 
-#txtNome{
+#txtNome {
     width: 100%;
 }
 
-#frmNovo .selected{
+#frmNovo .selected {
     background: rgba(5, 225, 255, 0.7);
-    transition: 0.5s;    
+    transition: 0.5s;
 }
