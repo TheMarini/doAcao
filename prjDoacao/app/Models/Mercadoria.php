@@ -16,7 +16,7 @@ class Mercadoria extends Model
     public $usuario;
     public $tipo;
     public $unidade;
-    
+
     function __construct($_codigo = null)
     {
         parent::__construct();

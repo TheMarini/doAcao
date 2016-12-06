@@ -161,11 +161,11 @@ article{
     font-weight: 600
 }
 
-/* ---- FEED --- */
-
+/* ---- TIME-LINE --- */
 #timeline{
     display: flex;
     justify-content: center;
+    margin-bottom: 5vh
 }
 
 #timeline h2{
@@ -173,11 +173,47 @@ article{
     font-size: 5vh;
 }
 
+/* ---- NEW POST --- */
+#new-post{
+    background-color:  cadetblue;
+    box-sizing: content-box;
+    padding: 2px
+}
+
+#new-post textarea{
+    resize: none;
+    width: 98.3%;
+    height: 12vh;
+
+    box-sizing: padding-box;
+    padding: 5px;
+    font-size: 3vh
+}
+
+#imagem,#necessidade{
+    height: 4vh;
+    color: white;
+    font-size: 2.5vh;
+    padding: 4px;
+    cursor: pointer;
+    background-color: dimgray;
+    color: white;
+    width: 10vw
+}
+
+#postar{
+    background-color: transparent;
+    color: white;
+    font-size: 3vh;
+    float: right;
+    margin: 0 5px;
+    cursor: pointer;
+}
+/* ---- FEED --- */
 #feed{
     width: 50%;
     color: #00bcd4;
     margin-top: 2vh;
-
 }
 
 /* --- NECESSIDADES/RANKING --- */
@@ -199,9 +235,20 @@ svg{
     align-items: center;
 }
 
-#itensListNec li{
+/* #itensListNec li{
     border-top: 2px solid #f5f5f5;
     padding: 1vh;
+} */
+#itensListNec li{
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+    padding: 2px 6px
+}
+
+#itensListNec li:hover, .selectedItem{
+    border-left: 2px solid #00bcd4;
+    border-right: 2px solid #00bcd4;
+    background-color: rgba(0, 0, 0, 0.07)
 }
 
 #itensListNec li:first-child{
@@ -230,6 +277,40 @@ svg{
 
 #itensListNec p{
     font-size: 2.5vh;
+}
+
+.controls{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute
+}
+
+.controls .btn{
+    cursor: pointer;
+    margin: 2px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    width: 3vh;
+    height: 3vh;
+    background-position: center;
+    background-size: 90%;
+    opacity: 0.6;
+    transition: 0.5s;
+}
+
+.controls .btn:hover{
+    opacity: 1;
+}
+
+.controls .btn.edit{
+    background-image: url('../img/icons/edit.png');
+    background-color: dimgray;
+}
+.controls .btn.delete{
+    background-image: url('../img/icons/excluir.png');
+    background-color: indianred;
 }
 
 /* --- NOVA NECESSIDADE --- */
