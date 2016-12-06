@@ -132,11 +132,11 @@ body {
 #bio{
     width: 28vw;
     height: 25vh;
-    text-align: justify;
-    border-top: 2px solid dimgray
+    text-align: center;
+    font-size: 3vh;
 
 }
-#bio h2{text-align: center}
+#bio h2{text-align: center; font-size: 3.5vh;}
 
 #contato {
     display: flex;
@@ -146,12 +146,10 @@ body {
     text-align: center;
     margin-right: 20vw;
 
-    color: #152b3f;
     width: 28vw;
 
 }
 #contato h1 {
-    color: dimgray;
     font-size: 10vh;
     font-weight: 100;
 }

@@ -19,8 +19,6 @@ class listar extends View
                 $rankingList[] = $rankingObj;
             }
             echo json_encode($rankingList);
-        }else{
-            echo json_encode("Não há usuário suficientes no sistema para gerar um ranking");
         }
     }
 }
