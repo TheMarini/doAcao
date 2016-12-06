@@ -23,12 +23,10 @@ article {
     background-color: white;
     box-shadow: 0px 0px 3px 0 rgba(0, 0, 0, 0.24);
     width: 90%;
-    border-top: 4px solid white;
+    border-top: 4px solid dimgray;
     border-bottom: 4px solid dimgray;
     margin-bottom: 0.5vh;
-    min-height:59vh
 }
-
 
 article select {
     font-size: 4vh;
@@ -41,15 +39,14 @@ article select {
 
 article ul {
     box-sizing: content-box;
-    padding: 5px;
+    padding: 7px;
 }
 
 article ul img {
     height: 8vh;
-    margin-left: 5px
 }
 
-#ranking li {
+#instituicoes li {
     display: flex;
     align-items: center;
     font-size: 3vh;
@@ -57,17 +54,26 @@ article ul img {
     width: 100%;
 }
 
-#ranking li div{
+.user {
+    display: flex;
+    width: 75%;
+    align-items: center;
+}
+.user p{
+    margin-left:2px
+}
+
+.dados {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 89%
 }
 
-#ranking .necessidades{
-        color: black;
+#ranking .necessidades {
+    color: black;
 }
 
-#ranking .endereco{
-        color: dimgray;
+#ranking .endereco {
+    color: dimgray;
 }
