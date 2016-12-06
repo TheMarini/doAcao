@@ -3,6 +3,7 @@ namespace prjDoacao\app\Models;
 
 use prjDoacao\sys\Model as Model;
 use prjDoacao\sys\session\Session as Session;
+use prjDoacao\app\Models\Cep;
 
 /**
  * Model de usuario
@@ -102,7 +103,7 @@ class Usuario extends Model
 		$usuario->tipo = $row[4];
 		$usuario->cpf = $row[5];
 		$usuario->cnpj = $row[6];
-		$usuario->cep = $row[7];
+		$usuario->cep = new Cep($row[7]);
 		$usuario->numero_endereco = $row[8];
 		$usuario->telefone = $row[9];
 		$usuario->facebook = $row[10];

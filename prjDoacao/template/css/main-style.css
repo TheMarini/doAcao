@@ -3,24 +3,28 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /* MAXWELL familia de fontes */
+
 @font-face {
     font-family: 'MAXWELL';
     src: url('../fonts/MAXWELL_REGULAR.woff') format('woff');
     font-style: normal;
     font-weight: normal;
 }
+
 @font-face {
     font-family: 'MAXWELL';
     src: url('../fonts/MAXWELL_BOLD.woff') format('woff');
     font-style: normal;
     font-weight: bold;
 }
+
 @font-face {
     font-family: 'MAXWELL';
     src: url('../fonts/MAXWELL_LIGHT.woff') format('woff');
     font-style: normal;
     font-weight: 100;
 }
+
 
 /*----------NORMATIZAÇÃO------------*/
 
@@ -60,19 +64,20 @@ input[type="search"]::-webkit-search-cancel-button {
     display: none;
 }
 
+
 /*----------CLASSES------------*/
 
-.centralize{
+.centralize {
     display: flex;
     justify-content: center;
     height: 100%;
 }
 
-.show{
+.show {
     display: block;
 }
 
-.msg{
+.msg {
     padding: 0.3em;
     font-size: 1.5em;
     background: lightblue;
@@ -82,32 +87,34 @@ input[type="search"]::-webkit-search-cancel-button {
     color: #fff;
 }
 
-.msg.alert{
+.msg.alert {
     background: darkorange;
     display: inline-block;
 }
 
-.msg.error{
+.msg.error {
     background: #ff4444;
     display: inline-block;
 }
 
-.msg.show{
+.msg.show {
     display: inline-block;
 }
 
-.txt{
+.txt {
     box-sizing: content-box;
     color: dimgray;
     outline: none;
-    background:#f5f5f5;
+    background: #f5f5f5;
     transition: 0.3s;
     border: 1px solid lightgrey;
 }
 
-.txt:focus{ background: #fff;}
+.txt:focus {
+    background: #fff;
+}
 
-.btn{
+.btn {
     background: #00bcd4;
     border-radius: 3px;
     font-size: 2.5vh;
@@ -118,13 +125,14 @@ input[type="search"]::-webkit-search-cancel-button {
     cursor: pointer;
 }
 
-.btn:active{
+.btn:active {
     background: #00acd4;
 }
 
 
 /* - DropDownList for ul's - */
-.dropDownList{
+
+.dropDownList {
     z-index: 100;
     position: absolute;
     max-height: 50vh;
@@ -133,32 +141,35 @@ input[type="search"]::-webkit-search-cancel-button {
     display: none;
 }
 
-.dropDownList li{
-    padding: 5px; 
+.dropDownList li {
+    padding: 5px;
 }
 
-.dropDownList li:hover{
+.dropDownList li:hover {
     background: #f4f4f4;
     box-sizing: content-box;
 }
 
-.dropDownList::-webkit-scrollbar{
+.dropDownList::-webkit-scrollbar {
     background: #f4f4f4;
     border-bottom-right-radius: 5px;
 }
 
-.dropDownList::-webkit-scrollbar-thumb{
+.dropDownList::-webkit-scrollbar-thumb {
     background: cadetblue;
 }
 
+
 /* flex objects */
 
-.centralize{
+.centralize {
     display: flex;
 }
 
+
 /* table data sections */
-.dataSection{
+
+.dataSection {
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     padding: 5px;
@@ -166,32 +177,34 @@ input[type="search"]::-webkit-search-cancel-button {
     box-sizing: content-box;
 }
 
-.dataSection{
+.dataSection {
     text-align: left;
     width: 100%;
 }
 
-.dataSection span{
+.dataSection span {
     font-weight: 100;
     color: black;
 }
 
-.dataSection tr{
+.dataSection tr {
     width: 100%;
 }
 
-.dataSection tr td{
+.dataSection tr td {
     border-bottom: 1px solid #e0e0e0;
     width: 100%;
     padding: 1vh;
 }
 
-.dataSection tr:last-child td{
+.dataSection tr:last-child td {
     border: none;
 }
 
+
 /* - BlackCover to hide back elements - */
-#blackcover{
+
+#blackcover {
     position: fixed;
     top: 0;
     left: 0;
@@ -200,6 +213,7 @@ input[type="search"]::-webkit-search-cancel-button {
     background: rgba(0, 0, 0, 0.70);
     z-index: 1;
 }
+
 
 /*----------NAV------------*/
 
@@ -213,12 +227,12 @@ nav {
     color: whitesmoke;
 }
 
-nav.notLogged{
+nav.notLogged {
     background: #fff;
     color: #00bcd4;
 }
 
-nav a{
+nav a {
     color: whitesmoke;
 }
 
@@ -241,7 +255,7 @@ nav > ul {
     font-size: 3vh;
 }
 
-nav > ul li{
+nav > ul li {
     padding: 2vh 2vw;
     opacity: 0.8;
     transition: 0.5s;
@@ -259,13 +273,14 @@ nav > ul li:hover {
     padding: 2vh 3.5vw 2vh;
 }
 
-nav img{
+nav img {
     height: 5vh;
     opacity: 0.9;
     margin: 0 1vw;
     transition: all 0.5s ease;
 }
-nav img:hover{
+
+nav img:hover {
     opacity: 1;
 }
 
@@ -273,7 +288,8 @@ nav img:hover{
     opacity: 1;
     width: 25vw;
 }
-#search img{
+
+#search img {
     width: 20%;
     display: flex;
 }
@@ -295,7 +311,7 @@ nav input:focus {
     background-color: white;
 }
 
-#menu{
+#menu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -316,68 +332,68 @@ nav input:focus {
     box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.12), 0px 5px 20px 0 rgba(0, 0, 0, 0.24);
 }
 
+
 /* user photo and link */
-#btnUser{
+
+#btnUser {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
-#btnUser span{
+#btnUser span {
     opacity: 0.8;
     font-size: 3vh;
     transition: 0.5s;
 }
 
-#btnUser img{
+#btnUser img {
     border: 1px solid #00bcd4;
     border-radius: 100%;
 }
 
-
-#btnUser:hover img, #btnUser:hover span, .contentOpen{
+#btnUser:hover img,
+#btnUser:hover span,
+.contentOpen {
     opacity: 1;
 }
 
-#user-options{
+#user-options {
     height: auto;
     width: 100%;
     left: 0;
 }
 
-#user-options ul li{
+#user-options ul li {
     font-size: 2.5vh;
     padding: 1vh 1vw;
     transition: 0.3s;
 }
 
-#user-options ul li:hover{
+#user-options ul li:hover {
     background: #f4f4f4;
 }
 
+
 /* --- hidden msg div --- */
 
-.contentContainer{
+.contentContainer {
     position: relative;
     cursor: pointer;
 }
 
-.setaParaCima:before{
-  content: "";
-
-  width: 0;
-  height: 0;
-
-  position: absolute;
-  top: -20px;
-  left: 43%;
-
-
-  border: 10px solid transparent;
-  border-bottom: 10px solid #fff; 
+.setaParaCima:before {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -20px;
+    left: 43%;
+    border: 10px solid transparent;
+    border-bottom: 10px solid #fff;
 }
 
-.content{
+.content {
     left: -90%;
     margin-top: 3vh;
     z-index: 3;
@@ -390,6 +406,6 @@ nav input:focus {
     border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.content a{
+.content a {
     color: #00bcd4;
 }

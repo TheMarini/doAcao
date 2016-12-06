@@ -4,47 +4,49 @@ Mercadorias = [];
 Combinacoes = [];
 
 /* FUNCTIONS */
-function listarItens(){
+function listarItens() {
     $.ajax({
         url: "/mercadoria/listar",
-        success: function(result){
+        success: function (result) {
             $('#itensList').html(result);
             selecionarItem($('#itensList > li:first-child'));
         },
-        error: function(){
+        error: function () {
             alert('Erro ao realizar requisição Ajax');
         }
 
     });
 }
 
-function listarMatch(codigo){
+function listarMatch(codigo) {
     $.ajax({
         dataType: 'json',
         type: 'GET',
-        url:'mercadoria/listarCombinacoes/'+codigo,
-        data: {cd: codigo},
-        success: function(result){
+        url: 'mercadoria/listarCombinacoes/' + codigo,
+        data: {
+            cd: codigo
+        },
+        success: function (result) {
             Combinacoes = result;
         },
-        error: function(){
+        error: function () {
             alert('Erro ao efetuar Ajax');
         },
-        complete: function(){
+        complete: function () {
             $('#matchList').empty();
-            if(Combinacoes == ""){
+            if (Combinacoes == "") {
                 $('#matchList').append('<span class="msg show">Nenhuma instituição interessada!</span>');
                 return;
             }
 
             index = 0;
-            Combinacoes.forEach(function(comb) {
-                var item = '<li value="'+index+'">';
-                   item += '<h3>'+comb.usuarioReceptor.nome+'</h3>';
-                   item += '<dd id="valLocal">'+comb.usuarioReceptor.cep+'</dd>';
-                   item +=  '<div class="controls"><a href="'+BASE_URL+'usuario/perfil/'+ comb.usuarioReceptor.codigo+'">Ver Perfil</a><button class="btn">Doar</a></div></li>';
-                
-                $('#matchList').append(item); 
+            Combinacoes.forEach(function (comb) {
+                var item = '<li value="' + index + '">';
+                item += '<h3>' + comb.usuarioReceptor.nome + '</h3>';
+                item += '<dd id="valLocal">' + comb.usuarioReceptor.cep.cidade + '/' + comb.usuarioReceptor.cep.siglaEstado + '</dd>';
+                item += '<div class="controls"><a href="' + BASE_URL + 'usuario/perfil/' + comb.usuarioReceptor.codigo + '">Ver Perfil</a><button class="btn">Doar</a></div></li>';
+
+                $('#matchList').append(item);
                 item++;
             });
 
@@ -53,8 +55,8 @@ function listarMatch(codigo){
     })
 }
 
-function toggleAddItem(){
-    if($('#adicionar').is(':hidden') ){
+function toggleAddItem() {
+    if ($('#adicionar').is(':hidden')) {
         $('#blackcover').fadeIn('fast');
         $('#adicionar').slideDown('fast');
         $('#add-nome').val("");
@@ -64,67 +66,74 @@ function toggleAddItem(){
         $('#unid').empty();
         $('#nbrQuantidade').val("1");
         $('#txtDesc').val("");
-    }else{
+    } else {
         $('#blackcover').fadeOut('fast');
         $('#adicionar').slideUp('fast');
     }
 }
 
-function toggleMensagem(){
-    if($('#mensagem').is(':hidden')){
+function toggleMensagem() {
+    if ($('#mensagem').is(':hidden')) {
         $('#blackcover').fadeIn('fast');
         $('#mensagem').fadeIn();
-    }else{
+    } else {
         $('#blackcover').fadeOut('fast');
         $('#mensagem').fadeOut('fast');
     }
 }
 
-function loadTipoMercadoria(){
+function loadTipoMercadoria() {
     $.ajax({
         dataType: 'json',
         url: "/mercadoria/novo",
-        success: function(result){
+        success: function (result) {
             TipoMercadoria = result;
         },
-        error: function(){
+        error: function () {
             alert('Erro ao realizar requisição Ajax');
         }
-        
+
     });
 }
 
-function searchTipoMercadoria(termo = ""){
+function searchTipoMercadoria(termo = "") {
     $('#tipos').empty();
-    if(termo != ""){
+    if (termo != "") {
         var rgxp = new RegExp(termo, "g");
-        TipoMercadoria.forEach(function(item){
-            if(item.nome.match(rgxp)){
-                $('#tipos').append('<li value="'+item.codigo+'">'+item.nome+'</li>');
+        TipoMercadoria.forEach(function (item) {
+            if (item.nome.match(rgxp)) {
+                $('#tipos').append('<li value="' + item.codigo + '">' + item.nome + '</li>');
             }
-            
+
         });
         return;
     }
 
-    TipoMercadoria.forEach(function(item){
-       $('#tipos').append('<li value="'+item.codigo+'">'+item.nome+'</li>');  
+    TipoMercadoria.forEach(function (item) {
+        $('#tipos').append('<li value="' + item.codigo + '">' + item.nome + '</li>');
     });
 }
 
-function salvar(_nome, _tipo, _unidade, _quantidade, _descricao){
+function salvar(_nome, _tipo, _unidade, _quantidade, _descricao) {
     resultado = false;
     $.ajax({
         dataType: 'json',
         type: 'POST',
         async: false,
         url: '/mercadoria/novo',
-        data: {send: 'insert', nome: _nome, quantidade: _quantidade, tipo: _tipo, unidade: _unidade, descricao: _descricao},
-        success: function(result){
-            if(result === true){
+        data: {
+            send: 'insert',
+            nome: _nome,
+            quantidade: _quantidade,
+            tipo: _tipo,
+            unidade: _unidade,
+            descricao: _descricao
+        },
+        success: function (result) {
+            if (result === true) {
                 listarItens();
                 resultado = true;
-            }else{
+            } else {
                 resultado = result;
             }
 
@@ -136,19 +145,19 @@ function salvar(_nome, _tipo, _unidade, _quantidade, _descricao){
     return resultado;
 }
 
-function selecionarItem(target){
-    if($(target).is('li')){
+function selecionarItem(target) {
+    if ($(target).is('li')) {
         $('.selectedItem').removeClass('selectedItem');
         $(target).addClass('selectedItem');
         var cd = $(target).val();
-        
+
         $.ajax({
-            url: '/mercadoria/item/'+cd,
+            url: '/mercadoria/item/' + cd,
             dataType: 'json',
-            success: function(result){
+            success: function (result) {
                 $('#txtNome').val(result.nome);
-                TipoMercadoria.forEach(function(item){
-                    if(item.codigo == result.tipo){
+                TipoMercadoria.forEach(function (item) {
+                    if (item.codigo == result.tipo) {
                         $('#valTipo').text(item.nome);
                     }
                 });
@@ -160,26 +169,28 @@ function selecionarItem(target){
             error: function () {
                 alert('Erro ao realizar requisição Ajax');
             },
-            complete: function(){
+            complete: function () {
                 $('#right').fadeIn('fast');
             }
         });
-        
-    }else{
+
+    } else {
         $('#right').fadeOut('fast');
     }
 }
 
-function removerItem(_codigo){
+function removerItem(_codigo) {
     $.ajax({
         type: 'POST',
         url: '/mercadoria/remover',
-        data: {codigo: _codigo},
-        success: function(result){
-            $('#itensList > li[value="'+_codigo+'"] ').slideUp('fast');
+        data: {
+            codigo: _codigo
+        },
+        success: function (result) {
+            $('#itensList > li[value="' + _codigo + '"] ').slideUp('fast');
             listarItens();
         },
-        error:function () {
+        error: function () {
             alert('Erro ao realizar requisição Ajax');
         }
     })
@@ -187,74 +198,79 @@ function removerItem(_codigo){
 
 //DOAR item
 
-function doarItem(_index, _quantidade){
+function doarItem(_index, _quantidade) {
     var comb = Combinacoes[_index];
 
     $.ajax({
         type: 'POST',
-        data: {quantidade: _quantidade, usuario: comb.usuarioReceptor.codigo, mercadoria: comb.codigoMercadoria.codigo, anonima: 'yes'},
+        data: {
+            quantidade: _quantidade,
+            usuario: comb.usuarioReceptor.codigo,
+            mercadoria: comb.codigoMercadoria.codigo,
+            anonima: 'yes'
+        },
         url: '/doacoes/novo',
-        success: function(result){
-                alert('Doação efetuada com sucesso');
-            
+        success: function (result) {
+            alert('Doação efetuada com sucesso');
+
         },
         error: function () {
             alert('Ajax Error');
-          }
+        }
     })
 }
 
 
 /* EVENTS */
 
-$(document).ready(function(){
+$(document).ready(function () {
     //onLoad
     listarItens();
     loadTipoMercadoria();
 
     //document click evnt
-    $(document).click(function(evt){
-        if(!$(evt.target).is('#tipoMercadoria')){
+    $(document).click(function (evt) {
+        if (!$(evt.target).is('#tipoMercadoria')) {
             $('#tipos').hide();
         }
     });
 
     //blackcover click
-    $('#blackcover').click(function (evt){
-        if($('#adicionar').is(':visible')){
+    $('#blackcover').click(function (evt) {
+        if ($('#adicionar').is(':visible')) {
             toggleAddItem();
         }
-        if($('#mensagem').is(':visible')){
+        if ($('#mensagem').is(':visible')) {
             toggleMensagem();
         }
-        if($('#frmNovaDoacao').is('visible')){
+        if ($('#frmNovaDoacao').is('visible')) {
             $('#frmNovaDoacao').fadeOut();
         }
     });
 
     //btnAdicionar evnt
-    $('#btnAdicionar').click(function(evt){
+    $('#btnAdicionar').click(function (evt) {
         toggleAddItem();
         loadTipoMercadoria();
     });
 
     //btnVoltar evnt
-    $('#btnVoltar').click(function(evt){
+    $('#btnVoltar').click(function (evt) {
         toggleAddItem();
     });
 
     /* ---Adicionar Mercadoria---- */
 
     //tipo de mercadoria keydown event
-    $('#tipoMercadoria').keyup(function(evt){
-        if(!(evt.which == 37 || evt.which == 38 || evt.which == 39 || evt.which == 40)){ 
+    $('#tipoMercadoria').keyup(function (evt) {
+        if (!(evt.which == 37 || evt.which == 38 || evt.which == 39 || evt.which == 40)) {
             $(this).removeClass('selected');
             searchTipoMercadoria($(this).val());
             $('#tipos').show();
-        }        
+        }
     });
     //seleciona a opcao
-    $(document).on('click','#tipos > li' ,function(evt){
+    $(document).on('click', '#tipos > li', function (evt) {
         $('#tipoMercadoria').val($(this).html());
         $('#tipoMercadoria').addClass('selected');
         $('#cdTipoMercadoria').val($(this).val());
@@ -263,93 +279,92 @@ $(document).ready(function(){
     });
 
     //unid change evnt
-    $("#tipoMercadoria").change(function(){
+    $("#tipoMercadoria").change(function () {
         cd = $('#cdTipoMercadoria').val();
         unidades = [];
-        TipoMercadoria.forEach(function(item){
-            if(item.codigo == cd){
+        TipoMercadoria.forEach(function (item) {
+            if (item.codigo == cd) {
                 unidades = item.unidades;
             }
         })
         $("#unid").empty();
-        unidades.forEach(function(un){
-            $("#unid").append('<option value="' + un +'">'+ un +'</option>');
+        unidades.forEach(function (un) {
+            $("#unid").append('<option value="' + un + '">' + un + '</option>');
         })
 
     });
 
     // btnConcluir evt
-    $('#btnConcluir').click(function(evt){
+    $('#btnConcluir').click(function (evt) {
         var nome = $('#add-nome').val();
         var tipo = $('#cdTipoMercadoria').val();
         var unidade = $('#unid').val();
         var quantidade = $('#nbrQuantidade').val();
         var descricao = $('#txtDesc').val();
 
-        if(nome == null){
+        if (nome == null) {
             alert('Preencha o nome');
             return;
         }
-        if(tipo == 0 || !$('#tipoMercadoria').hasClass('selected')){
+        if (tipo == 0 || !$('#tipoMercadoria').hasClass('selected')) {
             alert('Selecione um tipo!');
             return;
         }
-        if(unidade == null){
+        if (unidade == null) {
             alert('Selecione a unidade!');
-            return;    
+            return;
         }
         //save mercadoria
-        if((result = salvar(nome, tipo, unidade, quantidade, descricao)) === true){
+        if ((result = salvar(nome, tipo, unidade, quantidade, descricao)) === true) {
             toggleAddItem();
-        }else{
+        } else {
             alert(result);
         }
     });
 
     //Selecionar item click evnt
-    $('#itensList').on('click', 'li', function(evt){
-            if($(evt.target).is('button')){
-                if($(evt.target).hasClass('edit')){
+    $('#itensList').on('click', 'li', function (evt) {
+        if ($(evt.target).is('button')) {
+            if ($(evt.target).hasClass('edit')) {
 
-                }else{
-                    toggleMensagem();
-                }
+            } else {
+                toggleMensagem();
             }
-            selecionarItem($(evt.target).closest('li'));
-            
-        
+        }
+        selecionarItem($(evt.target).closest('li'));
+
+
     })
 
     //Excluir item evt
-    $('#mensagem').on('click', '#nao', function(evt){
+    $('#mensagem').on('click', '#nao', function (evt) {
         toggleMensagem();
     });
 
-    $('#mensagem').on('click', '#sim', function(evt){
+    $('#mensagem').on('click', '#sim', function (evt) {
         var cd = $('.selectedItem').val();
         removerItem(cd);
         toggleMensagem();
     });
 
     //DOAR item
-    $('#matchList').on('click', 'li button', function(){
+    $('#matchList').on('click', 'li button', function () {
         $('#indexComb').val($(this).closest('li').val());
         var indexComb = $('#indexComb').val();
         $('#txtNomeDoa').val(Combinacoes[indexComb].codigoMercadoria.nome);
         $('#tipoMercadoriaDoa').val(Combinacoes[indexComb].codigoMercadoria.tipo);
         $('#unid').val(Combinacoes[indexComb].unidade);
         $('#blackcover').fadeIn('fast');
-        $('#frmNovaDoacao').toggle();        
+        $('#frmNovaDoacao').toggle();
     })
 
     //btnConcluirDoa
-    $('#btnConcluirDoa').click(function(){
+    $('#btnConcluirDoa').click(function () {
         var quantidade = $('#nbrQuantidadeDoa').val();
         var indexComb = $('#indexComb').val();
         doarItem(indexComb, quantidade);
         $('#blackcover').fadeOut('fast');
         $('#frmNovaDoacao').toggle();
-
-    });    
+    });
 
 })

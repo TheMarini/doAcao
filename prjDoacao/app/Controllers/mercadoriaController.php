@@ -58,10 +58,10 @@ class mercadoriaController extends Controller
             return;
         }
 
-        if(!$this->request->isAjax()){
-            header('Location: ' . BASE_URL . 'mercadoria');
-            return;
-        }
+        //if(!$this->request->isAjax()){
+        //    header('Location: ' . BASE_URL . 'mercadoria');
+        //    return;
+       // }
 
         if(isset($params[0])){
             $matchList = (new Match())->listarCombinacoes($params[0]);       

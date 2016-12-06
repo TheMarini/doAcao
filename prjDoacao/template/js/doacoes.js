@@ -54,13 +54,13 @@ function selecionarItem(index){
     $('#txtNome').val(doacao.mercadoria.nome);
     $('#valMercadoria').text(doacao.mercadoria.nome);
     $('#valTipo').text(doacao.mercadoria.tipo);
-    $('#valQuantidade').text(doacao.quantidade);
+    $('#valQuantidade').text(doacao.quantDoacao);
     $('#valData').text((new Date(doacao.dataInicio)).toLocaleDateString());
     $('#valStatus').text(doacao.status == 1? 'Em andamento':'Finalizada');
     $('#valPontos').text(doacao.pontos);
     $('#valInstituicao').text(doacao.necessidade.usuario.nome);
     $('#valNecessidade').text(doacao.necessidade.nome);
-    $('#valEndereco').text(doacao.necessidade.usuario.cep);
+    $('#valEndereco').text(doacao.necessidade.usuario.cep.cidade +'/'+ doacao.necessidade.usuario.cep.siglaEstado);
     //show the right screen
     $('#right').fadeIn();
 }
@@ -75,5 +75,14 @@ $(document).ready(function (evt) {
     $('#itensList').on('click', 'li', function(evt){
         selecionarItem($(evt.target).closest('li').val());
     });
+
+    //btnCancelarDoacao click evt
+    $('#btnCancelarDoacao').click(function(){
+        alert('oi');
+    })
+
+    $('#btnValidarDoacao').click(function(){
+        alert('validou!');
+    })
 
 });

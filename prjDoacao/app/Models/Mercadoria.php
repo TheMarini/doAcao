@@ -104,6 +104,8 @@ class Mercadoria extends Model
         if($result->num_rows > 0 ){
             return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
         }
+        //DELETAR MATCHES
+        $this->db->query("DELETE FROM combinacao");
         // FALTA FAZER
         //$comand = "UPDATE mercadoria SET "
     }
@@ -120,7 +122,8 @@ class Mercadoria extends Model
         if($result->num_rows > 0 ){
             return "Está mercadoria não pode ser editada porque faz parte de uma doação!";
         }
-
+        //DELETAR MATCHES
+        $this->db->query("DELETE FROM combinacao");
         //DELETE OPERATION
         $comand = "DELETE FROM mercadoria WHERE cd_mercadoria='$_codigo'";
 

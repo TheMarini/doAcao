@@ -62,7 +62,6 @@ class Doacao extends Model
     }
 
     public function Salvar(){
-
         $cd_mercadoria = $this->mercadoria->codigo;
         $cd_tipo_mercadoria = $this->mercadoria->tipo;
         $cd_unidade = $this->mercadoria->unidade;
@@ -77,6 +76,29 @@ class Doacao extends Model
             return $result === true;
         }
         
+        return false;
+    }
+
+    public function Encerrar(){
+        $comand = "UPDATE doacao SET dt_termino_doacao = now() WHERE cd_doacao = $this->codigo";
+
+        if($this->db->query($comand)->num_rows > 0){
+            //NOTIFICAR USUARIO
+            if(Session::getSession('userid')->tipo == $this->mercadoria->usuario->tipo){
+                $cd_user_notify = $this->necessidade->usuario->codigo;
+                $cd_nome_doacao = $this->mercadoria->nome;
+                $comand = "INSERT INTO notificacao VALUES(now(), $cd_user_notify, 1, 'Doação Cancelada', 'A doação $cd_nome_doacao foi cancelada pelo doador', '".BASE_URL."doacoes/item/$this->codigo')";
+            }else{
+                $cd_user_notify = $this->mercadoria->usuario->codigo;
+                $cd_nome_doacao = $this->mercadoria->nome;
+                $comand = "INSERT INTO notificacao VALUES(now(), $cd_user_notify, 1, 'Doação Finalizada', 'A doação $cd_nome_doacao foi cancelada pela instituição', '".BASE_URL."doacoes/item/$this->codigo')";
+            }
+
+            $this->db->query($comand);
+
+            return true;
+        }
+
         return false;
     }
 
