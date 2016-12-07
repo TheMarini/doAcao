@@ -174,5 +174,10 @@ class usuarioController extends Controller
             header('Location: '. BASE_URL . 'usuario/login');
         }
     }
+    
+    public function configAction(){
+        $configview = new view\config();
+        $configview->render();
+    }
 
 }

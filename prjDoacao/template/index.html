@@ -26,10 +26,15 @@
         </section>
     </article>
     <footer>
-        <form id="form-cadastrar" action="cadastrar.html">
-            <input id="txtEmail" type="email" class="txt" placeholder="email" onfocus="txtFocus(1,'txtEmail')" onblur="txtFocus(0,'txtEmail')"></input>
-            <br />
-            <a href="cadastrar.html">
+        <form id="form-cadastrar" action="usuario/registrar" method="post">
+            <input id="txtEmail" name="txtEmail" type="email" class="txt" placeholder="email" onfocus="txtFocus(1,'txtEmail')" onblur="txtFocus(0,'txtEmail')"></input>
+            <br />                    
+        <input type="hidden" class="txt" name="txtNome" placeholder="nome" value="">
+                    <input type="hidden" class="txt" id="txtCNPJ" name="txtCNPJ" placeholder="CNPJ" value="" hidden>
+                    <input type="hidden" class="txt" name="txtSenha" placeholder="senha" value="" >
+                    <input type="hidden" class="txt" name="txtRepitaSenha" placeholder="repita sua senha" value="" >
+                    <input type="hidden" id="tipo" name="tipo" value="" >
+            <a href="usuario/registrar">
                 <button id="btnCadastrar" class="btn" style="border-radius: 0px; margin:0">Cadastrar!</button>
             </a>
             </div>
