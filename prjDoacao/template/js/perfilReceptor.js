@@ -7,25 +7,32 @@ TipoMercadoria = [];
 
 function listarNecessidades() {
     $.ajax({
-        dataType: 'json',
         url: '/necessidades/listar',
         success: function (result) {
-            necessidadeList = result;
+            try {
+                necessidadeList = JSON.parse(result);
+            } catch (e) {
+                necessidadeList = result;
+            }
         },
         complete: function () {
             $('#itensListNec').empty();
-            index = 0;
-            necessidadeList.forEach(function (nec) {
-                item = '<li value="' + index + '">';
-                item += '<div class="controls"> <button class="btn edit"></button><button class="btn delete"></button></div>';
-                item += '<h3>' + nec.nome + '</h3>';
+            if ($.isArray(necessidadeList) && necessidadeList != "") {
+                index = 0;
+                necessidadeList.forEach(function (nec) {
+                    item = '<li value="' + index + '">';
+                    item += '<div class="controls"> <button class="btn edit"></button><button class="btn delete"></button></div>';
+                    item += '<h3>' + nec.nome + '</h3>';
 
-                item += '<progress value="' + nec.quantCompleta + '" max="' + nec.quantidade + '"></progress>';
-                item += '<p>' + nec.quantCompleta + ' de ' + nec.quantidade + ' doados</p>';
-                item += '</li>'
+                    item += '<progress value="' + nec.quantCompleta + '" max="' + nec.quantidade + '"></progress>';
+                    item += '<p>' + nec.quantCompleta + ' de ' + nec.quantidade + ' doados</p>';
+                    item += '</li>'
 
-                $('#itensListNec').append(item);
-            });
+                    $('#itensListNec').append(item);
+                });
+            }else{
+                $('#itensListNec').append('<p>Nenhuma necessidade cadastrada</p>');
+            }
         },
         error: function () {
             alert('ajax Error');
@@ -104,15 +111,18 @@ function salvarNecessidade(_tipo, _nome, _quantidade, _unidade) {
     })
 }
 
-function novoPost(_conteudo){
+function novoPost(_conteudo) {
     $.ajax({
         type: 'POST',
-        data: {tipo: '1', conteudo: _conteudo},
+        data: {
+            tipo: '1',
+            conteudo: _conteudo
+        },
         url: 'publicacao/novo',
-        success: function(result){
+        success: function (result) {
             loadFeed();
         },
-        error: function(result){
+        error: function (result) {
             alert('erro de ajax');
         }
     })
@@ -135,7 +145,7 @@ $(document).ready(function () {
     //on load events
     listarNecessidades();
     loadFeed();
-    
+
     $(document).click(function (evt) {
         if (!$(evt.target).is('#tipoMercadoria')) {
             $('#tipos').hide();
@@ -215,10 +225,10 @@ $(document).ready(function () {
     });
 
     //postar
-    $('#postar').click(function(){
+    $('#postar').click(function () {
         var conteudo = $('#cont').val();
         novoPost(conteudo);
-        
+
     });
 
 });

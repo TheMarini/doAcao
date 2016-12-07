@@ -265,7 +265,6 @@ $(document).ready(function () {
     //btnAdicionar evnt
     $('#btnAdicionar').click(function (evt) {
         toggleAddItem();
-        loadTipoMercadoria();
     });
 
     //btnVoltar evnt

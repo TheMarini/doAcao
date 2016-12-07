@@ -16,9 +16,7 @@ class indexController extends Controller
                 $indexviewdoador = new views\indexDoador();
                 $indexviewdoador->render();
             }else{
-                $indexviewreceptor = new views\indexReceptor();
-                $indexviewreceptor->render();
-            
+                header('Location: '.'usuario/perfil');
             }
             return;
          }

@@ -78,9 +78,8 @@ class Doacao extends Model
                 $doacao->anonima = $row[10];
                 $listDoacao[] = $doacao;
             }
-            return $listDoacao;
         }
-        return false;
+        return $listDoacao;
     }
 
     public function Salvar(){

@@ -14,13 +14,13 @@ class listar extends View
     public function render(){
         if(sizeof($this->model) > 0){
                 $marcadoriaList = [];
-            foreach($this->model as $merc){
-                $mercadoria = [];
-                $mercadoria['model'] = $merc;
-                $mercadoria['interessados'] = (new Match)->interessadosMercadoria($merc->codigo);
-                $mercadoriaList[] = $mercadoria;
-            }
-            echo json_encode($mercadoriaList);
+                foreach($this->model as $merc){
+                    $mercadoria = array();
+                    $mercadoria["model"] = $merc;
+                    $mercadoria["interessados"] = (new Match)->interessadosMercadoria($merc->codigo);
+                    $mercadoriaList[] = $mercadoria;
+                }
+                echo json_encode($mercadoriaList);
         }else{
             echo "<p>Você ainda não possui itens!<br> Cliquem em \"adicionar item\" para começar.</p>";
         }

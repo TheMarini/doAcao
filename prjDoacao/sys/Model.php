@@ -8,14 +8,10 @@ use \mysqli as mysqli;
  */
 class Model
 {
-    protected $db;
-    private $servidor = "localhost";
-    private $usuario = "root";
-    private $senha = "root";
-    private $database = "doAcao";
+    public $db;
 
     function __construct() {
-        $this->db = new mysqli($this->servidor, $this->usuario, $this->senha, $this->database, "3306");
+        $this->db = new mysqli("localhost", "root", "root", "doAcao");
     }
     
 }

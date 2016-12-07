@@ -9,7 +9,11 @@ use prjDoacao\sys\View;
 class listar extends View
 {
     public function render(){
-        echo json_encode($this->model);
+        if(sizeof($this->model) > 0 ){
+            echo json_encode($this->model);
+        }else{
+            echo "<p>Não consta nenhuma doação em sua conta</p>";
+        }
     }
 }
 
