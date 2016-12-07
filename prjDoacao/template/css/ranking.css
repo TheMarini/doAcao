@@ -54,3 +54,8 @@ article ul img {
     height: 8vh;
     margin-left: 5px
 }
+
+#ranking p{
+    font-size: 4.5vh;
+    text-align: center;
+}

@@ -73,4 +73,8 @@ class Necessidade extends Model
         return $result === true;
     }
 
+    function Editar(){
+        $cSql = "UPDATE necessidade SET qt_necessidade"
+    }
+
 }

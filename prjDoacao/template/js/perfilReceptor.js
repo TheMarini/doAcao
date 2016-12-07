@@ -118,7 +118,7 @@ function novoPost(_conteudo) {
             tipo: '1',
             conteudo: _conteudo
         },
-        url: 'publicacao/novo',
+        url: '/publicacao/novo',
         success: function (result) {
             loadFeed();
         },
@@ -164,6 +164,11 @@ $(document).ready(function () {
 
     //btnAdicionar Necessidade
     $('#bntNovaNecessidade').click(function (evt) {
+        toggleAddItem();
+    });
+
+    //btnVoltar
+    $('#btnVoltar').click(function(){
         toggleAddItem();
     });
 

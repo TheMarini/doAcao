@@ -44,11 +44,12 @@ class publicacaoController extends Controller
             return;
         }
 
-        if(!is_null($this->request->post())){
+        if(!empty($this->request->post())){
             $publicacaomodel = new Publicacao();
             $publicacaomodel->conteudo = $this->request->post('conteudo');
             $publicacaomodel->tipo = $this->request->post('tipo');
             $publicacaomodel->Salvar();
+            var_dump($publicacaomodel);
         }
 
     }

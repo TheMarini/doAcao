@@ -37,6 +37,8 @@ class Publicacao extends Model
             $comand .= "WHERE cd_usuario = $_cd_usuario";
         }
         
+        $comand .= " ORDER BY dt_publicacao DESC";
+
         $result = $this->db->query($comand);
         $publicacoesList = [];
         if($result->num_rows > 0){
@@ -53,10 +55,10 @@ class Publicacao extends Model
     }
 
     public function Salvar(){
-        $cd_user = $this->usuario->codigo;
-        $comand = "INSER INTO publicacao VALUES(now(), $cd_user, $cd_user, $this->tipo, $this->conteudo)";
+        $cd_user = Session::getSession('userid')->codigo;
+        $comand = "INSERT INTO publicacao VALUES(now(), $cd_user, $this->tipo, '$this->conteudo')";
 
-        $this->db->query($comand);
+        return $this->db->query($comand);
     }
     
 }
