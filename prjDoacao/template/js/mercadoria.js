@@ -143,7 +143,6 @@ function searchTipoMercadoria(termo = "") {
 function salvar(_nome, _tipo, _unidade, _quantidade, _descricao) {
     resultado = false;
     $.ajax({
-        dataType: 'json',
         type: 'POST',
         async: false,
         url: '/mercadoria/novo',
@@ -156,11 +155,8 @@ function salvar(_nome, _tipo, _unidade, _quantidade, _descricao) {
             descricao: _descricao
         },
         success: function (result) {
-            if (result === true) {
                 listarItens();
                 resultado = true;
-            } else {
-                resultado = result;
             }
 
         },
@@ -330,8 +326,6 @@ $(document).ready(function () {
         //save mercadoria
         if ((result = salvar(nome, tipo, unidade, quantidade, descricao)) === true) {
             toggleAddItem();
-        } else {
-            alert(result);
         }
     });
 

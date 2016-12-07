@@ -90,7 +90,6 @@ class Mercadoria extends Model
         $this->db->query("DELETE FROM combinacao");
 
         $result = $this->db->query($comand);
-        
         if($result){
             return true;
         }

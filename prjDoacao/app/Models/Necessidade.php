@@ -57,10 +57,9 @@ class Necessidade extends Model
                     $necessidade->quantCompleta = ($row[5] == null)? 0 : $row[5];
                     $listNecessidades[] = $necessidade;
                 }
-                return $listNecessidades;
             }
         }
-        return false;
+        return $listNecessidades;
     }
 
     function Salvar(){
@@ -69,7 +68,7 @@ class Necessidade extends Model
         
         $this->db->query('DELETE FROM combinacao');
         $result = $this->db->query($cSql);
-        
+
         return $result === true;
     }
 

@@ -43,15 +43,17 @@ function listarNecessidades() {
 //carregar tipos de mercadoria
 function loadTipoMercadoria() {
     $.ajax({
-        dataType: 'json',
         url: "/mercadoria/novo",
         success: function (result) {
-            TipoMercadoria = result;
+            try {
+                TipoMercadoria = JSON.parse(result);
+            } catch (e) {
+                TipoMercadoria = [];
+            }
         },
         error: function () {
             alert('Erro ao realizar requisição Ajax');
         }
-
     });
 }
 

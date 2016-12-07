@@ -49,7 +49,6 @@ class publicacaoController extends Controller
             $publicacaomodel->conteudo = $this->request->post('conteudo');
             $publicacaomodel->tipo = $this->request->post('tipo');
             $publicacaomodel->Salvar();
-            var_dump($publicacaomodel);
         }
 
     }
