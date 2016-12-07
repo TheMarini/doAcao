@@ -4,18 +4,21 @@ publicacaoList = [];
 
 function loadFeed() {
     $.ajax({
-        dataType: 'json',
         url: '/publicacao/listar',
         success: function (result) {
-            publicacaoList = result;
+            try {
+                publicacaoList = JSON.parse(result);
+            } catch (e) {
+                publicacaoList = result;
+            }
         },
         error: function () {
             alert('Ajax Request Error');
         },
         complete: function () {
             $('#posts').empty();
-            var index = 0;
-            if (publicacaoList.length > 0) {
+            if ($.isArray(publicacaoList) && publicacaoList != "") {
+                var index = 0;
                 publicacaoList.forEach(function (pub) {
                     switch (pub.tipo) {
                     case '2':
@@ -51,8 +54,6 @@ function loadFeed() {
                         item += '</section>';
                         $('#posts').append(item);
                     }
-
-
                 });
             } else {
                 $('#posts').append('<p>Não há publicações!');
@@ -61,14 +62,16 @@ function loadFeed() {
     });
 }
 
-function loadNecessidade(_usuario, tipo, unidade){
+function loadNecessidade(_usuario, tipo, unidade) {
     var necessidade;
     $.ajax({
         type: 'GET',
         url: '/necessidade/load/' + _codigo,
-        data: {usuario: ""},
+        data: {
+            usuario: ""
+        },
         async: false,
-        success: function(result){
+        success: function (result) {
             necessidade = JSON.parse(result);
         }
     })
