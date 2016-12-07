@@ -10,71 +10,108 @@ postList = [];
 function loadDoacoes() {
     doacoesList = [];
     $.ajax({
-       dataType: 'json',
-       url: '/doacoes/listar',
-       success: function (result) {
-           doacoesList = result;
-         },
-       error: function () {
-           alert('erro de ajax');
-       },
-       complete: function () {
-           $('#donations > ul ').empty();
-           if(doacoesList.lenght != 0){
+        url: '/doacoes/listar',
+        success: function (result) {
+            doacoesList = result;
+        },
+        error: function (evt, xhr, obj, msg) {
+            alert(msg);
+        },
+        complete: function () {
+            $('#donations > ul ').empty();
+            if ($.isArray(doacoesList)) {
                 var cd = 0;
-                doacoesList.forEach(function(item) {
-                        var newitem  = '<li value="'+ cd +'">';
-                            newitem += '<h2 class="nome">'+item.mercadoria.nome+'</h2>';
-                            newitem += '<dd>para: <span class="interessados"><a href="'+ BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo +'">'+item.necessidade.usuario.nome+'</a></span></dd>';
-                            newitem += '<div class="status"><span>'+ (item.status == 1 ? 'Em Andamento' : 'Finalizada') +'</span></div>'
-                            newitem += '</li>';
-                            newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
-                        $('#donations > ul').append(newitem);
-                        cd++;
+                doacoesList.forEach(function (item) {
+                    var newitem = '<li value="' + cd + '">';
+                    newitem += '<h2 class="nome">' + item.mercadoria.nome + '</h2>';
+                    newitem += '<dd>para: <span class="interessados"><a href="' + BASE_URL + 'usuario/perfil/' + item.necessidade.usuario.codigo + '">' + item.necessidade.usuario.nome + '</a></span></dd>';
+                    newitem += '<div class="status"><span>' + (item.status == 1 ? 'Em Andamento' : 'Finalizada') + '</span></div>'
+                    newitem += '</li>';
+                    newitem += '<svg><line x1="1" y1="1" x2="100%" y2="1"></svg>'
+                    $('#donations > ul').append(newitem);
+                    cd++;
                 });
-           }else{
-               $('#donations > ul').append('<p>Nenhuma doação até o momento </p>');
-           }
-         }
+            } else {
+                $('#donations > ul').append('<p align="center">Nenhuma doação até o momento </p>');
+            }
+        }
     });
 }
 
-function loadMercadorias(){
+function loadMercadorias() {
     $.ajax({
         url: "/mercadoria/listar",
         success: function (result) {
-            $('#mercadoria > ul').html(result);
+            try{
+                mercadoriaList = JSON.parse(result);
+            }catch(e){
+                mercadoriaList = result;
+            }
         },
         error: function () {
             alert('Erro ao realizar requisição Ajax');
+        },
+        complete: function () {
+            $('#mercadoria > ul').empty();
+            var index = 0;
+            if ($.isArray(mercadoriaList)) {
+                mercadoriaList.forEach(function (mercadoria) {
+                    var item = '<li value="' + mercadoria.model.codigo + '">';
+                    item += '<h2 class="nome">'+mercadoria.model.nome+'</h2>';
+                    item += '<dd>interessados: <span class="interessados"><a href="">'+mercadoria.interessados+'</a></span></dd>';
+                    item += '</li>';
+                    item += '<svg><line x1="1" y1="1" x2="100%" y2="1" /></svg>';
+                    $('#mercadoria > ul').append(item);
+                })
+            } else {
+                $('#mercadoria > ul').append(mercadoriaList);
+            }
         }
-
     });
 }
 
-function loadRanking(){
+function loadRanking() {
     $.ajax({
-        dataType: 'json',
         url: '/ranking/listar',
-        success: function(result){
+        success: function (result) {
             rankingList = result;
         },
-        error: function(){
-            alert('Ajax Request Error');
+        error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            console.log(msg);
         },
-        complete: function(){
+        complete: function () {
             $('#ranking ul').empty();
-            var index = 0;
-            rankingList.forEach(function(rank){
-                var item = '<li class="pos-'+ (index+ 1) +'">';
-                   item += '<div>';
-                   item += '<img src="'+ BASE_URL + rank.photo+ '" alt="" class="avatar">';
-                   item += '<a href=""><p class="nome">'+rank.nome+'</p></a>';
-                   item += '<p class="pontuacao">'+ rank.pontos + ' pts.</p>';
-                   item += '</div>';
-                   item += '</li>';
-                $('#ranking ul').append(item);
-            });
+            if ($.isArray(rankingList)) {
+                var index = 0;
+                rankingList.forEach(function (rank) {
+                    var item = '<li class="pos-' + (index + 1) + '">';
+                    item += '<div>';
+                    item += '<img src="' + BASE_URL + rank.photo + '" alt="" class="avatar">';
+                    item += '<a href=""><p class="nome">' + rank.nome + '</p></a>';
+                    item += '<p class="pontuacao">' + rank.pontos + ' pts.</p>';
+                    item += '</div>';
+                    item += '</li>';
+                    $('#ranking ul').append(item);
+                });
+            }else{
+                $('#ranking ul').append('<p align="center">Não há usuários o suficiente para criar o ranking</p>');
+            }
         }
     })
 }

@@ -1,6 +1,6 @@
 /* GLOBAL VARS*/
 TipoMercadoria = [];
-Mercadorias = [];
+mercadoriaList = [];
 Combinacoes = [];
 
 /* FUNCTIONS */
@@ -8,51 +8,93 @@ function listarItens() {
     $.ajax({
         url: "/mercadoria/listar",
         success: function (result) {
-            $('#itensList').html(result);
-            selecionarItem($('#itensList > li:first-child'));
+            try {
+                mercadoriaList = JSON.parse(result);
+            } catch (e) {
+                mercadoriaList = result;
+            }
         },
         error: function () {
             alert('Erro ao realizar requisição Ajax');
+        },
+        complete: function () {
+            $('#itensList').empty();
+            var index = 0;
+            if ($.isArray(mercadoriaList)) {
+                mercadoriaList.forEach(function (mercadoria) {
+                    var item = '<li value="' + index + '">';
+                    item += '<h2 class="nome">' + mercadoria.model.nome + '</h2>';
+                    item += '<dd>interessados: <span class="interessados"><a href="">' + mercadoria.interessados + '</a></span></dd>';
+                    item += '<div class="controls">';
+                    item += '<button class="btn edit"></button>';
+                    item += '<button class="btn delete"></button>';
+                    item += '</div>';
+                    item += '</li>';
+                    item += '<svg><line x1="1" y1="1" x2="100%" y2="1" /></svg>';
+                    $('#itensList').append(item);
+                    index++;
+                })
+                selecionarItem(0);
+            } else {
+                $('#itensList').append(mercadoriaList);
+                $('#right').fadeOut();
+            }
         }
-
     });
 }
 
 function listarMatch(codigo) {
     $.ajax({
-        dataType: 'json',
-        type: 'GET',
         url: 'mercadoria/listarCombinacoes/' + codigo,
+        type: 'GET',
         data: {
             cd: codigo
         },
         success: function (result) {
-            Combinacoes = result;
+            try {
+                Combinacoes = JSON.parse(result);
+            } catch (e) {
+                Combinacoes = result;
+            }
         },
         error: function () {
             alert('Erro ao efetuar Ajax');
         },
         complete: function () {
             $('#matchList').empty();
-            if (Combinacoes == "") {
+            if ($.isArray(Combinacoes) && Combinacoes != "") {
+                var index = 0;
+                Combinacoes.forEach(function (comb) {
+                    var item = '<li value="' + index + '">';
+                    item += '<h3>' + comb.usuarioReceptor.nome + '</h3>';
+                    item += '<dd id="valLocal">' + comb.usuarioReceptor.cep.cidade + '/' + comb.usuarioReceptor.cep.siglaEstado + '</dd>';
+                    item += '<div class="controls"><a href="' + BASE_URL + 'usuario/perfil/' + comb.usuarioReceptor.codigo + '">Ver Perfil</a><button class="btn">Doar</a></div></li>';
+
+                    $('#matchList').append(item);
+                    item++;
+                });
+            } else {
                 $('#matchList').append('<span class="msg show">Nenhuma instituição interessada!</span>');
                 return;
             }
-
-            index = 0;
-            Combinacoes.forEach(function (comb) {
-                var item = '<li value="' + index + '">';
-                item += '<h3>' + comb.usuarioReceptor.nome + '</h3>';
-                item += '<dd id="valLocal">' + comb.usuarioReceptor.cep.cidade + '/' + comb.usuarioReceptor.cep.siglaEstado + '</dd>';
-                item += '<div class="controls"><a href="' + BASE_URL + 'usuario/perfil/' + comb.usuarioReceptor.codigo + '">Ver Perfil</a><button class="btn">Doar</a></div></li>';
-
-                $('#matchList').append(item);
-                item++;
-            });
-
-
         }
     })
+}
+
+function loadTipoMercadoria() {
+    $.ajax({
+        url: "/mercadoria/novo",
+        success: function (result) {
+            try {
+                TipoMercadoria = JSON.parse(result);
+            } catch (e) {
+                TipoMercadoria = [];
+            }
+        },
+        error: function () {
+            alert('Erro ao realizar requisição Ajax');
+        }
+    });
 }
 
 function toggleAddItem() {
@@ -82,20 +124,6 @@ function toggleMensagem() {
     }
 }
 
-function loadTipoMercadoria() {
-    $.ajax({
-        dataType: 'json',
-        url: "/mercadoria/novo",
-        success: function (result) {
-            TipoMercadoria = result;
-        },
-        error: function () {
-            alert('Erro ao realizar requisição Ajax');
-        }
-
-    });
-}
-
 function searchTipoMercadoria(termo = "") {
     $('#tipos').empty();
     if (termo != "") {
@@ -104,11 +132,9 @@ function searchTipoMercadoria(termo = "") {
             if (item.nome.match(rgxp)) {
                 $('#tipos').append('<li value="' + item.codigo + '">' + item.nome + '</li>');
             }
-
         });
         return;
     }
-
     TipoMercadoria.forEach(function (item) {
         $('#tipos').append('<li value="' + item.codigo + '">' + item.nome + '</li>');
     });
@@ -145,38 +171,22 @@ function salvar(_nome, _tipo, _unidade, _quantidade, _descricao) {
     return resultado;
 }
 
-function selecionarItem(target) {
-    if ($(target).is('li')) {
-        $('.selectedItem').removeClass('selectedItem');
-        $(target).addClass('selectedItem');
-        var cd = $(target).val();
+function selecionarItem(index) {
 
-        $.ajax({
-            url: '/mercadoria/item/' + cd,
-            dataType: 'json',
-            success: function (result) {
-                $('#txtNome').val(result.nome);
-                TipoMercadoria.forEach(function (item) {
-                    if (item.codigo == result.tipo) {
-                        $('#valTipo').text(item.nome);
-                    }
-                });
-                $('#valDescricao').text(result.descricao);
-                $('#valQuantidade').text(result.quantidade);
-                $('#valUnidade').text(result.unidade);
-                listarMatch(cd);
-            },
-            error: function () {
-                alert('Erro ao realizar requisição Ajax');
-            },
-            complete: function () {
-                $('#right').fadeIn('fast');
-            }
-        });
+    $('.selectedItem').removeClass('selectedItem');
+    $('#itensList li[value="' + index + '"]').addClass('selectedItem');
 
-    } else {
-        $('#right').fadeOut('fast');
-    }
+    $('#txtNome').val(mercadoriaList[index].model.nome);
+    $('#valDescricao').text(mercadoriaList[index].model.descricao);
+    $('#valQuantidade').text(mercadoriaList[index].model.quantidade);
+    $('#valUnidade').text(mercadoriaList[index].model.unidade);
+    TipoMercadoria.forEach(function (item) {
+        if (item.codigo == mercadoriaList[index].model.tipo) {
+            $('#valTipo').text(item.nome);
+        }
+    });
+    listarMatch(mercadoriaList[index].model.codigo);
+    $('#right').fadeIn('fast');
 }
 
 function removerItem(_codigo) {
@@ -225,7 +235,7 @@ function doarItem(_index, _quantidade) {
 }
 
 
-/* EVENTS */
+/* --------- EVENTS ---------- */
 
 $(document).ready(function () {
     //onLoad
@@ -335,8 +345,8 @@ $(document).ready(function () {
                 toggleMensagem();
             }
         }
-        selecionarItem($(evt.target).closest('li'));
 
+        selecionarItem($(evt.target).closest('li').val());
 
     })
 
@@ -346,8 +356,8 @@ $(document).ready(function () {
     });
 
     $('#mensagem').on('click', '#sim', function (evt) {
-        var cd = $('.selectedItem').val();
-        removerItem(cd);
+        var index = $('.selectedItem').val();
+        removerItem(mercadoriaList[index].model.codigo);
         toggleMensagem();
     });
 

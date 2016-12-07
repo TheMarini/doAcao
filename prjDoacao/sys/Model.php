@@ -9,9 +9,9 @@ use \mysqli as mysqli;
 class Model
 {
     protected $db;
-    private $servidor = "doacao.c6cugaa9w1j5.us-west-2.rds.amazonaws.com";
-    private $usuario = "doacao";
-    private $senha = "doacao3024";
+    private $servidor = "localhost";
+    private $usuario = "root";
+    private $senha = "root";
     private $database = "doAcao";
 
     function __construct() {
@@ -20,4 +20,4 @@ class Model
     
 }
 
-?>
+

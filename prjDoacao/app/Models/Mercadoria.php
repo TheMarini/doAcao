@@ -58,7 +58,7 @@ class Mercadoria extends Model
            $result = $this->db->query($com);
 
            if($result){
-               $listMercadorias = array();
+               $listMercadorias = [];
 
                while ($row = $result->fetch_array()){
                    $mercadoria = new Mercadoria();
@@ -72,13 +72,11 @@ class Mercadoria extends Model
 
                    $listMercadorias[] = $mercadoria;
                }
+
                return $listMercadorias;
            }
-           
-           return false;
-    }
 
-    
+    }
 
     /**
     *   Insert new item 

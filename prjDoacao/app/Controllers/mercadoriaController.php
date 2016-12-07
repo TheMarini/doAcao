@@ -40,14 +40,13 @@ class mercadoriaController extends Controller
             return;
         }
 
-        if(!$this->request->isAjax()){
-            header('Location: ' . BASE_URL . 'mercadoria');
-            return;
-        }
+       // if(!$this->request->isAjax()){
+       //     header('Location: ' . BASE_URL . 'mercadoria');
+        //    return;
+       // }
 
         $mercadoriaModel = new Mercadoria();
         $listarview = new view\listar([],$mercadoriaModel->Consultar(Session::getSession('userid')->codigo));
-        $listarview->setTemplate('meusItens-list-ajax');
         $listarview->render();
     }
 
