@@ -5,15 +5,16 @@
 * GitHub: http://github.com/vinikis/doacao.git
 * Description: A project to make more easier the donation process
 */
+
 namespace prjDoacao;
 
-define('APP_PATH', __DIR__ . DIRECTORY_SEPARATOR . 'prjDoacao' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
-define('TEMPLATE_PATH', 'prjDoacao' . DIRECTORY_SEPARATOR . 'Template' . DIRECTORY_SEPARATOR);
-define('TEMPLATE_PATH_INV', 'prjDoacao/Template/');
+define('APP_PATH', $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR . 'prjDoacao' . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
+define('TEMPLATE_PATH', 'prjDoacao' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR);
+define('TEMPLATE_PATH_INV', 'prjDoacao/template/');
 define('MEDIA_PATH', 'media' . DIRECTORY_SEPARATOR);
 define('MEDIA_PATH_INV', 'media/');
-define('ROOT',  __DIR__ . DIRECTORY_SEPARATOR);
-define('BASE_URL','http://localhost/' );
+define('ROOT',  $_SERVER["DOCUMENT_ROOT"] . DIRECTORY_SEPARATOR);
+define('BASE_URL', (strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://').$_SERVER['HTTP_HOST'].'/');
 
 
 //autoloader

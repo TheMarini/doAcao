@@ -5,7 +5,7 @@
 */
 
 function autoloader($class){
-    $className = ltrim($class, '\\');
+    $className = str_replace('\\', DIRECTORY_SEPARATOR, ltrim($class, '\\'));
     $fileName = '';
     $namespace = '';
     
@@ -18,8 +18,7 @@ function autoloader($class){
     }
     
     $fileName .= $className . '.php';
-    
-    
+
     if(file_exists($fileName)){
         require_once $fileName;
     }

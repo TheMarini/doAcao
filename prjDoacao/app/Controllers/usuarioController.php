@@ -4,8 +4,8 @@ namespace prjDoacao\app\Controllers;
 use prjDoacao\sys\Controller;
 use prjDoacao\sys\Router;
 use prjDoacao\app\Views\usuario as view;
-use prjDoacao\app\Models\usuario as Usuario;
-use prjDoacao\sys\session\Session as Session;
+use prjDoacao\app\Models\Usuario;
+use prjDoacao\sys\session\Session;
 
 /**
  * Usuário controller actions
